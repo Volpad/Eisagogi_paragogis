@@ -1,0 +1,298 @@
+﻿<Window x:Class="Eisagogi_paragogis.Production_Plan2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Eisagogi_paragogis"
+        mc:Ignorable="d"
+        Closing="Production_Plan_Closing"
+        Title="Production_Plan" Height="450" Width="800" WindowState="Maximized"
+        PreviewKeyDown="WindowKeyDown"
+        Icon="pictures/plan.png">
+    <Grid>
+
+        <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Auto" Margin="0,20,0,0">
+            <DockPanel x:Name="pan2" LastChildFill="False" Margin="10,75,50,10" Grid.ColumnSpan="10" Height="900" VerticalAlignment="Top"   >
+
+
+                <Grid x:Name="grid" Margin="0,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="135"/>
+                        <ColumnDefinition Width="135"/>
+                        <ColumnDefinition Width="135"/>
+                        <ColumnDefinition Width="135"/>
+                        <ColumnDefinition Width="135"/>
+                        <ColumnDefinition Width="135"/>
+                        <ColumnDefinition Width="135"/>
+                        <ColumnDefinition Width="135"/>
+                        <ColumnDefinition Width="135"/>
+                        <ColumnDefinition Width="135"/>
+                        <ColumnDefinition Width="135"/>
+                        <ColumnDefinition Width="135"/>
+                        <ColumnDefinition Width="135"/>
+                        <ColumnDefinition Width="135"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel x:Name="SM55" Grid.Column="0"  VerticalAlignment="Center"  HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0" Background="#e0e0e0">
+
+                        <Canvas x:Name="M55" >
+                            <TextBlock x:Name="Pa55" Height="20" Width="35" Background="#b7d8a1" FontFamily="calibri" FontWeight="Bold" Foreground="black" TextAlignment="Left" Text="55.M4"></TextBlock>
+                            <TextBlock x:Name="Pb55" Height="20" Width="100" Background="#b7d8a1" FontFamily="calibri" FontWeight="Bold" Foreground="black" TextAlignment="Right" Canvas.Left="33" Text="Matec 240"></TextBlock>
+                            <DataGrid x:Name="DG55" MouseDoubleClick="Row_DoubleClick" FontFamily="Calibri (Detail)" Background="White" GridLinesVisibility="None" AlternationCount="2" HorizontalAlignment="Left" Margin="2,22,0,0" Grid.Row="6" Width="128"  AutoGenerateColumns="False">
+                                <DataGrid.Resources>
+                                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE9E2FF"/>
+                                </DataGrid.Resources>
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding Path = ProdRef}" FontSize="15" Width="55">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style>
+                                                <Setter Property="FrameworkElement.HorizontalAlignment" Value="left"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Binding="{Binding Path = totalId}" FontSize="15" Width="30" Foreground="#2f3699">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style>
+                                                <Setter Property="FrameworkElement.HorizontalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Binding="{Binding Path = Rest}" FontSize="10" Width="25"  Foreground="#2f3699">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style>
+                                                <Setter Property="FrameworkElement.VerticalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Binding="{Binding Path = producedDosen}" FontSize="15">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style>
+                                                <Setter Property="FrameworkElement.HorizontalAlignment" Value="Right"/>
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                </DataGrid.Columns>
+                                <DataGrid.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="BorderBrush" Value="#d0cece" />
+                                        <Setter Property="BorderThickness" Value="1 1 1 1" />
+                                        <Setter Property="Margin" Value="2,0,2,0" />
+                                        <Style.Triggers>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter Property="Foreground" Value="black"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGrid.CellStyle>
+                                <DataGrid.RowStyle>
+                                    <Style TargetType="{x:Type DataGridRow}">
+                                        <Setter Property="Margin" Value="0,2,0,2" />
+                                        <Style.Triggers>
+
+                                            <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                                <Setter Property="Background" Value="white"/>
+
+                                            </Trigger>
+                                            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                                <Setter Property="Background" Value="#f2f2f2"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGrid.RowStyle>
+                            </DataGrid>
+                        </Canvas>
+
+                    </StackPanel>
+                    <StackPanel x:Name="SM56" Grid.Row="0" Grid.Column="1"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0" Background="#e0e0e0">
+                        <Canvas x:Name="M56"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM49" Grid.Row="0" Grid.Column="2"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0" Background="#e0e0e0">
+                        <Canvas x:Name="M49"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM10" Grid.Row="0" Grid.Column="3"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M10"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM09" Grid.Row="0" Grid.Column="4"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M09"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM08" Grid.Row="0" Grid.Column="5"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M08"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM07" Grid.Row="0" Grid.Column="6"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M07"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM06" Grid.Row="0" Grid.Column="7"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M06"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM05" Grid.Row="0" Grid.Column="8"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M05"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM04" Grid.Row="0" Grid.Column="9"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M04"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM03" Grid.Row="0" Grid.Column="10"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M03"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM02" Grid.Row="0" Grid.Column="11"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M02"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM01" Grid.Row="0" Grid.Column="12"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M01"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM29" Grid.Row="0" Grid.Column="13"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M29"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM30" Grid.Row="1" Grid.Column="13"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M30"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM47" Grid.Row="2" Grid.Column="1"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M47"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM48" Grid.Row="2" Grid.Column="2"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M48"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM71" Grid.Row="2" Grid.Column="3"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M71"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM12" Grid.Row="2" Grid.Column="4"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M12"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM13" Grid.Row="2" Grid.Column="5"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M13"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM14" Grid.Row="2" Grid.Column="6"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M14"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM15" Grid.Row="2" Grid.Column="7"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M15"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM16" Grid.Row="2" Grid.Column="8"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M16"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM17" Grid.Row="2" Grid.Column="9"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M17"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM18" Grid.Row="2" Grid.Column="10"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M18"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM11" Grid.Row="2" Grid.Column="11"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M11"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM19" Grid.Row="2" Grid.Column="12"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M19"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM25" Grid.Row="2" Grid.Column="13"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M25"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM26" Grid.Row="3" Grid.Column="0"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M26"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM52" Grid.Row="3" Grid.Column="1"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M52"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM51" Grid.Row="3" Grid.Column="2"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M51"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM57" Grid.Row="3" Grid.Column="3"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M57"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM67" Grid.Row="3" Grid.Column="5"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M67"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM66" Grid.Row="3" Grid.Column="6"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M66"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM65" Grid.Row="3" Grid.Column="7"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M65"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM64" Grid.Row="3" Grid.Column="8"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M64"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM46" Grid.Row="3" Grid.Column="10"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M46"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM32" Grid.Row="3" Grid.Column="11"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M32"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM59" Grid.Row="3" Grid.Column="12"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M59"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM22" Grid.Row="3" Grid.Column="13"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M22"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM35" Grid.Row="4" Grid.Column="0"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M35"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM28" Grid.Row="4" Grid.Column="13"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M28"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM42" Grid.Row="5" Grid.Column="0"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M42"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM53" Grid.Row="5" Grid.Column="1"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M53"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM54" Grid.Row="5" Grid.Column="2"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M54"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM61" Grid.Row="5" Grid.Column="3"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M61"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM62" Grid.Row="5" Grid.Column="4"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M62"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM68" Grid.Row="5" Grid.Column="5"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M68"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM69" Grid.Row="5" Grid.Column="6"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M69"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM70" Grid.Row="5" Grid.Column="7"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M70"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM33" Grid.Row="5" Grid.Column="8"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M33"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM34" Grid.Row="5" Grid.Column="9"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M34"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM20" Grid.Row="5" Grid.Column="10"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M20"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM21" Grid.Row="5" Grid.Column="11"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M21"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SM27" Grid.Row="5" Grid.Column="13"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <Canvas x:Name="M27"/>
+                    </StackPanel>
+
+
+
+                </Grid>
+            </DockPanel>
+        </ScrollViewer>
+        <ToolBar Height="25"  VerticalAlignment="Top" Grid.Column="0">
+            <!--<Button x:Name="savebutton" Width="20" Height="20" BorderThickness="0" Click="savebutton_Click">
+
+                <StackPanel>
+                    <Image x:Name="savedi" Source="/pictures/savedi.png"  Stretch="Uniform"/>
+                    <Image x:Name="tosave" Source="/pictures/tosave.png"  Stretch="Uniform"/>
+                    <StackPanel Height="100" Width="100"/>
+                </StackPanel>
+            </Button>-->
+            <Button x:Name="Chechending" Content="Check" Height="20" VerticalAlignment="Top" Width="75" Click="Flashing_Machines"  />
+            <Button x:Name="Update" Content="Update" Height="20" VerticalAlignment="Top" Width="75" Click="Update_Click"  />
+            <TextBlock x:Name="totalMO"  Height="20" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        </ToolBar>
+    </Grid>
+</Window>

@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.3.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -8,11 +9,29 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>Eisagogi_paragogis</RootNamespace>
     <AssemblyName>Eisagogi_paragogis</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -23,6 +42,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,10 +52,32 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>pictures\walk_final_logo1.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ReachFramework" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -45,15 +87,105 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Balance.xaml.cs">
+      <DependentUpon>Balance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Boarding.cs" />
+    <Compile Include="ChangesToProduction.cs" />
+    <Compile Include="DailyProduction.cs" />
+    <Compile Include="DataBox.xaml.cs">
+      <DependentUpon>DataBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DeltioMixanis.xaml.cs">
+      <DependentUpon>DeltioMixanis.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DocumentPaginatorImpl.cs" />
+    <Compile Include="Eisagogi_Paragogis.xaml.cs">
+      <DependentUpon>Eisagogi_Paragogis.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EXOPLISMOS1.cs" />
+    <Compile Include="forma_ektyposis.xaml.cs">
+      <DependentUpon>forma_ektyposis.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemBalances.cs" />
+    <Compile Include="KartaProiontos.xaml.cs">
+      <DependentUpon>KartaProiontos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="KataxwrisiTsouvaliou.xaml.cs">
+      <DependentUpon>KataxwrisiTsouvaliou.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Machineqty.cs" />
+    <Compile Include="Microloop.cs" />
+    <Compile Include="PrintPreview.xaml.cs">
+      <DependentUpon>PrintPreview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProductionQTY.cs" />
+    <Compile Include="productionView.xaml.cs">
+      <DependentUpon>productionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Production_Plan.xaml.cs">
+      <DependentUpon>Production_Plan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Production_Plan2.xaml.cs">
+      <DependentUpon>Production_Plan2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Production_Plan_Changes.cs" />
+    <Compile Include="RAW MATE.cs" />
+    <Compile Include="Remaining_Productions.xaml.cs">
+      <DependentUpon>Remaining_Productions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Semi-finished_warehouse.cs" />
+    <Compile Include="shipment.cs" />
+    <Compile Include="SIZESORTING.cs" />
+    <Compile Include="SizeStandard.cs" />
+    <Compile Include="Special_Processing_Instruction.cs" />
+    <Compile Include="Staff.cs" />
+    <Compile Include="Static_Variables.cs" />
+    <Compile Include="testgrid.xaml.cs">
+      <DependentUpon>testgrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToBePlanned.cs" />
+    <Compile Include="Unit.cs" />
+    <Compile Include="walk_prd_FullItemLinesList.cs" />
+    <Page Include="Balance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DataBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DeltioMixanis.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Eisagogi_Paragogis.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="forma_ektyposis.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KartaProiontos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KataxwrisiTsouvaliou.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -62,12 +194,51 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BOMS3.cs" />
+    <Compile Include="boms3a.cs" />
+    <Compile Include="BOMS4.cs" />
+    <Compile Include="DELTIO_FINISH_SUPER.cs" />
+    <Compile Include="DELTIO_FINISH_SUPER1.cs" />
+    <Compile Include="eisagogiParagogis.cs" />
+    <Compile Include="EXOPLISMOS.cs" />
+    <Compile Include="Finish1.cs" />
+    <Compile Include="FinMachine.cs" />
+    <Compile Include="GM.cs" />
+    <Compile Include="GMP.cs" />
+    <Compile Include="IMAGES.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PrintPreview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="productionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Production_Plan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Production_Plan2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Remaining_Productions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="testgrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OrderRegister.cs" />
+    <Compile Include="Orders_Fin.cs" />
+    <Compile Include="Production18.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -85,13 +256,62 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="plan2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="pictures\savedi.png" />
+    <Resource Include="pictures\tosave.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="pictures\plan2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="pictures\walk_final_logo1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="pictures\plan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="pictures\add_socks.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="pictures\add_bag_socks.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="pictures\bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="pictures\ChecklistIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="pictures\printer.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.3.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" />
 </Project>

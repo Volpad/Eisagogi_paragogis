@@ -1,0 +1,1432 @@
+﻿<Window x:Class="Eisagogi_paragogis.DeltioMixanis"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Eisagogi_paragogis"
+        mc:Ignorable="d"
+        Title="DeltioMixanis" Height="1160.339" Width="1136"
+        Tag="deltiomixanis">
+    <Window.Background>
+        <VisualBrush TileMode="Tile" Viewport="0,0,20,20" ViewportUnits="Absolute">
+            <VisualBrush.Visual>
+                <Image Source="pictures/bg.png"></Image>
+            </VisualBrush.Visual>
+        </VisualBrush>
+    </Window.Background>
+    <Grid x:Name="pan1" HorizontalAlignment="Left" Width="773" Background="WhiteSmoke">
+        
+        <ScrollViewer x:Name="sv" Margin="0,0,-19,0" >
+            <Grid x:Name="panel">
+                <!--<Border x:Name="pan2" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="1077" Margin="19,20,0,0" VerticalAlignment="Top" Width="754">-->
+                <Border BorderBrush="Black" Background="#c0c0c0" BorderThickness="2" Height="46" Margin="45,20,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="702">
+                    <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="50" Margin="617,-2,-2,-2" VerticalAlignment="Top" Width="83"/>
+                </Border>
+                <!--</Border>-->
+                <TextBlock TextWrapping="Wrap" Text="WALK SOCKS" HorizontalAlignment="Left" Height="50" Width="70" FontSize="18" FontFamily="calibri" FontWeight="Bold" Margin="56,21,0,1058"/>
+                <TextBlock TextWrapping="Wrap" Text="ΔΕΛΤΙΟ ΜΗΧΑΝΗΣ" Height="50"  FontSize="28" FontFamily="calibri" FontWeight="Bold" Margin="163,27,383,1052"/>
+                <TextBlock x:Name="totalidbarcode" TextWrapping="Wrap" Text="*15763*" Height="50"  FontSize="45" FontFamily="Free 3 of 9 Extended" HorizontalAlignment="Right" Margin="0,27,210,1052" Width="141" />
+                <TextBlock x:Name="totalid" TextAlignment="Right" TextWrapping="NoWrap" Text="15763" FontSize="20" FontWeight="Bold" FontFamily="calibri" Margin="582,20,132,1073"/>
+                <TextBlock x:Name="date"  TextAlignment="Right" TextWrapping="NoWrap" Text="17/10/2020" FontSize="15" FontWeight="Normal" FontFamily="calibri" Margin="583,46,0,0" Height="36" VerticalAlignment="Top" HorizontalAlignment="Left" Width="73" />
+                <Border BorderBrush="Black" Background="#dddddd" BorderThickness="2" Height="44" Margin="45,67,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="702">
+                    <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="55" Margin="530,-2,-2,-2" VerticalAlignment="Top" Width="170"/>
+                </Border>
+                <Grid HorizontalAlignment="Left" Width="313" Height="51" VerticalAlignment="Top" Margin="239,94,0,0">
+                    <Viewbox Margin="0,-30,0,29">
+                        <TextBlock x:Name="productRef" FontFamily="Arial Black" TextWrapping="Wrap" Text="Reference" />
+                    </Viewbox>
+
+                </Grid>
+                <TextBlock Text="ΜΗΧΑΝΗ :" FontSize="15" FontFamily="calibri" Width="149" Height="19" Margin="592,70,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBlock x:Name="mach_Type" Text="machine_type" FontSize="15" FontFamily="calibri" Width="140" Height="19" Margin="592,87,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBlock x:Name="Date" Text="ΗΜΕΡΟΜΗΝΙΑ ΕΝΑΡΞΗΣ" FontSize="15" FontFamily="calibri" Width="151" Height="18" Margin="56,71,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Border BorderBrush="Black" BorderThickness="2" Width="170" HorizontalAlignment="Left" Margin="45,67,0,0" Height="44" VerticalAlignment="Top"/>
+                <Border BorderBrush="Black" BorderThickness="2" Width="702" HorizontalAlignment="Left" Margin="45,109,0,0" Height="88" VerticalAlignment="Top"/>
+                <Grid Width="155" Margin="52,110,0,0" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <Viewbox HorizontalAlignment="Left" Width="155" Margin="0,-5,0,10" >
+                        <TextBlock x:Name="CustomerName" FontFamily="Arial Greek" TextWrapping="Wrap" Text="Customer Name" Foreground="Red" FontWeight="Bold" />
+                    </Viewbox>
+                </Grid>
+                <TextBlock x:Name="deliveryDate" Text="DeliveryDate" FontFamily="arial Greek" FontSize="18" FontWeight="Bold" Margin="52,150,0,0" HorizontalAlignment="Left" Width="155" Height="21" VerticalAlignment="Top"/>
+                <TextBlock x:Name="orderNo" Text="order_no" FontFamily="arial Greek" FontWeight="Bold" FontSize="18" Margin="52,167,0,0" Foreground="#FF0000F1" HorizontalAlignment="Left" Width="155" Height="18" VerticalAlignment="Top"/>
+                <!--<TextBlock Width="155" Text="Customer Name" HorizontalAlignment="Right" Margin="0,145,568,935"/>-->
+
+                <Grid Margin="212,111,28,0" Height="84" VerticalAlignment="Top">
+                    <DockPanel HorizontalAlignment="Left" VerticalAlignment="Top" Height="84" >
+                        <Border x:Name="bs1" BorderBrush="Black" BorderThickness="2,0,1,2" Width="89">
+                            <StackPanel >
+                                <TextBlock x:Name="tbs1" TextAlignment="Center" FontFamily="arial" FontSize="18" Text="40/41" Height="22"/>
+                                <TextBlock x:Name="sbs1" TextAlignment="Center" FontFamily="arial black" FontSize="21" Text="Size 1" Height="36"/>
+                                <Border BorderThickness="1,1,1,0" BorderBrush="Black" Margin="2,1">
+                                <TextBlock x:Name="ar1" TextAlignment="Center" FontFamily="arial" FontSize="16" Text="18,5 / 18,5" Height="22"/>
+                                </Border>
+                            </StackPanel>
+                        </Border>
+                        <Border x:Name="bs2" BorderBrush="Black" BorderThickness="2,0,1,2" Width="89">
+                            <StackPanel >
+                                <TextBlock x:Name="tbs2" TextAlignment="Center" FontFamily="arial" FontSize="18" Text="40/41" Height="22"/>
+                                <TextBlock x:Name="sbs2" TextAlignment="Center" FontFamily="arial black" FontSize="21" Text="Size 1" Height="36"/>
+                                <Border BorderThickness="1,1,1,0" BorderBrush="Black" Margin="2,1">
+                                    <TextBlock x:Name="ar2" TextAlignment="Center" FontFamily="arial" FontSize="16" Text="18,5 / 18,5" Height="22"/>
+                                </Border>
+                            </StackPanel>
+                        </Border>
+                        <Border x:Name="bs3" BorderBrush="Black" BorderThickness="2,0,1,2" Width="89">
+                            <StackPanel >
+                                <TextBlock x:Name="tbs3" TextAlignment="Center" FontFamily="arial" FontSize="18" Text="40/41" Height="22"/>
+                                <TextBlock x:Name="sbs3" TextAlignment="Center" FontFamily="arial black" FontSize="21" Text="Size 1" Height="36"/>
+                                <Border BorderThickness="1,1,1,0" BorderBrush="Black" Margin="2,1">
+                                    <TextBlock x:Name="ar3" TextAlignment="Center" FontFamily="arial" FontSize="16" Text="18,5 / 18,5" Height="22"/>
+                                </Border>
+                            </StackPanel>
+                        </Border>
+                        <Border x:Name="bs4" BorderBrush="Black" BorderThickness="2,0,1,2" Width="89">
+                            <StackPanel >
+                                <TextBlock x:Name="tbs4" TextAlignment="Center" FontFamily="arial" FontSize="18" Text="40/41" Height="22"/>
+                                <TextBlock x:Name="sbs4" TextAlignment="Center" FontFamily="arial black" FontSize="21" Text="Size 1" Height="36"/>
+                                <Border BorderThickness="1,1,1,0" BorderBrush="Black" Margin="2,1">
+                                    <TextBlock x:Name="ar4" TextAlignment="Center" FontFamily="arial" FontSize="16" Text="18,5 / 18,5" Height="22"/>
+                                </Border>
+                            </StackPanel>
+                        </Border>
+                        <Border x:Name="bs5" BorderBrush="Black" BorderThickness="2,0,1,2" Width="89">
+                            <StackPanel >
+                                <TextBlock x:Name="tbs5" TextAlignment="Center" FontFamily="arial" FontSize="18" Text="40/41" Height="22"/>
+                                <TextBlock x:Name="sbs5" TextAlignment="Center" FontFamily="arial black" FontSize="21" Text="Size 1" Height="36"/>
+                                <Border BorderThickness="1,1,1,0" BorderBrush="Black" Margin="2,1">
+                                    <TextBlock x:Name="ar5" TextAlignment="Center" FontFamily="arial" FontSize="16" Text="18,5 / 18,5" Height="22"/>
+                                </Border>
+                            </StackPanel>
+                        </Border>
+                        <Border x:Name="bs6" BorderBrush="Black" BorderThickness="2,0,1,2" Width="89">
+                            <StackPanel >
+                                <TextBlock x:Name="tbs6" TextAlignment="Center" FontFamily="arial" FontSize="18" Text="40/41" Height="22"/>
+                                <TextBlock x:Name="sbs6" TextAlignment="Center" FontFamily="arial black" FontSize="21" Text="Size 1" Height="36"/>
+                                <Border BorderThickness="1,1,1,0" BorderBrush="Black" Margin="2,1">
+                                    <TextBlock x:Name="ar6" TextAlignment="Center" FontFamily="arial" FontSize="16" Text="18,5 / 18,5" Height="22"/>
+                                </Border>
+                            </StackPanel>
+                        </Border>
+                    </DockPanel>
+
+                </Grid>
+                <StackPanel Margin="45,195,0,0" Height="916" VerticalAlignment="Top">
+                    <Grid x:Name="grid1" HorizontalAlignment="Left" Width="702" Height="110" VerticalAlignment="Top">
+                        <Border BorderThickness="2" Background="#c0c0c0" BorderBrush="Black" HorizontalAlignment="Left" Width="170">
+                        </Border>
+                        <Viewbox Margin="10,10,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="73" Width="102">
+                            <TextBlock x:Name="c1" Text="(02)" FontFamily="arial bold" VerticalAlignment="Top" Height="15" />
+                        </Viewbox>
+                        <TextBlock x:Name="program1" Text="W100" FontFamily="arial" FontSize="20" Margin="6,83,0,0" HorizontalAlignment="Left" Width="108" Height="21" VerticalAlignment="Top" Foreground="Blue"/>
+                        <TextBlock x:Name="yarns1" Text="2 X O.1.30 + E.055" FontFamily="arial" FontSize="14" TextAlignment="Center" Margin="112,55,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="53" Height="55" VerticalAlignment="Top" Foreground="#FF8700F7"/>
+                        <Grid Margin="168,0,0,0" HorizontalAlignment="Left" Width="534">
+                            <Border BorderBrush="Black" BorderThickness="2">
+                                <DockPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+                                    <Grid x:Name="s11" Width="266">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc11" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc11" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc11" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s12" Width="265">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc12" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc12" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc12" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s13" Width="177">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc13" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc13" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc13" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s14" Width="132">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc14" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc14" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc14" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s15" Width="132">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc15" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc15" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc15" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s16" Width="106">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc16" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc16" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc16" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+
+                                </DockPanel>
+                            </Border>
+                        </Grid>
+
+                    </Grid>
+                    <Grid x:Name="grid2" HorizontalAlignment="Left" Width="702" Height="110" VerticalAlignment="Top">
+                        <Border BorderThickness="2" Background="#c0c0c0" BorderBrush="Black" HorizontalAlignment="Left" Width="170">
+                        </Border>
+                        <Viewbox Margin="10,10,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="73" Width="102">
+                            <TextBlock x:Name="c2" Text="(02)" FontFamily="arial bold" VerticalAlignment="Top" Height="15" />
+                        </Viewbox>
+                        <TextBlock x:Name="program2" Text="W100" FontFamily="arial" FontSize="20" Margin="6,83,0,0" HorizontalAlignment="Left" Width="108" Height="21" VerticalAlignment="Top" Foreground="Blue"/>
+                        <TextBlock x:Name="yarns2" Text="2 X O.1.30 + E.055" FontFamily="arial" FontSize="14" TextAlignment="Center" Margin="112,55,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="53" Height="55" VerticalAlignment="Top" Foreground="#FF8700F7"/>
+                        <Grid Margin="168,0,0,0" HorizontalAlignment="Left" Width="534">
+                            <Border BorderBrush="Black" BorderThickness="2">
+                                <DockPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+                                    <Grid x:Name="s21" Width="266">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc21" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc21" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc21" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s22" Width="265">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc22" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc22" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc22" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s23" Width="177">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc23" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc23" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc23" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s24" Width="132">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc24" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc24" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc24" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s25" Width="132">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc25" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc25" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc25" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s26" Width="106">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc26" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc26" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc26" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+
+                                </DockPanel>
+                            </Border>
+                        </Grid>
+
+                    </Grid>
+                    <Grid x:Name="grid3" HorizontalAlignment="Left" Width="702" Height="110" VerticalAlignment="Top">
+                        <Border BorderThickness="2" Background="#c0c0c0" BorderBrush="Black" HorizontalAlignment="Left" Width="170">
+                        </Border>
+                        <Viewbox Margin="10,10,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="73" Width="102">
+                            <TextBlock x:Name="c3" Text="(02)" FontFamily="arial bold" VerticalAlignment="Top" Height="15" />
+                        </Viewbox>
+                        <TextBlock x:Name="program3" Text="W100" FontFamily="arial" FontSize="20" Margin="6,83,0,0" HorizontalAlignment="Left" Width="108" Height="21" VerticalAlignment="Top" Foreground="Blue"/>
+                        <TextBlock x:Name="yarns3" Text="2 X O.1.30 + E.055" FontFamily="arial" FontSize="14" TextAlignment="Center" Margin="112,55,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="53" Height="55" VerticalAlignment="Top" Foreground="#FF8700F7"/>
+                        <Grid Margin="168,0,0,0" HorizontalAlignment="Left" Width="534">
+                            <Border BorderBrush="Black" BorderThickness="2">
+                                <DockPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+                                    <Grid x:Name="s31" Width="266">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc31" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc31" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc31" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s32" Width="265">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc32" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc32" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc32" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s33" Width="177">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc33" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc33" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc33" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s34" Width="132">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc34" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc34" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc34" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s35" Width="132">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc35" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc35" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc35" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s36" Width="106">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc36" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc36" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc36" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+
+                                </DockPanel>
+                            </Border>
+                        </Grid>
+
+                    </Grid>
+                    <Grid x:Name="grid4" HorizontalAlignment="Left" Width="702" Height="110" VerticalAlignment="Top">
+                        <Border BorderThickness="2" Background="#c0c0c0" BorderBrush="Black" HorizontalAlignment="Left" Width="170">
+                        </Border>
+                        <Viewbox Margin="10,10,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="73" Width="102">
+                            <TextBlock x:Name="c4" Text="(02)" FontFamily="arial bold" VerticalAlignment="Top" Height="15" />
+                        </Viewbox>
+                        <TextBlock x:Name="program4" Text="W100" FontFamily="arial" FontSize="20" Margin="6,83,0,0" HorizontalAlignment="Left" Width="108" Height="21" VerticalAlignment="Top" Foreground="Blue"/>
+                        <TextBlock x:Name="yarns4" Text="2 X O.1.30 + E.055" FontFamily="arial" FontSize="14" TextAlignment="Center" Margin="112,55,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="53" Height="55" VerticalAlignment="Top" Foreground="#FF8700F7"/>
+                        <Grid Margin="168,0,0,0" HorizontalAlignment="Left" Width="534">
+                            <Border BorderBrush="Black" BorderThickness="2">
+                                <DockPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+                                    <Grid x:Name="s41" Width="266">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc41" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc41" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc41" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s42" Width="265">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc42" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc42" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc42" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s43" Width="177">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc43" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc43" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc43" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s44" Width="132">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc44" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc44" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc44" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s45" Width="132">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc45" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc45" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc45" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s46" Width="106">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc46" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc46" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc46" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+
+                                </DockPanel>
+                            </Border>
+                        </Grid>
+
+                    </Grid>
+                    <Grid x:Name="grid5" HorizontalAlignment="Left" Width="702" Height="110" VerticalAlignment="Top">
+                        <Border BorderThickness="2" Background="#c0c0c0" BorderBrush="Black" HorizontalAlignment="Left" Width="170">
+                        </Border>
+                        <Viewbox Margin="10,10,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="73" Width="102">
+                            <TextBlock x:Name="c5" Text="(02)" FontFamily="arial bold" VerticalAlignment="Top" Height="15" />
+                        </Viewbox>
+                        <TextBlock x:Name="program5" Text="W100" FontFamily="arial" FontSize="20" Margin="6,83,0,0" HorizontalAlignment="Left" Width="108" Height="21" VerticalAlignment="Top" Foreground="Blue"/>
+                        <TextBlock x:Name="yarns5" Text="2 X O.1.30 + E.055" FontFamily="arial" FontSize="14" TextAlignment="Center" Margin="112,55,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="53" Height="55" VerticalAlignment="Top" Foreground="#FF8700F7"/>
+                        <Grid Margin="168,0,0,0" HorizontalAlignment="Left" Width="534">
+                            <Border BorderBrush="Black" BorderThickness="2">
+                                <DockPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+                                    <Grid x:Name="s51" Width="266">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc51" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc51" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc51" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s52" Width="265">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc52" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc52" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc52" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s53" Width="177">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc53" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc53" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc53" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s54" Width="132">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc54" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc54" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc54" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s55" Width="132">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc55" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc55" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc55" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s56" Width="106">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc56" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc56" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc56" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+
+                                </DockPanel>
+                            </Border>
+                        </Grid>
+
+                    </Grid>
+                    <Grid x:Name="grid6" HorizontalAlignment="Left" Width="702" Height="110" VerticalAlignment="Top">
+                        <Border BorderThickness="2" Background="#c0c0c0" BorderBrush="Black" HorizontalAlignment="Left" Width="170">
+                        </Border>
+                        <Viewbox Margin="10,10,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="73" Width="102">
+                            <TextBlock x:Name="c6" Text="(02)" FontFamily="arial bold" VerticalAlignment="Top" Height="15" />
+                        </Viewbox>
+                        <TextBlock x:Name="program6" Text="W100" FontFamily="arial" FontSize="20" Margin="6,83,0,0" HorizontalAlignment="Left" Width="108" Height="21" VerticalAlignment="Top" Foreground="Blue"/>
+                        <TextBlock x:Name="yarns6" Text="2 X O.1.30 + E.055" FontFamily="arial" FontSize="14" TextAlignment="Center" Margin="112,55,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="53" Height="55" VerticalAlignment="Top" Foreground="#FF8700F7"/>
+                        <Grid Margin="168,0,0,0" HorizontalAlignment="Left" Width="534">
+                            <Border BorderBrush="Black" BorderThickness="2">
+                                <DockPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+                                    <Grid x:Name="s61" Width="266">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc61" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc61" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc61" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s62" Width="265">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc62" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc62" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc62" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s63" Width="177">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc63" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc63" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc63" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s64" Width="132">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc64" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc64" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc64" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s65" Width="132">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc65" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc65" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc65" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s66" Width="106">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc66" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc66" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc66" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+
+                                </DockPanel>
+                            </Border>
+                        </Grid>
+
+                    </Grid>
+                    <Grid x:Name="grid7" HorizontalAlignment="Left" Width="702" Height="110" VerticalAlignment="Top">
+                        <Border BorderThickness="2" Background="#c0c0c0" BorderBrush="Black" HorizontalAlignment="Left" Width="170">
+                        </Border>
+                        <Viewbox Margin="10,10,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="73" Width="102">
+                            <TextBlock x:Name="c7" Text="(02)" FontFamily="arial bold" VerticalAlignment="Top" Height="15" />
+                        </Viewbox>
+                        <TextBlock x:Name="program7" Text="W100" FontFamily="arial" FontSize="20" Margin="6,83,0,0" HorizontalAlignment="Left" Width="108" Height="21" VerticalAlignment="Top" Foreground="Blue"/>
+                        <TextBlock x:Name="yarns7" Text="2 X O.1.30 + E.055" FontFamily="arial" FontSize="14" TextAlignment="Center" Margin="112,55,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" Width="53" Height="55" VerticalAlignment="Top" Foreground="#FF8700F7"/>
+                        <Grid Margin="168,0,0,0" HorizontalAlignment="Left" Width="534">
+                            <Border BorderBrush="Black" BorderThickness="2">
+                                <DockPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+                                    <Grid x:Name="s71" Width="266">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc71" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc71" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc71" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s72" Width="265">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc72" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc72" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc72" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s73" Width="177">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc73" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc73" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc73" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s74" Width="132">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc74" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc74" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc74" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s75" Width="132">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc75" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc75" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc75" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <Grid x:Name="s76" Width="106">
+                                        <Border BorderBrush="Black" BorderThickness="0,0,1,0">
+                                            <StackPanel>
+                                                <Border x:Name="bc76" Background="#c0c0c0" BorderBrush="Black"  BorderThickness="0,0,1,2" Height="35" VerticalAlignment="Top">
+                                                    <Grid Width="auto">
+                                                        <TextBlock x:Name="tbc76" TextAlignment="Center" FontFamily="arial black" FontSize="24" Text="1520" Height="36" HorizontalAlignment="Center" Margin="0,9,0,0"  />
+                                                        <TextBlock x:Name="sbc76" TextAlignment="Center" FontFamily="arial " FontSize="11" FontWeight="Bold" Text="182451" HorizontalAlignment="Right" Height="33" Width="36"  DockPanel.Dock="Right" Foreground="#FF575757"/>
+                                                    </Grid>
+                                                </Border>
+                                                <StackPanel>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                    <Rectangle Stroke="#FF818181" Height="25" StrokeThickness="1" StrokeDashArray="2 2" SnapsToDevicePixels="True"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+
+                                </DockPanel>
+                            </Border>
+                        </Grid>
+
+                    </Grid>
+
+                    <Grid>
+                        <Border BorderThickness="2" BorderBrush="Black" Height="103" VerticalAlignment="Top" Margin="0,0,0,-83" HorizontalAlignment="Left" Width="703">
+                            <StackPanel>
+                                <TextBlock Text="Η ΠΑΡΑΓΩΓΗ ΝΑ ΜΠΕΙ ΑΚΡΙΒΩΣ ΚΑΙ ΕΙΝΑΙ ΣΕ ΚΑΛΤΣΕΣ" TextAlignment="Center" FontSize="25" FontWeight="Bold" FontFamily="arial greek" Margin="0,8,0,0" HorizontalAlignment="Left" Width="699"></TextBlock>
+                                <Viewbox HorizontalAlignment="Center" Height="65" Width="469" Margin="115,0" >
+                                    <TextBlock x:Name="yarn" Text="TEST" FontWeight="Bold" FontFamily="arial" Foreground="#FF0064F5"/>
+                                </Viewbox>
+                            </StackPanel>
+                        </Border>
+                        <TextBlock x:Name="dosencount" Text="35 δωδεκάδες" TextAlignment="Right" HorizontalAlignment="Left" Width="104" Margin="594,77,0,-77"/>
+                        <Border BorderThickness="2" BorderBrush="Black" Margin="0,0,0,-119" HorizontalAlignment="Left" Width="703" Height="37" VerticalAlignment="Bottom">
+                            <Viewbox HorizontalAlignment="Center" Height="35" Margin="0,0,0,0" VerticalAlignment="Top">
+                                <TextBlock x:Name="memo" TextAlignment="Center" Text="Memo" Foreground="Red" Height="17"  />
+                            </Viewbox>
+                        </Border>
+
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="912,91,-214,0" Click="Button_Click" VerticalAlignment="Top" Width="75"/>
+    </Grid>
+</Window>

@@ -6,7 +6,11 @@
         xmlns:local="clr-namespace:Eisagogi_paragogis"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <DockPanel LastChildFill="False" Margin="21,0,21,7" Background="#FFEDEAD8">
+        <DataGrid x:Name="Grid1" Margin="21,0,21,10" HorizontalAlignment="Stretch" Height="196" VerticalAlignment="Bottom" Width="200" AlternationCount="2"/>
+        <StackPanel Height="412" VerticalAlignment="Top" Width="100">
+            <Button x:Name="productionPlanButton" Content="Button" Click="Button_Click" RenderTransformOrigin="-0.138,2.348" HorizontalAlignment="Right" Width="90" Height="412"/>
+        </StackPanel>
+    </DockPanel>
+
 </Window>
