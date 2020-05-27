@@ -1,0 +1,133 @@
+﻿<Window x:Class="Eisagogi_paragogis.Eisagogi_Imietoimwn"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Eisagogi_paragogis"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        Title="Εισαγωγή Ημιετοίμων" Height="599.203" Width="1612.959" MinHeight="320"
+        Icon="pictures/sipment2.ico"
+        Tag="eisagogi_imietoimwn">
+    <Window.Background>
+        <VisualBrush TileMode="Tile" Viewport="0,0,20,20" ViewportUnits="Absolute">
+            <VisualBrush.Visual>
+                <Image Source="pictures/bg.png"></Image>
+            </VisualBrush.Visual>
+        </VisualBrush>
+    </Window.Background>
+    <Window.Resources>
+        <ContextMenu x:Key="cmenu" Tag="cmenu">
+            <MenuItem Header="Διαγραφή" Click="Delete_Click"/>
+        </ContextMenu>
+        <ContextMenu x:Key="cmenu2" Tag="cmenu" >
+            <MenuItem Header="Αποστολή" Click="Send_Click"/>
+
+        </ContextMenu>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="61*" MinHeight="200"/>
+            <RowDefinition Height="10*" MinHeight="80"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="339"/>
+            <ColumnDefinition Width="210*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="shipment_grid" Margin="10,40,10,10" IsReadOnly="True" AutoGenerateColumns="False" BorderBrush="#737382" AlternationCount="2" PreviewMouseLeftButtonDown="shipment_grid_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="shipment_grid_PreviewMouseRightButtonDown" Foreground="#44444e">
+            <DataGrid.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#0078d7"/>
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="DarkGray"/>
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path = AA}" Width="40" Header="ΑΑ"/>
+                <DataGridTextColumn Binding="{Binding Path = Ημερομηνία, StringFormat=\{0:dd/MM/yy\}}" Width="75" Header="Ήμ Έναρξης"/>
+                <DataGridTextColumn Binding="{Binding Path = Τρόπος}" Width="85" Header="Τρόπος"/>
+                <DataGridTextColumn Binding="{Binding Path = ΗμΑποστολής, StringFormat=\{0:dd/MM/yy\}}" Width="90" Header="Ημ Αποστολής"/>
+
+            </DataGrid.Columns>
+            <DataGrid.RowStyle>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <Style.Triggers>
+                        <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                            <Setter Property="Background" Value="WhiteSmoke"/>
+                        </Trigger>
+                        <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                            <Setter Property="Background" Value="#e9eef6"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+        </DataGrid>
+        <Button x:Name="button_eisag" Content="Εισαγωγή" FontSize="15" HorizontalAlignment="Left" Margin="224,25,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" Height="32" Click="button_eisag_Click" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="combo_eisag" Text="Επιλέξτε τρόπο αποστολής" IsEditable="False" IsReadOnly="True" FontSize="15" HorizontalAlignment="Left" Margin="10,25,0,0" Grid.Row="1" VerticalAlignment="Top" Width="209" Height="32">
+            <ComboBoxItem IsSelected="True" Visibility="Collapsed" Name="Επιλέξτε_τρόπο_αποστολής">Επιλέξτε τρόπο αποστολής</ComboBoxItem>
+            <ComboBoxItem Name="ΦΟΡΤΗΓΟ">ΦΟΡΤΗΓΟ</ComboBoxItem>
+            <ComboBoxItem Name="ΚΙΦΑ">ΚΙΦΑ</ComboBoxItem>
+            <ComboBoxItem Name="ΓΕΝΙΚΗ">ΓΕΝΙΚΗ</ComboBoxItem>
+            <ComboBoxItem Name="Συμεωνίδης">Συμεωνίδης</ComboBoxItem>
+            <ComboBoxItem Name="Σταθόπουλος">Σταθόπουλος</ComboBoxItem>
+            <ComboBoxItem Name="Λαγός">Λαγός</ComboBoxItem>
+        </ComboBox>
+        <Rectangle Grid.Column="1" Fill="#d6dce5" Margin="10,7,10,0"  Stroke="#d6dce5" Height="33" VerticalAlignment="Top"/>
+        <Rectangle Grid.Column="1" Fill="WhiteSmoke" Margin="10,40,10,0"  Stroke="WhiteSmoke" Height="50" VerticalAlignment="Top"/>
+        <Rectangle Grid.Column="1" Fill="#d6dce5" Margin="10,123,10,0"  Stroke="#d6dce5" Height="50" VerticalAlignment="Top"/>
+        <DataGrid x:Name="content_grid" IsReadOnly="True" Grid.Column="1" Margin="10,248,10,10" AutoGenerateColumns="False" AlternationCount="2" Foreground="#44444e" BorderBrush="#737382" PreviewMouseRightButtonDown="content_grid_PreviewMouseRightButtonDown">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path = Ημερομηνία, StringFormat=\{0:dd/MM/yy\}}" Width="70"/>
+                <DataGridTextColumn Binding="{Binding Path = AccessNo}" Width="70"/>
+                <DataGridTextColumn Binding="{Binding Path = Ραμ}" Width="40"/>
+                <DataGridTextColumn Binding="{Binding Path = Συσκ}" Width="40"/>
+                <DataGridTextColumn Binding="{Binding Path = Κωδικός}" Width="120"/>
+                <DataGridTextColumn Binding="{Binding Path = Χρώμα}" Width="350"/>
+                <DataGridTextColumn Binding="{Binding Path = Μέγεθος}" Width="60"/>
+                <DataGridTextColumn Binding="{Binding Path = Ποσότητα}" Width="130*"/>
+            </DataGrid.Columns>
+            <DataGrid.RowStyle>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <Style.Triggers>
+                        <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                            <Setter Property="Background" Value="WhiteSmoke"/>
+                        </Trigger>
+                        <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                            <Setter Property="Background" Value="#e9eef6"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+        </DataGrid>
+        <Rectangle Grid.Column="1" Fill="WhiteSmoke" Margin="10,173,10,0"  Stroke="WhiteSmoke" Height="70" VerticalAlignment="Top"/>
+        <Rectangle Grid.Column="1" Fill="#d6dce5" Height="47" Margin="10,10,10,0" Grid.Row="1" Stroke="#d6dce5" VerticalAlignment="Top"/>
+        <TextBlock x:Name="ram" Grid.Column="1" HorizontalAlignment="Left" Margin="63,15,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160" Height="16"/>
+        <TextBlock x:Name="ar" Grid.Column="1" HorizontalAlignment="Left" Margin="63,34,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160" Height="16"/>
+        <TextBlock x:Name="mesys" Grid.Column="1" HorizontalAlignment="Left" Margin="242,15,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" Height="16"/>
+        <TextBlock x:Name="xwrissys" Grid.Column="1" HorizontalAlignment="Left" Margin="242,34,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" Height="16"/>
+        <TextBlock x:Name="total" Grid.Column="1" HorizontalAlignment="Left" Margin="488,25,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="185" Height="16"/>
+        <Label Content="Αποστολή" Foreground="#7f7f7f" Grid.Column="1" HorizontalAlignment="Left" Margin="28,14,0,0" VerticalAlignment="Top" Height="26" Width="65"/>
+        <Label Content="Τρόπος Αποστολής" Foreground="#7f7f7f" Grid.Column="1" HorizontalAlignment="Left" Margin="117,14,0,0" VerticalAlignment="Top" Height="26" Width="114"/>
+        <Label Content="Ημερομηνία" Foreground="#7f7f7f" Grid.Column="1" HorizontalAlignment="Left" Margin="289,14,0,0" VerticalAlignment="Top" Height="26" Width="75"/>
+        <Label Content="Ημερ. Αποστολής" Foreground="#7f7f7f" Grid.Column="1" HorizontalAlignment="Left" Margin="421,14,0,0" VerticalAlignment="Top" Height="26" Width="104"/>
+        <TextBox x:Name="shipmentnobox" IsReadOnly="True" Focusable="False" FontSize="18" Grid.Column="1" TextAlignment="Center" HorizontalAlignment="Left" Height="35" Margin="20,45,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="73"/>
+        <TextBox x:Name="warehousebox" IsReadOnly="True" Focusable="False" FontSize="18" Grid.Column="1" TextAlignment="Center" HorizontalAlignment="Left" Height="35" Margin="117,45,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="datecbox" IsReadOnly="True" Focusable="False" FontSize="18" Grid.Column="1" TextAlignment="Center"  HorizontalAlignment="Left" Height="35" Margin="266,45,0,0" TextWrapping="Wrap" Text="{Binding Path=datecboxtext, StringFormat=dd-MM-yyyy}" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="dateshippedbox" IsReadOnly="True" Focusable="False" FontSize="18" Grid.Column="1" TextAlignment="Center"  HorizontalAlignment="Left" Height="35" Margin="413,45,0,0" TextWrapping="Wrap" Text="{Binding Path=dateshippedboxtext, StringFormat=dd-MM-yyyy}" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Packing List" FontWeight="Bold" FontSize="25" Foreground="#7f7f7f" Grid.Column="1" HorizontalAlignment="Left" Margin="16,125,0,0" VerticalAlignment="Top" Height="43" Width="149"/>
+        <Button Content="Εκτύπωση" Grid.Column="1"  HorizontalAlignment="Left" Margin="553,45,0,0" VerticalAlignment="Top" Width="96" Height="35" Click="Button_Click"/>
+        <TextBox x:Name="barcode" FontSize="25" FontWeight="Bold" Background="#c5e0b4" Grid.Column="1" HorizontalAlignment="Left" Height="60" Margin="16,178,0,0" TextWrapping="Wrap" Text="184612-154" VerticalAlignment="Top" Width="152" KeyDown="barcode_KeyDown" LostFocus="barcode_LostFocus"/>
+        <TextBox x:Name="linkedbox" FontSize="20" Background="#c5e0b4" Grid.Column="1" TextAlignment="Center" HorizontalAlignment="Left" Height="60" Margin="173,178,0,0" TextWrapping="Wrap" Text="NAI" VerticalAlignment="Top" Width="48" KeyDown="barcode_KeyDown" LostFocus="linkedbox_LostFocus" TextChanged="linkedbox_TextChanged" GotFocus="linkedbox_GotFocus"/>
+        <TextBox x:Name="syskbox" FontSize="20" Background="#c5e0b4" Grid.Column="1" TextAlignment="Center" HorizontalAlignment="Left" Height="60" Margin="226,178,0,0" TextWrapping="Wrap" Text="OXI" VerticalAlignment="Top" Width="48" KeyDown="barcode_KeyDown" LostFocus="syskbox_LostFocus" TextChanged="syskbox_TextChanged"/>
+        <TextBox x:Name="prodbox" FontSize="22" Background="#b4c7e7" TextAlignment="Center" IsReadOnly="True" Focusable="False" Grid.Column="1" HorizontalAlignment="Left" Height="60" Margin="289,178,0,0" TextWrapping="Wrap" Text="REDMWC35" VerticalAlignment="Top" Width="157"/>
+        <TextBox x:Name="colorbox" FontSize="22" Grid.Column="1"  Background="#b4c7e7" IsReadOnly="True" Focusable="False" HorizontalAlignment="Left" Height="60" Margin="451,178,0,0" TextWrapping="Wrap" Text="753675.ΜΠΛΕ ΣΚ. 2 - ΛΑΧΑΝΙ - ΜΠΛΕ ΣΚΟ. 2" VerticalAlignment="Top" Width="369"/>
+        <TextBox x:Name="sizebox" FontSize="21" TextAlignment="Center" Grid.Column="1" Background="#b4c7e7" IsReadOnly="True" Focusable="False" HorizontalAlignment="Left" Height="60" Margin="825,178,0,0" TextWrapping="Wrap" Text="One Size" VerticalAlignment="Top" Width="101"/>
+        <TextBox x:Name="dozenbox" FontSize="21" TextAlignment="Center" Grid.Column="1" Background="#b4c7e7" IsReadOnly="True" Focusable="False" HorizontalAlignment="Left" Height="60" Margin="931,178,0,0" TextWrapping="Wrap" Text="156" VerticalAlignment="Top" Width="60"/>
+        <TextBox x:Name="sockbox" FontSize="21" TextAlignment="Center" Grid.Column="1" Background="#b4c7e7" IsReadOnly="True" Focusable="False" HorizontalAlignment="Left" Height="60" Margin="996,178,0,0" TextWrapping="Wrap" Text="156" VerticalAlignment="Top" Width="60" />
+        <Button x:Name="save" Content="ΑΠΟΘΗΚΕΥΣΗ" Grid.Column="1" HorizontalAlignment="Left" Margin="1070,178,0,0" VerticalAlignment="Top" Width="95" Height="60" Click="save_Click"/>
+        <Button x:Name="delete" Grid.Column="1" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="1178,178,0,0" VerticalAlignment="Top" Width="62" Height="60" Click="delete_Click_1">
+            <Image Source="pictures/x.ico" />
+        </Button>
+
+
+
+    </Grid>
+</Window>

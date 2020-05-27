@@ -15,7 +15,9 @@ namespace Eisagogi_paragogis
         public static int rowid;
         public static int totalid;
         public static string finishid;
+#pragma warning disable CS0649 // Field 'Static_Variables.sales' is never assigned to, and will always have its default value null
         public static IEnumerable<walk_prd_FullItemLinesList> sales;
+#pragma warning restore CS0649 // Field 'Static_Variables.sales' is never assigned to, and will always have its default value null
         public static int kattotalid;
         public static string katmachineno;
         public static string printer;
@@ -23,8 +25,11 @@ namespace Eisagogi_paragogis
         public static int sequence;
         public static bool iswalkopen = false;
         public static bool isothersopen = false;
+#pragma warning disable CS0649 // Field 'Static_Variables.document' is never assigned to, and will always have its default value null
         public static FixedDocumentSequence document;
+#pragma warning restore CS0649 // Field 'Static_Variables.document' is never assigned to, and will always have its default value null
         public static FixedDocument fixedDoc;
+        public static bool tsouvali_click = false;
 
     }
 }

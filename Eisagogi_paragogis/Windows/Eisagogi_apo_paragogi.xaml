@@ -1,0 +1,120 @@
+﻿<Window x:Class="Eisagogi_paragogis.Eisagogi_apo_paragogi"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Eisagogi_paragogis"
+        mc:Ignorable="d"
+        Title="Εισαγωγή Παραγωγής"
+        Height="1080" 
+        Width="1428"
+        WindowState="Maximized"
+        Background="#edead8"
+        Icon="pictures/add_socks.ico"
+        GotFocus="Window_GotFocus"
+        Loaded="Window_Loaded"
+        Tag="eisagogiapoparagogi">
+    <Window.Resources>
+        <ContextMenu x:Key="cmenu" Tag="cmenu">
+            <!--<MenuItem Header="Put On Machine" Click="Click_OnMachine"/>-->
+            <MenuItem Header="Επεξεργασία" Click="MenuItem_Click"/>
+            <MenuItem Header="Διαγραφή" Click="MenuItem_Click_1"/>
+          <!--<MenuItem Header="Delete" Click="Click_Delete"/>-->
+        </ContextMenu>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="kataxwriseis" GridLinesVisibility="None"  FontFamily="Calibri (Detail)" AlternationCount="2" Background="White" Margin="59,51,0,55" HorizontalAlignment="Left"  Width="1083" ItemsSource="{Binding Path = gridData}" PreviewMouseRightButtonUp="RowMouseRightButtonDown">
+            <DataGrid.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE9E2FF"/>
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Auto_no" Binding="{Binding Path = Auto_no}" FontSize="12" Foreground="#6d6d6d" Width="60">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="FrameworkElement.HorizontalAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Barcode" Binding="{Binding Path = Barcode}" FontSize="15" Foreground="#6d6d6d" Width="80">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="FrameworkElement.HorizontalAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Ημερομηνία" Binding="{Binding Ημερομηνία, StringFormat=\{0:dd/MM/yy\}}" FontSize="15" Foreground="#6d6d6d" Width="85">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="FrameworkElement.HorizontalAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Μηχανή" Binding="{Binding Path = Μηχανή}" FontSize="14" Foreground="#6d6d6d" Width="55"/>
+                <DataGridTextColumn Header="Κωδικός" Binding="{Binding Path = Κωδικός}" FontSize="15" FontWeight="Bold" Foreground="#6d6d6d" Width="110"/>
+                <DataGridTextColumn Header="Χρώμα" Binding="{Binding Path = Χρώμα}" FontSize="15" Foreground="#6d6d6d" Width="300"/>
+                <DataGridTextColumn Header="Μέγεθος" Binding="{Binding Path = Μέγεθος}" FontSize="15" Foreground="#6d6d6d" Width="100">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="FrameworkElement.HorizontalAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Δωδ" Binding="{Binding Path = Δωδεκάδες}" FontSize="15" FontWeight="Bold" Foreground="#6d6d6d" Width="35">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="FrameworkElement.HorizontalAlignment" Value="Right"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Κάλ" Binding="{Binding Path = Κάλτσες}" FontSize="11" FontWeight="Bold" Foreground="#6d6d6d" Width="30"/>
+                <DataGridTextColumn Header="Υπεύθυνος" Binding="{Binding Path = Υπεύθυνος}" FontSize="15" Foreground="#6d6d6d" Width="175">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="FrameworkElement.HorizontalAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+            </DataGrid.Columns>
+
+            <DataGrid.CellStyle>
+
+                <Style TargetType="DataGridCell">
+
+                    <Setter Property="BorderBrush" Value="#d0cece" />
+                    <Setter Property="BorderThickness" Value="1 1 1 1" />
+                    <Setter Property="Margin" Value="2,0,2,0" />
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Foreground" Value="black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+
+            </DataGrid.CellStyle>
+            <DataGrid.RowStyle>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <Setter Property="Margin" Value="0,2,0,2" />
+                    <!--<EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick" />-->
+                    <Style.Triggers>
+
+                        <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                            <Setter Property="Background" Value="#edead8"/>
+
+                        </Trigger>
+                        <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                            <Setter Property="Background" Value="#fcfcfa"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+
+        </DataGrid>
+        <Button x:Name="newProd" Content="Νεα Καταχώρηση" FontSize="20"  HorizontalAlignment="Left" Margin="1151,108,0,0" Click="newProd_Click" VerticalAlignment="Top" Width="180" Height="100"/>
+        <Button x:Name="kart_print" Content="Εκτύπωση καρτέλας" FontSize="20" HorizontalAlignment="Left" Margin="1142,300,0,0" VerticalAlignment="Top" Width="202" Height="90" Click="kart_print_Click"/>
+
+    </Grid>
+</Window>

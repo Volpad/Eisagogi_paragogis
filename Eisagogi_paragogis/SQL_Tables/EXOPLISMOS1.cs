@@ -17,5 +17,7 @@ namespace Eisagogi_paragogis
         [Column] public string DATE2 { get; set; }
         [Column] public string ShortName { get; set; }
         [Column(IsPrimaryKey = true, IsDbGenerated = true)] public int ID { get; set; }
+        [Column] public bool Available { get; set; }
+
     }
 }

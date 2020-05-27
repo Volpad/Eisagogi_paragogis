@@ -7,7 +7,10 @@
         mc:Ignorable="d"
         Closing="Production_Plan_Closing"
         Closed="Production_Plan_Closed"
-        Title="Production_Plan" Height="450" Width="800" WindowState="Maximized"
+        Title="Production_Plan" 
+        Height="727.5" 
+        Width="1127.5" 
+        WindowState="Maximized"
         PreviewKeyDown="WindowKeyDown"
         Icon="pictures/plan.png"
         Tag="Production_Plan">
@@ -240,21 +243,42 @@
 
         <ToolBar Height="25"  VerticalAlignment="Top"  Background="DimGray">
 
-            <Button x:Name="Chechending" Content="Check" Height="20" VerticalAlignment="Stretch" Width="75" Click="Flashing_Machines" Foreground="WhiteSmoke" />
-            <Button x:Name="Update" Content="Update" Height="20" VerticalAlignment="Stretch" Width="75" Click="Update_Click" Foreground="WhiteSmoke" />
+            <Button x:Name="Chechending" Content="Check" Height="25" VerticalAlignment="Stretch" Width="75" Click="Flashing_Machines" Foreground="WhiteSmoke" />
+            <Button x:Name="Update" Content="Update" Height="25" VerticalAlignment="Stretch" Width="75" Click="Update_Click" Foreground="WhiteSmoke" />
             <!--<Border BorderBrush="{x:Null}" Height="26">
                 <TextBlock x:Name="totalMO"  Height="20" Width="75" TextAlignment="Center" TextWrapping="NoWrap" Text="TextBlock" VerticalAlignment="Stretch" Foreground="WhiteSmoke"/>
             </Border>-->
-            <Button x:Name="walkorders" Content="WalkOrders" Height="20" VerticalAlignment="Stretch" Width="96" Click="Button_Click" Foreground="WhiteSmoke"/>
-            <Button x:Name="otherorders" Content="OtherOrders" Height="20" VerticalAlignment="Stretch" Width="104" Click="Button_Click" Foreground="WhiteSmoke" />
-            <Button x:Name="CheckBalance" Content="Check Balance" Height="20" VerticalAlignment="Stretch" Width="115" Click="CheckBalance_Click" Foreground="WhiteSmoke" />
-            <Button x:Name="DeltioM" Content="Δελτίο Μηχανής" Height="20" VerticalAlignment="Stretch" Width="115" Click="DeltioM_Click" Foreground="WhiteSmoke" />
+            <Button x:Name="walkorders" Content="WalkOrders" Height="25" VerticalAlignment="Stretch" Width="96" Click="Button_Click" Foreground="WhiteSmoke"/>
+            <Button x:Name="otherorders" Content="OtherOrders" Height="25" VerticalAlignment="Stretch" Width="104" Click="Button_Click" Foreground="WhiteSmoke" />
+            <Button x:Name="CheckBalance" Content="Check Balance" Height="25" VerticalAlignment="Stretch" Width="115" Click="CheckBalance_Click" Foreground="WhiteSmoke" />
+            <Button x:Name="DeltioM" Content="Δελτίο Μηχανής" Height="25" VerticalAlignment="Stretch" Width="115" Click="DeltioM_Click" Foreground="WhiteSmoke" />
+            <!--<Button x:Name="Hmietoima" Content="Εισαγωγή Ημιετοίμων" Height="25" VerticalAlignment="Stretch" Width="150" Click="Hmietoima_Click" Foreground="WhiteSmoke" />
+            <Button x:Name="deltiaMixanis" Content="Δελτία Μηχανής" Height="25" VerticalAlignment="Stretch" Width="150" Click="deltiaMixanis_Click" Foreground="WhiteSmoke" />-->
+            <!--<Button x:Name="teleiwmena_tsouvalia" Content="Τελειωμένα Τσουβάλια" Height="25" VerticalAlignment="Stretch" Width="150" Click="teleiwmena_tsouvalia_Click" Foreground="WhiteSmoke" />-->
+            <ComboBox x:Name="combo" IsEditable="False"  Focusable="False" IsReadOnly ="True" BorderBrush="DimGray" BorderThickness="0" Text="Εφαρμογές παραγωγής"  Background="DimGray" Foreground="WhiteSmoke" Height="25">
+                <ComboBox.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Green"/>
+                </ComboBox.Resources>
+                <ComboBoxItem IsSelected="True" Visibility="Collapsed" Background="DimGray" Foreground="WhiteSmoke">Εφαρμογές παραγωγής</ComboBoxItem>
+                <ComboBoxItem>
+                    <Button x:Name="teleiwmena_tsouvalia" Content="Τελειωμένα Τσουβάλια" Height="25" VerticalAlignment="Stretch" Width="150" Click="teleiwmena_tsouvalia_Click" Foreground="WhiteSmoke"  Background="DimGray"/>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <Button x:Name="deltiaMixanis" Content="Δελτία Μηχανής" Height="25" VerticalAlignment="Stretch" Width="150" Click="deltiaMixanis_Click" Foreground="WhiteSmoke" Background="DimGray"/>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <Button x:Name="Hmietoima" Content="Εισαγωγή Ημιετοίμων" Height="25" VerticalAlignment="Stretch" Width="150" Click="Hmietoima_Click" Foreground="WhiteSmoke" Background="DimGray"/>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <Button x:Name="eisagogi2" Content="Καταχώρηση Παραγωγής" Height="25" VerticalAlignment="Stretch" Width="150" Click="eisagogi2_Click" Foreground="WhiteSmoke"  Background="DimGray"/>
+                </ComboBoxItem>
+                
+            </ComboBox>
+
             <Button x:Name="test" Content="test " Visibility="Hidden" Height="20" VerticalAlignment="Stretch" Width="115" Click="test_Click" Foreground="WhiteSmoke" />
             <Button x:Name="karta" Content="ProductCard" Visibility="Hidden" Height="20" VerticalAlignment="Stretch" Width="115" Foreground="WhiteSmoke" Click="karta_Click" />
-            <Button x:Name="eisagogi" Content="Καταχώρηση Παραγωγής"  Height="20" VerticalAlignment="Stretch" Width="115" Click="eisagogi_Click" Foreground="WhiteSmoke" />
+            <!--<Button x:Name="eisagogi" Content="Καταχώρηση Παραγωγής"  Height="20" VerticalAlignment="Stretch" Width="115" Click="eisagogi_Click" Foreground="WhiteSmoke" />-->
             <!--<ComboBox x:Name="printers"  SelectionChanged="printers_SelectionChanged"/>-->
-
-
             <!--<TextBox x:Name="search" Height="20" Margin="100,0,0,0"  Text="Search" VerticalAlignment="Top" Width="120" TextChanged="search_TextChanged" LostKeyboardFocus="search_LostKeyboardFocus" MouseDown="search_MouseDown" GotKeyboardFocus="search_PreviewGotKeyboardFocus" GotMouseCapture="search_GotMouseCapture"/>-->
 
         </ToolBar>

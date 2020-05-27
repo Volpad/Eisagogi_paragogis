@@ -16,6 +16,8 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -30,8 +32,6 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -55,12 +55,15 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>pictures\walk_final_logo1.ico</ApplicationIcon>
+    <ApplicationIcon>pictures\app icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DynamicExpresso.Core, Version=2.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamicExpresso.Core.2.3.1\lib\net45\DynamicExpresso.Core.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
@@ -69,14 +72,31 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus, Version=5.1.2.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.5.1.2\lib\net45\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelLibrary.1.2011.7.31\lib\ExcelLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ReachFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.Services.Client" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime.Caching">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -92,153 +112,195 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="WPFTextBoxAutoComplete, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFTextBoxAutoComplete.1.0.5\lib\net40\WPFTextBoxAutoComplete.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Balance.xaml.cs">
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="SqlDependencyEx.cs" />
+    <Compile Include="SQL_Tables\MachinePosition.cs" />
+    <Compile Include="Windows\AddTsouvali.xaml.cs">
+      <DependentUpon>AddTsouvali.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Balance.xaml.cs">
       <DependentUpon>Balance.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Boarding.cs" />
-    <Compile Include="ChangesToProduction.cs" />
-    <Compile Include="DailyProduction.cs" />
-    <Compile Include="DataBox.xaml.cs">
+    <Compile Include="SQL_Tables\Boarding.cs" />
+    <Compile Include="SQL_Tables\ChangesToProduction.cs" />
+    <Compile Include="SQL_Tables\DailyProduction.cs" />
+    <Compile Include="Windows\DataBox.xaml.cs">
       <DependentUpon>DataBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DeltioMixanis.xaml.cs">
+    <Compile Include="Windows\DeltioMixanis.xaml.cs">
       <DependentUpon>DeltioMixanis.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DocumentPaginatorImpl.cs" />
-    <Compile Include="Eisagogi_Paragogis.xaml.cs">
+    <Compile Include="Helping_Classes\DocumentPaginatorImpl.cs" />
+    <Compile Include="Windows\Eisagogi_apo_paragogi.xaml.cs">
+      <DependentUpon>Eisagogi_apo_paragogi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Eisagogi_Imietoimwn.xaml.cs">
+      <DependentUpon>Eisagogi_Imietoimwn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Eisagogi_Paragogis.xaml.cs">
       <DependentUpon>Eisagogi_Paragogis.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EXOPLISMOS1.cs" />
-    <Compile Include="forma_ektyposis.xaml.cs">
+    <Compile Include="SQL_Tables\EXOPLISMOS1.cs" />
+    <Compile Include="Windows\forma_ektyposis.xaml.cs">
       <DependentUpon>forma_ektyposis.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ItemBalances.cs" />
-    <Compile Include="KartaProiontos.xaml.cs">
+    <Compile Include="SQL_Tables\ItemBalances.cs" />
+    <Compile Include="Windows\KartaProiontos.xaml.cs">
       <DependentUpon>KartaProiontos.xaml</DependentUpon>
     </Compile>
-    <Compile Include="KataxwrisiTsouvaliou.xaml.cs">
+    <Compile Include="Windows\kartelaBox.xaml.cs">
+      <DependentUpon>kartelaBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\KataxwrisiTsouvaliou.xaml.cs">
       <DependentUpon>KataxwrisiTsouvaliou.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Machineqty.cs" />
-    <Compile Include="Microloop.cs" />
-    <Compile Include="PrintPreview.xaml.cs">
+    <Compile Include="Windows\Kataxwrisi_Deltiwn_Paragogis.xaml.cs">
+      <DependentUpon>Kataxwrisi_Deltiwn_Paragogis.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SQL_Tables\Machineqty.cs" />
+    <Compile Include="SQL_Tables\Microloop.cs" />
+    <Compile Include="Helping_Classes\NotificationTest.cs" />
+    <Compile Include="Windows\PrintPreview.xaml.cs">
       <DependentUpon>PrintPreview.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ProductionQTY.cs" />
-    <Compile Include="productionView.xaml.cs">
+    <Compile Include="SQL_Tables\ProductionQTY.cs" />
+    <Compile Include="Windows\productionView.xaml.cs">
       <DependentUpon>productionView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Production_Plan.xaml.cs">
+    <Compile Include="Windows\Production_Plan.xaml.cs">
       <DependentUpon>Production_Plan.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Production_Plan2.xaml.cs">
+    <Compile Include="Windows\Production_Plan2.xaml.cs">
       <DependentUpon>Production_Plan2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Production_Plan_Changes.cs" />
-    <Compile Include="RAW MATE.cs" />
-    <Compile Include="Remaining_Productions.xaml.cs">
+    <Compile Include="SQL_Tables\Production_Plan_Changes.cs" />
+    <Compile Include="SQL_Tables\RAW MATE.cs" />
+    <Compile Include="Helping_Classes\Refresh_Datagrid_eisagogiApoParagogi.cs" />
+    <Compile Include="Windows\Remaining_Productions.xaml.cs">
       <DependentUpon>Remaining_Productions.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Semi-finished_warehouse.cs" />
-    <Compile Include="shipment.cs" />
-    <Compile Include="SIZESORTING.cs" />
-    <Compile Include="SizeStandard.cs" />
-    <Compile Include="Special_Processing_Instruction.cs" />
-    <Compile Include="Staff.cs" />
-    <Compile Include="Static_Variables.cs" />
-    <Compile Include="testgrid.xaml.cs">
+    <Compile Include="SQL_Tables\Semi-finished_warehouse.cs" />
+    <Compile Include="SQL_Tables\shipment.cs" />
+    <Compile Include="SQL_Tables\SIZESORTING.cs" />
+    <Compile Include="SQL_Tables\SizeStandard.cs" />
+    <Compile Include="SQL_Tables\Special_Processing_Instruction.cs" />
+    <Compile Include="SQL_Tables\Staff.cs" />
+    <Compile Include="Helping_Classes\Static_Variables.cs" />
+    <Compile Include="Windows\Teleiwmena_tsouvalia.xaml.cs">
+      <DependentUpon>Teleiwmena_tsouvalia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\testgrid.xaml.cs">
       <DependentUpon>testgrid.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ToBePlanned.cs" />
-    <Compile Include="Unit.cs" />
-    <Compile Include="walk_prd_FullItemLinesList.cs" />
-    <Page Include="Balance.xaml">
+    <Compile Include="SQL_Tables\ToBePlanned.cs" />
+    <Compile Include="SQL_Tables\Unit.cs" />
+    <Compile Include="SQL_Tables\walk_prd_FullItemLinesList.cs" />
+    <Page Include="Windows\AddTsouvali.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DataBox.xaml">
+    <Page Include="Windows\Balance.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DeltioMixanis.xaml">
+    <Page Include="Windows\DataBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Eisagogi_Paragogis.xaml">
+    <Page Include="Windows\DeltioMixanis.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="forma_ektyposis.xaml">
+    <Page Include="Windows\Eisagogi_apo_paragogi.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="KartaProiontos.xaml">
+    <Page Include="Windows\Eisagogi_Imietoimwn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="KataxwrisiTsouvaliou.xaml">
+    <Page Include="Windows\Eisagogi_Paragogis.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Windows\forma_ektyposis.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\KartaProiontos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\kartelaBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\KataxwrisiTsouvaliou.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Kataxwrisi_Deltiwn_Paragogis.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BOMS3.cs" />
-    <Compile Include="boms3a.cs" />
-    <Compile Include="BOMS4.cs" />
-    <Compile Include="DELTIO_FINISH_SUPER.cs" />
-    <Compile Include="DELTIO_FINISH_SUPER1.cs" />
-    <Compile Include="eisagogiParagogis.cs" />
-    <Compile Include="EXOPLISMOS.cs" />
-    <Compile Include="Finish1.cs" />
-    <Compile Include="FinMachine.cs" />
-    <Compile Include="GM.cs" />
-    <Compile Include="GMP.cs" />
-    <Compile Include="IMAGES.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="PrintPreview.xaml">
+    <Compile Include="SQL_Tables\BOMS3.cs" />
+    <Compile Include="SQL_Tables\boms3a.cs" />
+    <Compile Include="SQL_Tables\BOMS4.cs" />
+    <Compile Include="SQL_Tables\DELTIO_FINISH_SUPER.cs" />
+    <Compile Include="SQL_Tables\DELTIO_FINISH_SUPER1.cs" />
+    <Compile Include="SQL_Tables\eisagogiParagogis.cs" />
+    <Compile Include="SQL_Tables\EXOPLISMOS.cs" />
+    <Compile Include="SQL_Tables\Finish1.cs" />
+    <Compile Include="SQL_Tables\FinMachine.cs" />
+    <Compile Include="SQL_Tables\GM.cs" />
+    <Compile Include="SQL_Tables\GMP.cs" />
+    <Compile Include="SQL_Tables\IMAGES.cs" />
+    <Page Include="Windows\PrintPreview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="productionView.xaml">
+    <Page Include="Windows\productionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Production_Plan.xaml">
+    <Page Include="Windows\Production_Plan.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Production_Plan2.xaml">
+    <Page Include="Windows\Production_Plan2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Remaining_Productions.xaml">
+    <Page Include="Windows\Remaining_Productions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="testgrid.xaml">
+    <Page Include="Windows\Teleiwmena_tsouvalia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\testgrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OrderRegister.cs" />
-    <Compile Include="Orders_Fin.cs" />
-    <Compile Include="Production18.cs" />
+    <Compile Include="SQL_Tables\OrderRegister.cs" />
+    <Compile Include="SQL_Tables\Orders_Fin.cs" />
+    <Compile Include="SQL_Tables\Production18.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -256,7 +318,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -266,9 +330,6 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="plan2.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="pictures\savedi.png" />
@@ -304,6 +365,66 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="pictures\printer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="pictures\x.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="pictures\sipment2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="pictures\packing_list.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="pictures\app icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\pictures\add_bag_socks.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\pictures\add_socks.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\pictures\app icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\pictures\bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\pictures\ChecklistIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\pictures\packing_list.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\pictures\plan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\pictures\plan2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\pictures\printer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\pictures\savedi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\pictures\sipment2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\pictures\tosave.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\pictures\walk_final_logo1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\pictures\x.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <SplashScreen Include="pictures\splash.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

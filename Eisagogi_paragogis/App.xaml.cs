@@ -26,6 +26,7 @@ namespace Eisagogi_paragogis
             // OR whatever you want like logging etc. MessageBox it's just example
             // for quick debugging etc.
             e.Handled = true;
+            System.Windows.Application.Current.Shutdown();
         }
     }
 

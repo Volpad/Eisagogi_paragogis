@@ -20,7 +20,7 @@ namespace Eisagogi_paragogis
         [Column] public Nullable<int> socks { get; set; }
         [Column] public string Machine { get; set; }
         [Column] public string Defective { get; set; }
-        [Column(Name = "TOTAL ID")] public int Total_Id { get; set; }
+        [Column(Name = "TOTAL ID")] public int? Total_Id { get; set; }
         [Column(Name = "COL ID")] public int Col_Id { get; set; }
 
     }

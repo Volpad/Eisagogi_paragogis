@@ -289,7 +289,7 @@ namespace Eisagogi_paragogis
                                 ItemBalances.SizeDesc,
                                 Αποθήκη = ItemBalances.Warehouse,
                                 Παραγγελίες = ItemBalances.OrderQty,
-                                Πωλήσεις2 = g.Sum(d => (Nullable<int>)d.Quantity)
+                                Πωλήσεις = g.Sum(d => (Nullable<int>)d.Quantity)
                                 //Πωλήσεις = (g.Sum(d => (Nullable<int>)d.Quantity) - f.Sum(d => d.Quantity)) == null ? g.Sum(d => (Nullable<int>)d.Quantity) : g.Sum(d => (Nullable<int>)d.Quantity) - f.Sum(d => (Nullable<int>)d.Quantity),
                                // Επιστροφές = f.Sum(d => (Nullable<int>)d.Quantity)
                               
@@ -349,7 +349,7 @@ namespace Eisagogi_paragogis
 
                     balance.IsReadOnly = true;
                     balance.ItemsSource = test2;//.Where(c => c.ItemCode.Equals(product));
-                    totalsales.Text = test2.Sum(c => (Nullable<int>)c.Πωλήσεις2).ToString();
+                    totalsales.Text = test2.Sum(c => (Nullable<int>)c.Πωλήσεις).ToString();
                                                 //balance.ItemsSource = test.Where(c => c.ItemCode.StartsWith("W333"));
                 }
             }

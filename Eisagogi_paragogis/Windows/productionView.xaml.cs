@@ -189,22 +189,16 @@ namespace Eisagogi_paragogis
 
 
                 var grid = sender as DataGrid;
-
-                //var test = grid.SelectedValue.ToString();
-
-                //int index = test.LastIndexOf("Cid =");
-                //if (index > 0)
-                //    test = test.Substring(index, index);
                 try
                 {
 
                     int? colid = Convert.ToInt32(grid.SelectedValue.ToString().Substring(8, 6));
 
-                    var qeisagogi1 = from c in Eisagogioaragogis
-                                     join ct in Semifinished
+                    var qeisagogi1 = from c in context.eisagogiParagogis
+                                     join ct in context.Semi_finished_warehouse
                                      on c.barcode equals ct.AccessNo into g
                                      from ct in g.DefaultIfEmpty()
-                                     join ctc in Shipment
+                                     join ctc in context.shipment
                                      on ct == null ? null : ct.shipmentNo equals ctc.shipmentNo into f
                                      from ctc in f.DefaultIfEmpty()
                                      join bo in context.Boading
@@ -263,7 +257,7 @@ namespace Eisagogi_paragogis
             eisagogiparagogisgrid.Columns[7].Width = 35;
             eisagogiparagogisgrid.Columns[8].Width = 80;
             eisagogiparagogisgrid.Columns[9].Width = 50;
-            eisagogiparagogisgrid.Columns[10].Width = 80;
+            eisagogiparagogisgrid.Columns[10].Width = 80 ;
 
 
         }

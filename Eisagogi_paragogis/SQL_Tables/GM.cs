@@ -11,7 +11,7 @@ namespace Eisagogi_paragogis
     public class GM
     {
         [Column] public string MHXANH { get; set; }
-        [Column(Name = "FINISHAP ID")] public string FINISHAP_ID { get; set; }
+        [Column(Name = "FINISHSAP ID")] public string FINISHAP_ID { get; set; }
         [Column(IsPrimaryKey = true, IsDbGenerated = true)] public int ID { get; set; }
     }
 }

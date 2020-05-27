@@ -14,7 +14,10 @@ using System.Windows.Threading;
 using System.Printing;
 using System.Threading.Tasks;
 using System.Drawing.Printing;
-
+using System.Data.SqlClient;
+using System.Security.Permissions;
+using System.Runtime.Caching;
+using Eisagogi_paragogis.Domain;
 
 namespace Eisagogi_paragogis
 {
@@ -22,6 +25,7 @@ namespace Eisagogi_paragogis
     public partial class Production_Plan : Window
     {
         private static Production18 production18 = new Production18();
+       
         
         private static ChangesToProduction changesToProduction = new ChangesToProduction();
 
@@ -86,20 +90,24 @@ namespace Eisagogi_paragogis
         List<TextBox> listofprevioustextboxes = new List<TextBox>();
         int changecounter = 0;
         string ProductForBalance;
+        NotificationTest notificationTest = new NotificationTest();
+
+       // ToolTip toolTip;
+
+        private static string connectionString = "server=SERVER-DC;database=PRODUCTION18;Trusted_Connection=Yes;";
+        //private SqlConnection connection = new SqlConnection(connectionString);
+
+        SqlDependencyEx Check_machineQty = new SqlDependencyEx(connectionString, "Production18", "Machineqty", identity: 1);
+        // SqlDependencyEx Check_eisagogiParagogis = new SqlDependencyEx(connectionString, "Production18", "eisagogiParagogisView", identity: 2);
+        
+        //double DaysWorkingPermonth = 21.32; //Υπολογισμός 4 βδομάδες μαζί με Σάββατα
+        double DaysWorkingPermonth = 20; //Υπολογισμός 4 βδομάδες ΧΩΡΙΣ Σάββατα
 
 
 
         public Production_Plan()
         {
             InitializeComponent();
-            //foreach (string printer in PrinterSettings.InstalledPrinters)
-            //{
-            //    printers.Items.Add(printer);
-            //}
-
-            //PrinterSettings settings = new PrinterSettings();
-            //printers.Text = settings.PrinterName;
-            //Static_Variables.printer = settings.PrinterName;
 
             loopingTimer = new DispatcherTimer();
             loopingTimer.Tick += new EventHandler(loopColours);
@@ -116,11 +124,17 @@ namespace Eisagogi_paragogis
             CheckBox ChbBox = new CheckBox();
             var delbutton = new Button();
             var addbutton = new Button();
-
-            var MACHINEQTY = MachineQty.ToList();
+            
+            //  var MACHINEQTY = MachineQty.ToList();
 
            // TextBlock textMO = (TextBlock)FindName("totalMO");
-            var  text = Eisagogioaragogis.Where(i => i.date > DateTime.Now.Date.AddDays(-28)).Sum(c => ((c.dozen * 24 + c.socks)) / 21.32) / 24;
+           
+            //using ( var context = new Production18())
+            //{
+            //    text = eisagogiparagogis.Where(i => i.date > DateTime.Now.Date.AddDays(-28)).Sum(c => ((c.dozen * 24 + c.socks)) / DaysWorkingPermonth) / 24;
+
+            //}
+            var  text = eisagogiparagogis.Where(i => i.date > DateTime.Now.Date.AddDays(-28)).Sum(c => ((c.dozen * 24 + c.socks)) / DaysWorkingPermonth) / 24;
             //textMO.Text = "MO: " + Decimal.Round(Convert.ToDecimal(text), 1).ToString(); 
             Button updateMo = (Button)FindName("Update");
             updateMo.Content = "MO: " + Decimal.Round(Convert.ToDecimal(text), 1).ToString(); 
@@ -451,7 +465,28 @@ namespace Eisagogi_paragogis
                 machinecounter++;
                 rowcounter = 0;
             }
+            Check_machineQty.TableChanged += (o, e) => toReload(e.Data.Value);
+            Check_machineQty.Start();
         }
+
+        private void toReload(string value)
+        {
+            string macno;
+            string macpos;
+            using (var context = new Production18())
+            {
+                macno = value.Substring(0, 5);
+                macpos = context.MachinePosition.Where(c => c.MachineNo.StartsWith(macno)).Select(f => f.MachinePos).FirstOrDefault();
+
+            }
+
+            this.Dispatcher.Invoke(() =>
+            {
+                reloadMachine(macno, macpos);
+
+            });
+        }
+
 
         private void Pname_rightClick(object sender, MouseButtonEventArgs e)
         {
@@ -468,6 +503,8 @@ namespace Eisagogi_paragogis
             TextBox Machinename = (TextBox)FindName("Title" + "M" + machinecounter + "R" + rowcounter);
             Machinename.Text = machineqty.MachineNo.ToUpper() + "  " + machinename(machineqty.MachineNo);
             Machinename.Background = machinecolour(machineqty.MachineNo, Machinename);
+
+
             return Machinename;
         }
 
@@ -554,21 +591,26 @@ namespace Eisagogi_paragogis
 
         private void Find_finishapid_rest(Machineqty machineqty, ref string finishapid, ref int? rest)
         {
+
             int? sumoftsouvalia = 0;
 
-            int? Orderqty = deltio_finish_super1.Where(i => i.TOTAL_ID == machineqty.AccessNo).Sum(x => x.Production);
+            int? Orderqty = Deltio_Finish_Super1.Where(i => i.TOTAL_ID == machineqty.AccessNo).Sum(x => x.Production);
 
-            foreach (DELTIO_FINISH_SUPER deltio_finish_super in deltio_finish_super.Where(n => n.TOTAL_ID.Equals(machineqty.AccessNo)))
+            //foreach (DELTIO_FINISH_SUPER deltio_finish_super in deltio_finish_super.Where(n => n.TOTAL_ID.Equals(machineqty.AccessNo)))
+            //foreach (var deltio_finish_super in context.DELTIO_FINISH_SUPER.Where(n => n.TOTAL_ID.Equals(machineqty.AccessNo)))
+            //{
+            //    finishapid = deltio_finish_super.FINISHAP_ID;
+            //}
+
+            //foreach (DELTIO_FINISH_SUPER1 deltio_finish_super1 in deltio_finish_super1.Where(n => n.TOTAL_ID.Equals(machineqty.AccessNo)))
+            foreach (var deltio_finish_super1 in Deltio_Finish_Super1.Where(n => n.TOTAL_ID.Equals(machineqty.AccessNo)))
             {
-                finishapid = deltio_finish_super.FINISHAP_ID;
+                //  var dos = context.eisagogiParagogis.Any(i => i.Col_Id == deltio_finish_super1.COL_ID) ? context.eisagogiParagogis.Where(i => i.Col_Id == deltio_finish_super1.COL_ID).Sum(x => x.dozen * 24) : 0 ;
+                //var soc = context.eisagogiParagogis.Any(i => i.Col_Id == deltio_finish_super1.COL_ID) ? context.eisagogiParagogis.Where(i => i.Col_Id == deltio_finish_super1.COL_ID).Sum(x => x.socks) : 0;
+                sumoftsouvalia = sumoftsouvalia + eisagogiparagogis.Where(i => i.Col_Id == deltio_finish_super1.COL_ID).Sum(x => x.dozen * 24) + eisagogiparagogis.Where(i => i.Col_Id == deltio_finish_super1.COL_ID).Sum(x => x.socks);
             }
 
-            foreach (DELTIO_FINISH_SUPER1 deltio_finish_super1 in deltio_finish_super1.Where(n => n.TOTAL_ID.Equals(machineqty.AccessNo)))
-            {
-                sumoftsouvalia = sumoftsouvalia + eisagogiparagogis.Where(i =>  i.Col_Id == deltio_finish_super1.COL_ID).Sum(x => x.dozen*24) + eisagogiparagogis.Where(i => i.Col_Id == deltio_finish_super1.COL_ID).Sum(x => x.socks);
-            }
-
-            rest = (Orderqty - sumoftsouvalia)/24;
+            rest = (Orderqty - sumoftsouvalia) / 24;
         }
 
         private int Create_Boxes(int margincalc, int machinecounter, TextBox[] Ref, TextBox txt4, string machine)
@@ -638,8 +680,6 @@ namespace Eisagogi_paragogis
             addTextblock.Margin = new Thickness(90, -4, 0, 0);
             double? text;
 
-            using (var context = new Production18())
-            {
                 var Machinenamecreate = from Machineqty in changesToProduction.Machineqty
                                         orderby Machineqty.queueNo descending, Machineqty.AccessNo descending, Machineqty.ID
                                         select Machineqty;
@@ -658,7 +698,7 @@ namespace Eisagogi_paragogis
                 }
                 else
                 {
-                    text = Eisagogioaragogis.Where(i => i.Machine == machinename2.TrimEnd().ToUpper() && i.date > DateTime.Now.Date.AddDays(-28)).Sum(c => ((c.dozen * 24 + c.socks)) / 21.32) / 24;
+                text = Eisagogioaragogis.Where(i => i.Machine == machinename2.TrimEnd().ToUpper() && i.date > DateTime.Now.Date.AddDays(-28)).Sum(c => ((c.dozen * 24 + c.socks)) / DaysWorkingPermonth) / 24;
                 }
 
                 decimal test2 = Convert.ToDecimal(text);
@@ -671,7 +711,7 @@ namespace Eisagogi_paragogis
                 {
                     addTextblock.Text = Decimal.Round(test2, 1).ToString();
                 }
-            }
+            
         }
 
         private void Delbutton(int margincalc, int machinecounter, int i, TextBox txt2, TextBox txt, TextBox txt3, Button del)
@@ -685,6 +725,7 @@ namespace Eisagogi_paragogis
             del.Visibility = Visibility.Collapsed;
             del.MouseEnter += new MouseEventHandler(GetMouseEnterEvent);
             del.MouseLeave += new MouseEventHandler(GetMouseEventLeave);
+            del.ClearValue(Button.BackgroundProperty);
         }
 
         private static void Checkbox_Idbox(int machinecounter, int i, TextBox id, CheckBox Chb)
@@ -738,9 +779,12 @@ namespace Eisagogi_paragogis
             txt2.PreviewTextInput += new TextCompositionEventHandler(NumberValidationTextBox);
             txt2.KeyUp += new KeyEventHandler(TotalId_Key_Pressed);
             txt2.MouseDoubleClick += new MouseButtonEventHandler(TotalId_Double_Clicked);
+           // txt2.MouseEnter += new MouseEventHandler(MouseEnter);
+            
             txt2.TabIndex = i;
             txt2.MaxLength = 5;
         }
+
 
         private void GetMouseEventLeave(object sender, MouseEventArgs e)
         {
@@ -804,7 +848,7 @@ namespace Eisagogi_paragogis
 
             using (var context = new Production18())
             {
-                var mqty = from Machineqty in production18.Machineqty
+                var mqty = from Machineqty in context.Machineqty
                            orderby Machineqty.queueNo descending, Machineqty.AccessNo descending, Machineqty.ID
                            where Machineqty.MachineNo != null && Machineqty.queueNo != "deleted"
                            select Machineqty;
@@ -985,6 +1029,8 @@ namespace Eisagogi_paragogis
             txt4.Height = 20;
             txt4.TextAlignment = TextAlignment.Center;
             txt4.IsReadOnly = true;
+
+
         }
 
         //fixed
@@ -1002,7 +1048,12 @@ namespace Eisagogi_paragogis
             Button del = new Button();
             TextBox id = new TextBox();
             CheckBox chb = new CheckBox();
-            int counter = machineqty.Count(n => n.MachineNo.StartsWith(Mac.Text.Substring(0 , 5), StringComparison.OrdinalIgnoreCase));
+            
+            int counter = 0;
+            using (var context = new Production18())
+            {
+                counter = machineqty.Count(n => n.MachineNo.StartsWith(Mac.Text.Substring(0, 5), StringComparison.OrdinalIgnoreCase));
+            }
 
             if (counter > 4)
             {
@@ -1026,11 +1077,11 @@ namespace Eisagogi_paragogis
                     {
                         using (var context = new Production18())
                         {
-                            var dfs = from DELTIO_FINISH_SUPER in production18.DELTIO_FINISH_SUPER
+                            var dfs = from DELTIO_FINISH_SUPER in context.DELTIO_FINISH_SUPER
                                       orderby DELTIO_FINISH_SUPER.TOTAL_ID descending
                                       select DELTIO_FINISH_SUPER;
 
-                            var mqty = from Machineqty in production18.Machineqty
+                            var mqty = from Machineqty in context.Machineqty
                                        orderby Machineqty.queueNo descending, Machineqty.AccessNo descending, Machineqty.ID
                                        where Machineqty.MachineNo != null 
                                        select Machineqty;
@@ -1121,39 +1172,6 @@ namespace Eisagogi_paragogis
                         Rest.Visibility = Visibility.Visible;
                         del.Visibility = Visibility.Visible;
 
-                        //if (maxid == 0)
-                        //{
-                        //    maxid = machineqty.Max(x => x.ID);
-                        //}
-
-                        //maxid++;
-
-
-                        //Production_Plan_Changes input = new Production_Plan_Changes
-                        //{
-                        //    Value_set = temp,
-                        //    Machine = Mac.Text.Substring(0, 5),
-                        //    user = userName,
-                        //    date = DateTime.Now,
-                        //    control = TotalId.Name,
-                        //    Change_Type = "add"
-                        //};
-                        //production18.Production_Plan_Changes.InsertOnSubmit(input);
-
-
-                        //IEnumerable<Machineqty> machineqtyfilter1 = from Machineqty in production18.Machineqty
-                        //                                            orderby Machineqty.queueNo descending, Machineqty.AccessNo descending, Machineqty.ID
-                        //                                            where Machineqty.MachineNo == Mac.Text.Substring(0, 5) && Machineqty.AccessNo > 0 && Machineqty.queueNo != "deleted"
-                        //                                            select Machineqty;
-
-                        //List<Machineqty> machineFilter1 = machineqtyfilter1.ToList();
-
-
-                        //foreach (Machineqty filter in machineqtyfilter1)
-                        //{
-                        //    filter.queueNo = (Convert.ToInt32(filter.queueNo) + 1).ToString();
-                        //}
-
                         using (var context = new Production18())
                         {
 
@@ -1168,7 +1186,7 @@ namespace Eisagogi_paragogis
                             };
                             context.Production_Plan_Changes.InsertOnSubmit(input);
 
-                            var machineqtyfilter1 = from Machineqty in production18.Machineqty
+                            var machineqtyfilter1 = from Machineqty in context.Machineqty
                                                     orderby Machineqty.queueNo descending, Machineqty.AccessNo descending, Machineqty.ID
                                                     where Machineqty.MachineNo == Mac.Text.Substring(0, 5) && Machineqty.AccessNo > 0 && Machineqty.queueNo != "deleted"
                                                     select Machineqty;
@@ -1179,11 +1197,11 @@ namespace Eisagogi_paragogis
 
                             }
 
-                            var dfs = from DELTIO_FINISH_SUPER in production18.DELTIO_FINISH_SUPER
+                            var dfs = from DELTIO_FINISH_SUPER in context.DELTIO_FINISH_SUPER
                                       orderby DELTIO_FINISH_SUPER.TOTAL_ID descending
                                       select DELTIO_FINISH_SUPER;
 
-                            var dfs1 = from DELTIO_FINISH_SUPER1 in production18.DELTIO_FINISH_SUPER1
+                            var dfs1 = from DELTIO_FINISH_SUPER1 in context.DELTIO_FINISH_SUPER1
                                        orderby DELTIO_FINISH_SUPER1.TOTAL_ID descending
                                        select DELTIO_FINISH_SUPER1;
 
@@ -1196,7 +1214,9 @@ namespace Eisagogi_paragogis
 
                             foreach (var DFS1 in dfs1.Where(n => n.TOTAL_ID.Equals(temp)))
                             {
-                                sumoftsouvalia = sumoftsouvalia + eisagogiparagogis.Where(i => i.Col_Id == DFS1.COL_ID).Sum(x => x.dozen * 24) + eisagogiparagogis.Where(i => i.Col_Id == DFS1.COL_ID).Sum(x => x.socks);
+                                var dos = context.eisagogiParagogis.Any(i => i.Col_Id == DFS1.COL_ID) ? context.eisagogiParagogis.Where(i => i.Col_Id == DFS1.COL_ID).Sum(x => x.dozen * 24) : 0;
+                                var soc = context.eisagogiParagogis.Any(i => i.Col_Id == DFS1.COL_ID) ? context.eisagogiParagogis.Where(i => i.Col_Id == DFS1.COL_ID).Sum(x => x.socks) : 0;
+                                sumoftsouvalia = sumoftsouvalia + dos + soc;
                             }
 
                             int? rest = (Orderqty - sumoftsouvalia) / 24;
@@ -1220,41 +1240,13 @@ namespace Eisagogi_paragogis
 
                         }
 
-                        //Name.Text = deltio_finish_super.Where(n => n.TOTAL_ID.Equals(temp)).Select(c => c.FINISHAP_ID).FirstOrDefault().ToString();
-                        //TotalId.Text = temp.ToString();
-                        //id.Text = maxid.ToString();
-                        //int? sumoftsouvalia = 0;
-                        //int? Orderqty = deltio_finish_super1.Where(i => i.TOTAL_ID == temp).Sum(x => x.Production);
-                        //foreach (DELTIO_FINISH_SUPER1 deltio_finish_super1 in deltio_finish_super1.Where(n => n.TOTAL_ID.Equals(temp)))
-                        //{
-                        //    sumoftsouvalia = sumoftsouvalia + eisagogiparagogis.Where(i => i.Col_Id == deltio_finish_super1.COL_ID).Sum(x => x.dozen * 24) + eisagogiparagogis.Where(i => i.Col_Id == deltio_finish_super1.COL_ID).Sum(x => x.socks);
-                        //}
-
-                        //int? rest = (Orderqty - sumoftsouvalia) / 24;
-
-                        //Rest.Text = rest.ToString();
-
-                        //Machineqty newProduction = new Machineqty
-                        //{
-                        //    AccessNo = temp,
-                        //    MachineNo = Mac.Text.Substring(0, 5),
-                        //    queueNo = "0",
-                        //    Orderqty = (Orderqty / 24),
-                        //    Rest = rest,
-                        //    Productionqty = (sumoftsouvalia / 24),
-                        //    DailyQty = 0,
-                        //    Status = false
-                        //};
-                        //production18.Machineqty.InsertOnSubmit(newProduction);
-                        //production18.SubmitChanges();
-
-
-                        //machineqty = MachineQty.ToList();
-
                     }
                     catch
                     {
-                        MessageBox.Show("Ο αριθμός παραγωγής " + dataBox.Answer + " δεν υπάρχει");
+                        if (dataBox.Answer != "")
+                        {
+                            MessageBox.Show("Ο αριθμός παραγωγής " + dataBox.Answer + " δεν υπάρχει");
+                        }
                     }
 
                 }
@@ -1345,6 +1337,8 @@ namespace Eisagogi_paragogis
         {
             using (var context = new Production18())
             {
+
+                var test = text.Substring(0, 5);
                 var mqty = from Machineqty in context.Machineqty
                            orderby Machineqty.queueNo descending, Machineqty.AccessNo descending, Machineqty.ID
                            where Machineqty.MachineNo == text.Substring(0,5) && Machineqty.queueNo != "deleted" 
@@ -1353,9 +1347,17 @@ namespace Eisagogi_paragogis
                 var findname = from DELTIO_FINISH_SUPER in context.DELTIO_FINISH_SUPER
                                select DELTIO_FINISH_SUPER;
 
-                
+                try
+                {
+                    TextBox Mac = (TextBox)FindName(mname);
 
-                TextBox Mac = (TextBox)FindName(mname);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("exception " + e.Message);
+                }
+
+               // TextBox Mac = (TextBox)FindName(mname);
                 TextBox Name = new TextBox();
                 TextBox TotalId = new TextBox();
                 TextBox Rest = new TextBox();
@@ -1381,7 +1383,23 @@ namespace Eisagogi_paragogis
 
                     Name.Text = findname.Where(i => i.TOTAL_ID == mqty2.AccessNo).Select(c => c.FINISHAP_ID).FirstOrDefault().ToString();
                     TotalId.Text = mqty2.AccessNo.ToString();
-                    Rest.Text = mqty2.Rest.ToString();
+
+
+                    int? sumoftsouvalia = 0;
+                    int? rest = 0;
+                    int? Orderqty = context.DELTIO_FINISH_SUPER1.Where(i => i.TOTAL_ID == mqty2.AccessNo).Sum(x => x.Production);
+
+                    foreach (var g in context.DELTIO_FINISH_SUPER1.Where(n => n.TOTAL_ID.Equals(mqty2.AccessNo)))
+                    {
+                        var temp = context.eisagogiParagogis.Any(i => i.Col_Id == g.COL_ID) ? context.eisagogiParagogis.Where(i => i.Col_Id == g.COL_ID).Sum(x => x.dozen * 24) : 0;
+                        var temp2 = context.eisagogiParagogis.Any(i => i.Col_Id == g.COL_ID) ? context.eisagogiParagogis.Where(i => i.Col_Id == g.COL_ID).Sum(x => x.socks) : 0;
+                        sumoftsouvalia = sumoftsouvalia + temp + temp2;
+                    }
+
+                    rest = (Orderqty - sumoftsouvalia) / 24;
+
+
+                    Rest.Text = rest.ToString();
                     chb.IsChecked = mqty2.Status;
                     id.Text = mqty2.ID.ToString();
 
@@ -1675,8 +1693,9 @@ namespace Eisagogi_paragogis
 
         private void Production_Plan_Closing(object sender, CancelEventArgs e)
         {
-
-
+            Check_machineQty.Stop();
+            //Check_eisagogiParagogis.Stop();
+           // notificationTest.Termination();
             // If not saved, notify user and ask for a response
             if (!this.saved)
             {
@@ -1693,6 +1712,7 @@ namespace Eisagogi_paragogis
                     e.Cancel = true;
                 }
             }
+            
         }
 
         private void Production_Plan_Closed(object sender, EventArgs e)
@@ -1702,7 +1722,7 @@ namespace Eisagogi_paragogis
             {
                 if (win.Tag != null)
                 {
-                    if (win.Tag.ToString() == "productionView" || win.Tag.ToString() == "RemainingProductions" || win.Tag.ToString() == "balance" || win.Tag.ToString() == "deltiomixanis" || win.Tag.ToString() == "ektypwsi")
+                    if (win.Tag.ToString() == "productionView" || win.Tag.ToString() == "teleiwmena_tsouvalia" || win.Tag.ToString() == "kataxwrisi_deltiwn_paragogis" || win.Tag.ToString() == "eisagogi_imietoimwn" || win.Tag.ToString() == "tsouvali" || win.Tag.ToString() == "eisagogiapoparagogi" || win.Tag.ToString() == "RemainingProductions" || win.Tag.ToString() == "balance" || win.Tag.ToString() == "deltiomixanis" || win.Tag.ToString() == "ektypwsi")
                     {
                         win.Close();
                     }
@@ -2016,42 +2036,49 @@ namespace Eisagogi_paragogis
 
         }
 
+        //fixed
         private void Update_Click(object sender, RoutedEventArgs e)
         {
             int? totalmachines = 0;
             int? prevrestmac = 0;
             int? restonmac = 0;
 
-            machineqty = MachineQty.ToList();
-            DateTime lasttime = dailyProduction.OrderByDescending(x => x.id).Select(i => i.time).FirstOrDefault();
-
-            foreach (Machineqty machineqty in MachineQty.Where(i => i.queueNo != "deleted"))
+            using (var context = new Production18())
             {
 
-                int? d = Eisagogioaragogis.Where(i => i.Machine == machineqty.MachineNo.Trim() && i.Total_Id == machineqty.AccessNo && i.date > lasttime).Sum(c => c.dozen * 24);
-                int? s = Eisagogioaragogis.Where(i => i.Machine == machineqty.MachineNo.Trim() && i.Total_Id == machineqty.AccessNo && i.date > lasttime).Sum(c => c.socks);
+                machineqty = MachineQty.ToList();
+                DateTime lasttime = context.DailyProduction.OrderByDescending(x => x.id).Select(i => i.time).FirstOrDefault();
 
-               if ((d + s) != 0)
+                foreach (var x in context.Machineqty.Where(i => i.queueNo != "deleted"))
                 {
-                    machineqty.DailyQty = (d + s) / 24;
+
+                    int? d = context.eisagogiParagogis.Any(i => i.Machine == x.MachineNo.Trim() && i.Total_Id == x.AccessNo && i.date > lasttime) ? context.eisagogiParagogis.Where(i => i.Machine == x.MachineNo.Trim() && i.Total_Id == x.AccessNo && i.date > lasttime).Sum(c => c.dozen * 24) : 0;
+                    int? s = context.eisagogiParagogis.Any(i => i.Machine == x.MachineNo.Trim() && i.Total_Id == x.AccessNo && i.date > lasttime) ? context.eisagogiParagogis.Where(i => i.Machine == x.MachineNo.Trim() && i.Total_Id == x.AccessNo && i.date > lasttime).Sum(c => c.socks) : 0;
+
+                    if ((d + s) != 0)
+                    {
+                        x.DailyQty = (d + s) / 24;
+                    }
                 }
+                prevrestmac = int.Parse(context.DailyProduction.OrderByDescending(x => x.id).Select(i => i.restonmac).First().ToString());
+
+                var dos = context.eisagogiParagogis.Any(i => i.date > lasttime) ? context.eisagogiParagogis.Where(i => i.date > lasttime).Sum(c => c.dozen * 24) : 0;
+                var soc = context.eisagogiParagogis.Any(i => i.date > lasttime) ? context.eisagogiParagogis.Where(i => i.date > lasttime).Sum(c => c.socks) : 0;
+
+                totalmachines = dos + soc;
+                totalmachines = totalmachines / 24;
+
+
+
+                var machineqtyfilter1 = from MachineQty in context.Machineqty
+                                        where MachineQty.queueNo != "deleted"
+                                        group MachineQty by MachineQty.AccessNo into g
+                                        select new { AccessNo = g.Key, Rest = g.Select(x => x.Rest).FirstOrDefault() };
+
+                restonmac = machineqtyfilter1.Sum(i => i.Rest);
+
+
             }
-            prevrestmac = int.Parse(dailiproduction.OrderByDescending(x => x.id).Select(i => i.restonmac).First().ToString());
-
-            totalmachines = Eisagogioaragogis.Where(i => i.date > lasttime).Sum(c => c.dozen * 24) + Eisagogioaragogis.Where(i => i.date > lasttime).Sum(c => c.socks);
-            totalmachines = totalmachines / 24;
-
-
-
-            var machineqtyfilter1 = from MachineQty in production18.Machineqty
-                                    where MachineQty.queueNo != "deleted"
-                                    group MachineQty by MachineQty.AccessNo into g
-                                    select new {AccessNo = g.Key, Rest = g.Select(x => x.Rest).FirstOrDefault()};
-
-            restonmac = machineqtyfilter1.Sum(i => i.Rest);
-
-
-
 
             if (totalmachines == 0)
             {
@@ -2090,8 +2117,8 @@ namespace Eisagogi_paragogis
 
               //  production18.SubmitChanges();
 
-                machineqty = MachineQty.ToList();
-                dailiproduction = dailyProduction.ToList();
+                //machineqty = MachineQty.ToList();
+                //dailiproduction = dailyProduction.ToList();
                     
                 //saved = false;
                 //Image image = (Image)FindName("savedi");
@@ -2099,6 +2126,7 @@ namespace Eisagogi_paragogis
 
                 //update_boxes();
             }
+            
         }
 
         private void WindowKeyDown(object sender, KeyEventArgs e)
@@ -2111,49 +2139,45 @@ namespace Eisagogi_paragogis
                 t.Focus();
             }
 
-            if (e.Key == Key.S && Keyboard.Modifiers == ModifierKeys.Control)
-            {
-                //saveprocedure();
-            }
 
-                if (e.Key == Key.Z && Keyboard.Modifiers == ModifierKeys.Control)
+            //if (e.Key == Key.S && Keyboard.Modifiers == ModifierKeys.Control)
+            //{
+            //    //saveprocedure();
+            //}
 
-                {
-                Button del = new Button();
-                TextBox Finid = new TextBox();
-                TextBox Totalidbox = new TextBox();
-                TextBox Rest = new TextBox();
-                TextBox Mac = new TextBox();
-                TextBox id = new TextBox();
-                CheckBox Chb = new CheckBox();
-                int? Totalidint = 0;
-                string control;
-                string changedtype;
-
-
-
-                if (changecounter == 0)
-                {
-                    SystemSounds.Beep.Play();
-                    //MessageBox.Show("Ήθελες και Ctrl+z ε??? /nΔεν το έχω ακόμα έτοιμο...");
-                    
-                }
-                else
-                {
-                    MessageBox.Show("Δεν δουλεύει σωστά ακόμα.");
-                    TextBox lastbox = listofprevioustextboxes[listofprevioustextboxes.Count - changecounter];
-                    lastbox.Undo();
-                    listofprevioustextboxes.RemoveAt(listofprevioustextboxes.Count - 1);
-
-                    changecounter--;
-
-                }
-
-
-                //MessageBox.Show("CTRL + C Pressed!");
-
-
-                }
+            //                if (e.Key == Key.Z && Keyboard.Modifiers == ModifierKeys.Control)
+            //                {
+            //                Button del = new Button();
+            //                TextBox Finid = new TextBox();
+            //                TextBox Totalidbox = new TextBox();
+            //                TextBox Rest = new TextBox();
+            //                TextBox Mac = new TextBox();
+            //                TextBox id = new TextBox();
+            //                CheckBox Chb = new CheckBox();
+            //#pragma warning disable CS0219 // The variable 'Totalidint' is assigned but its value is never used
+            //                int? Totalidint = 0;
+            //#pragma warning restore CS0219 // The variable 'Totalidint' is assigned but its value is never used
+            //#pragma warning disable CS0168 // The variable 'control' is declared but never used
+            //                string control;
+            //#pragma warning restore CS0168 // The variable 'control' is declared but never used
+            //#pragma warning disable CS0168 // The variable 'changedtype' is declared but never used
+            //                string changedtype;
+            //#pragma warning restore CS0168 // The variable 'changedtype' is declared but never used
+            //                if (changecounter == 0)
+            //                {
+            //                    SystemSounds.Beep.Play();
+            //                    //MessageBox.Show("Ήθελες και Ctrl+z ε??? /nΔεν το έχω ακόμα έτοιμο...");
+            //                }
+            //                else
+            //                {
+            //                    MessageBox.Show("Δεν δουλεύει σωστά ακόμα.");
+            //                    TextBox lastbox = listofprevioustextboxes[listofprevioustextboxes.Count - changecounter];
+            //                    lastbox.Undo();
+            //                    listofprevioustextboxes.RemoveAt(listofprevioustextboxes.Count - 1);
+            //                    changecounter--;
+            //                }
+            //                //MessageBox.Show("CTRL + C Pressed!");
+            //                }
 
         }
 
@@ -2320,7 +2344,7 @@ namespace Eisagogi_paragogis
         {
 
         }
-
+        
         private void search_PreviewGotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
             TextBox s = sender as TextBox;
@@ -2558,6 +2582,37 @@ namespace Eisagogi_paragogis
              
             Static_Variables.printer = (sender as ComboBox).SelectedItem as string;
         }
+
+        private void eisagogi2_Click(object sender, RoutedEventArgs e)
+        {
+            Window eisagogi2 = new Eisagogi_apo_paragogi();
+            eisagogi2.Show();
+        }
+
+        private void Hmietoima_Click(object sender, RoutedEventArgs e)
+        {
+            Window Imietoima = new Eisagogi_Imietoimwn();
+            Imietoima.Show();
+
+        }
+
+        private void deltiaMixanis_Click(object sender, RoutedEventArgs e)
+        {
+            Window deltia = new Kataxwrisi_Deltiwn_Paragogis();
+            deltia.Show();
+
+        }
+
+        private void teleiwmena_tsouvalia_Click(object sender, RoutedEventArgs e)
+        {
+            Window tel_tsouv = new Teleiwmena_tsouvalia();
+            tel_tsouv.Show();
+        }
+
+
+
+
+
     }
 }
 

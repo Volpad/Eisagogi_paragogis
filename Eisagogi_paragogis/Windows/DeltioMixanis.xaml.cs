@@ -61,6 +61,7 @@ namespace Eisagogi_paragogis
                 orderNo.Text = dfs.Select(c => c.OrderNo).FirstOrDefault();
                 deliveryDate.Text = dfs.Select(c => c.DeliveryDate).FirstOrDefault();
                 CustomerName.Text = fin1.Select(c => c.COUNTRY).FirstOrDefault();
+
             }
 
             using (var context = new Production18())
@@ -83,8 +84,11 @@ namespace Eisagogi_paragogis
                 {
                     TextBlock size = (TextBlock)FindName("tbs" + i);
                     TextBlock sizem = (TextBlock)FindName("sbs" + i);
+                    TextBlock ar = (TextBlock)FindName("ar" + i);
                     size.Text = dsf1.Where(c => c.MACH_SIZE == s.Key.ToString()).Select(x => x.SIZE).FirstOrDefault();
                     sizem.Text = s.Key.ToString();
+                    ar.Text = context.boms3a.Where(c => c.FINISHAP_ID == productRef.Text && c.NO == size.Text).Select(x => x.PKAL).FirstOrDefault();
+
                     i++;
                 }
 

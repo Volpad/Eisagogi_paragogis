@@ -1,0 +1,38 @@
+﻿<Window x:Class="Eisagogi_paragogis.AddTsouvali"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Eisagogi_paragogis"
+        xmlns:behaviors="clr-namespace:WPFTextBoxAutoComplete;assembly=WPFTextBoxAutoComplete"
+        mc:Ignorable="d"
+        Background="#edead8"
+        Icon="pictures/add_bag_socks.ico"
+        Title="Καταχώρηση Τσουβαλιού" Height="666.3" Width="856"
+        Tag="tsouvali"
+        PreviewKeyDown="Window_PreviewKeyDown"
+        Closing="Window_Closing"
+        Topmost="True">
+    <Grid>
+        <Label Content="AA" HorizontalAlignment="Left" Margin="66,55,0,0" FontSize="20" FontFamily="tahoma" VerticalAlignment="Top"/>
+        <TextBox x:Name="Auto_no" Focusable="False" Background="#edead8" FontSize="25" IsReadOnly="True" TextAlignment="Center" HorizontalAlignment="Left" Height="51" Margin="31,89,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="113"/>
+        <Label Content="Ημερομηνία:" HorizontalAlignment="Left" Height="34" Margin="193,50,0,0" FontSize="20" FontFamily="tahoma" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="date" Background="#edead8" Focusable="False" IsReadOnly="True" FontSize="25" TextAlignment="Center" HorizontalAlignment="Left" Height="51" Margin="183,89,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="139"/>
+        <Label Content="Barcode:" HorizontalAlignment="Left" Height="34" Margin="432,50,0,0" FontSize="20" FontFamily="tahoma" VerticalAlignment="Top" Width="107" RenderTransformOrigin="0.692,0.5"/>
+        <TextBox x:Name="barcode" FontSize="35" FontWeight="bold" FontFamily="tahoma" TextAlignment="Center" HorizontalAlignment="Left" Height="65" Margin="376,89,0,0" TextWrapping="Wrap" Text="174138-2" VerticalAlignment="Top" Width="228" KeyDown="barcode_KeyDown" LostFocus="barcode_LostFocus"/>
+        <TextBox x:Name="reference" Focusable="False" Foreground="#1d7808" FontWeight="Bold" FontSize="27" Background="#edead8" IsReadOnly="True" HorizontalAlignment="Left" Height="79" Margin="31,189,0,0" TextWrapping="Wrap" Text="REDMWC35" VerticalAlignment="Top" Width="167"/>
+        <TextBox x:Name="colour" Focusable="False" Foreground="#1d7808" FontWeight="Bold" FontSize="27" Background="#edead8" IsReadOnly="True" HorizontalAlignment="Left" Height="79" Margin="218,189,0,0" TextWrapping="Wrap" Text="101010 . ΓΚΡΙ ΣΚΟΥΡΟ - ΓΚΡΙ ΣΚΟΥΡΟ - ΓΚΡΙ ΣΚΟΥΡΟ" VerticalAlignment="Top" Width="403"/>
+        <TextBox x:Name="size" Focusable="False" Foreground="#1d7808" FontWeight="Bold" FontSize="27" Background="#edead8" IsReadOnly="True" HorizontalAlignment="Left" Height="79" Margin="655,189,0,0" TextWrapping="Wrap" Text="ONE SIZE" VerticalAlignment="Top" Width="130"/>
+        <Label Content="Μηχανή:" HorizontalAlignment="Left" Margin="40,300,0,0" FontSize="20" FontFamily="tahoma" VerticalAlignment="Top" Width="84"/>
+        <ComboBox x:Name="machc" FontSize="27" FontWeight="Bold" FontFamily="Tahoma" IsEditable="True" HorizontalAlignment="Left" Margin="31,341,0,0" VerticalAlignment="Top" Width="104" Height="59" LostFocus="machc_LostFocus" GotFocus="mach_GotFocus" KeyDown="barcode_KeyDown"/>
+
+        <Label Content="Δωδεκάδες:" HorizontalAlignment="Left" Margin="170,300,0,0" FontSize="20" FontFamily="tahoma" VerticalAlignment="Top" Width="115"/>
+        <TextBox x:Name="dozen" FontSize="35" Foreground="DarkBlue" FontWeight="Bold" FontFamily="Tahoma" TextAlignment="Center" HorizontalAlignment="Left" Height="58" Margin="170,341,0,0" TextWrapping="Wrap" Text="20" VerticalAlignment="Top" Width="115" GotFocus="dozen_GotFocus" KeyDown="barcode_KeyDown"/>
+        <Label Content="Κάλτσες:" HorizontalAlignment="Left" Margin="329,300,0,0" FontSize="20" FontFamily="tahoma" VerticalAlignment="Top" Width="95"/>
+        <TextBox x:Name="socks" FontSize="35" Foreground="DarkRed" FontWeight="Bold" FontFamily="Tahoma" TextAlignment="Center" HorizontalAlignment="Left" Height="58" Margin="320,341,0,0" TextWrapping="Wrap" Text="16" VerticalAlignment="Top" Width="109" KeyDown="barcode_KeyDown"/>
+        <Label Content="Χρήστης:" HorizontalAlignment="Left" Margin="502,301,0,0" FontSize="20" FontFamily="tahoma" VerticalAlignment="Top" Width="89"/>
+        <TextBox x:Name="user" FontSize="30" FontWeight="Bold" FontFamily="Tahoma" TextAlignment="Center" HorizontalAlignment="Left" Height="58" Margin="463,341,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="172" KeyDown="barcode_KeyDown"/>
+        <Button x:Name="save" Content="ΑΠΟΘΗΚΕΥΣΗ" FontSize="40" FontWeight="Bold" Foreground="#1d7808" HorizontalAlignment="Left" Margin="124,473,0,0" VerticalAlignment="Top" Width="566" Height="81" Click="save_Click"/>
+
+    </Grid>
+</Window>

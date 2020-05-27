@@ -26,10 +26,18 @@ namespace Eisagogi_paragogis
     {
 
         private static Production18 production18 = new Production18();
+#pragma warning disable CS0414 // The field 'Production_Plan2.toggleflashingmachines' is assigned but its value is never used
         bool toggleflashingmachines = true;
+#pragma warning restore CS0414 // The field 'Production_Plan2.toggleflashingmachines' is assigned but its value is never used
+#pragma warning disable CS0169 // The field 'Production_Plan2.loopingTimer' is never used
         private DispatcherTimer loopingTimer;
+#pragma warning restore CS0169 // The field 'Production_Plan2.loopingTimer' is never used
+#pragma warning disable CS0414 // The field 'Production_Plan2.loop' is assigned but its value is never used
         bool loop = true;
+#pragma warning restore CS0414 // The field 'Production_Plan2.loop' is assigned but its value is never used
+#pragma warning disable CS0414 // The field 'Production_Plan2.MachineRedLimit' is assigned but its value is never used
         int MachineRedLimit = 21;
+#pragma warning restore CS0414 // The field 'Production_Plan2.MachineRedLimit' is assigned but its value is never used
         StackPanel stack = new StackPanel();
 
 
@@ -63,9 +71,15 @@ namespace Eisagogi_paragogis
                 TextBox Mac = new TextBox();
                 TextBox id = new TextBox();
                 CheckBox Chb = new CheckBox();
+#pragma warning disable CS0219 // The variable 'Totalidint' is assigned but its value is never used
                 int? Totalidint = 0;
+#pragma warning restore CS0219 // The variable 'Totalidint' is assigned but its value is never used
+#pragma warning disable CS0168 // The variable 'control' is declared but never used
                 string control;
+#pragma warning restore CS0168 // The variable 'control' is declared but never used
+#pragma warning disable CS0168 // The variable 'changedtype' is declared but never used
                 string changedtype;
+#pragma warning restore CS0168 // The variable 'changedtype' is declared but never used
 
             }
         }
@@ -137,9 +151,15 @@ namespace Eisagogi_paragogis
         {
             BrushConverter bc = new BrushConverter();
             stack = (StackPanel)FindName("");
+#pragma warning disable CS0168 // The variable 'machine' is declared but never used
             string machine;
+#pragma warning restore CS0168 // The variable 'machine' is declared but never used
+#pragma warning disable CS0219 // The variable 'machinecounter' is assigned but its value is never used
             int machinecounter = 0;
+#pragma warning restore CS0219 // The variable 'machinecounter' is assigned but its value is never used
+#pragma warning disable CS0219 // The variable 'suminmachine' is assigned but its value is never used
             int? suminmachine = 0;
+#pragma warning restore CS0219 // The variable 'suminmachine' is assigned but its value is never used
 
             //using (var context = new Production18())
             //{

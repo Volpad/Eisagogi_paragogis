@@ -11,8 +11,9 @@ namespace Eisagogi_paragogis
     [Database]
     public class Production18 : DataContext
     {
-        public Production18() : base("Data Source=WALK-SERVER;Initial Catalog=PRODUCTION18;Persist Security Info=True;Integrated Security=true;") { }
-       // public Production18() : base("Data Source=walksocks.ath.cx:7995;Initial Catalog=PRODUCTION18;Persist Security Info=True;Integrated Security=true;") { }
+        //public Production18() : base("Data Source=WALK-SERVER;Initial Catalog=PRODUCTION18;Persist Security Info=True;Integrated Security=true;") { }
+        public Production18() : base("Data Source=Server-DC;Initial Catalog=PRODUCTION18;Persist Security Info=True;Integrated Security=true;") { }
+       // public Production18() : base("Data Source=walksocks.ath.cx:8033;Initial Catalog=PRODUCTION18;Persist Security Info=True;Integrated Security=true;") { }
 
         public Table<eisagogiParagogis> eisagogiParagogis;
         public Table<BOMS3> BOMS3;
@@ -45,6 +46,7 @@ namespace Eisagogi_paragogis
         public Table<ItemBalances> ItemBalances;
         public Table<walk_prd_FullItemLinesList> walk_prd_FullItemLinesList;
         public Table<Boarding> Boading;
+        public Table<MachinePosition> MachinePosition;
 
     }
 }
