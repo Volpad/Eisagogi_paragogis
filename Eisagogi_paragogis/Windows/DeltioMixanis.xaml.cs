@@ -51,7 +51,7 @@ namespace Eisagogi_paragogis
 
                 totalidbarcode.Text = "*" + totalidt + "*";
                 totalid.Text = totalidt.ToString();
-                var datee = dfs.Select(c => c.PROD_DATE).FirstOrDefault().ToString();
+                var datee = dfs.Select(c => c.PROD_DATE.Value).FirstOrDefault().ToString("dd/MM/yy");
 
                 date.Text = datee.ToString();
  
@@ -94,7 +94,7 @@ namespace Eisagogi_paragogis
 
                 // 110 X 7 σύνολο κάθε γραμμή είναι +25. Σύνολο 14 γραμμές, 3 ανοιχτές.
                 // puts colours and production in textblocks
-                var colours = dsf1.GroupBy(c => c.COLORID).Select(p => p.OrderBy(x => x.QueueNo).FirstOrDefault());
+                var colours = dsf1.GroupBy(c => c.QueueNo).Select(p => p.OrderBy(x => x.QueueNo).FirstOrDefault());
                 i = 1;
                 int z = 1;
                 int totalheight = 0;
@@ -111,7 +111,7 @@ namespace Eisagogi_paragogis
                 foreach (var col in colours)
                 {
 
-                    int? maxprod = dsf1.Where(c => c.COLORID == col.COLORID.ToString()).Max(x => x.Production);
+                    int? maxprod = dsf1.Where(c => c.QueueNo == col.QueueNo).Max(x => x.Production);
                     int colourheight = 0;
 
                     if (maxprod != 0)
@@ -184,8 +184,8 @@ namespace Eisagogi_paragogis
                             TextBlock qty = (TextBlock)FindName("tbc" + i + z);
                             TextBlock cid = (TextBlock)FindName("sbc" + i + z);
 
-                            qty.Text = dsf1.Where(c => c.COLORID == col.COLORID.ToString() && c.MACH_SIZE == size.Key.ToString()).Select(x => x.Production).FirstOrDefault().ToString();
-                            cid.Text = dsf1.Where(c => c.COLORID == col.COLORID.ToString() && c.MACH_SIZE == size.Key.ToString()).Select(x => x.COL_ID).FirstOrDefault().ToString();
+                            qty.Text = dsf1.Where(c => c.QueueNo == col.QueueNo && c.MACH_SIZE == size.Key.ToString()).Select(x => x.Production).FirstOrDefault().ToString();
+                            cid.Text = dsf1.Where(c => c.QueueNo == col.QueueNo && c.MACH_SIZE == size.Key.ToString()).Select(x => x.COL_ID).FirstOrDefault().ToString();
 
                             z++;
                         }

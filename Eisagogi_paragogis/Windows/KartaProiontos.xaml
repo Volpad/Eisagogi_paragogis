@@ -37,7 +37,9 @@
                 <TextBox x:Name="customer" IsReadOnly="True" BorderBrush="Gray" HorizontalAlignment="Left" Height="69" Margin="22,168,0,0" TextWrapping="Wrap" Text="customer name" FontFamily="arial" FontWeight="Bold" FontSize="22" VerticalAlignment="Top" Width="161"/>
                 <TextBox x:Name="sizeprod" IsReadOnly="True" BorderBrush="Gray" HorizontalAlignment="Left" TextAlignment="Center" Height="69" Margin="571,168,0,0" TextWrapping="Wrap" FontFamily="arial" Text="SIZE1" FontWeight="ExtraBold" FontSize="18" VerticalAlignment="Top" Width="59"/>
                 <TextBox x:Name="forma" IsReadOnly="True" BorderBrush="Gray" HorizontalAlignment="Left" TextAlignment="Center" Height="69" Margin="633,168,0,0" TextWrapping="Wrap" Text="ΦΑΡΔΙΑ 10,5" FontFamily="arial" FontWeight="ExtraBold" FontSize="19" VerticalAlignment="Top" Width="134"/>
-                <Border BorderBrush="Gray" BorderThickness="1" HorizontalAlignment="Left" Height="69" Margin="188,168,0,0" VerticalAlignment="Top" Width="378"/>
+                <Border BorderBrush="Gray" BorderThickness="1" HorizontalAlignment="Left" Height="69" Margin="188,168,0,0" VerticalAlignment="Top" Width="378">
+                    <TextBlock x:Name="colcomb" TextWrapping="Wrap" Text="020202.MAYPO - MAYPO - MAYPO" FontWeight="Bold"/>
+                </Border>
                 <Rectangle Fill="LightGray"  HorizontalAlignment="Left" Height="25" Margin="22,239,0,0" Stroke="Black" VerticalAlignment="Top" Width="161"/>
                 <TextBlock HorizontalAlignment="Left" Margin="49,243,0,0" TextWrapping="Wrap" FontWeight="Bold" FontFamily="arial" TextAlignment="Center" Text="ΠΡΟΓΡΑΜΜΑ" VerticalAlignment="Top" Width="107"/>
                 <Rectangle Fill="LightGray"  HorizontalAlignment="Left" Height="25" Margin="188,239,0,0" Stroke="Black" VerticalAlignment="Top" Width="294"/>

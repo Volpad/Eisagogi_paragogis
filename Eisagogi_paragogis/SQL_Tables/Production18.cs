@@ -11,9 +11,14 @@ namespace Eisagogi_paragogis
     [Database]
     public class Production18 : DataContext
     {
+        //public Production18() : base("Data Source=Server-DC;Initial Catalog=PRODUCTION18;Persist Security Info=True;Integrated Security=true;") { }
+
         //public Production18() : base("Data Source=WALK-SERVER;Initial Catalog=PRODUCTION18;Persist Security Info=True;Integrated Security=true;") { }
-        public Production18() : base("Data Source=Server-DC;Initial Catalog=PRODUCTION18;Persist Security Info=True;Integrated Security=true;") { }
-       // public Production18() : base("Data Source=walksocks.ath.cx:8033;Initial Catalog=PRODUCTION18;Persist Security Info=True;Integrated Security=true;") { }
+        // public Production18() : base("Data Source=walksocks.ath.cx:8033;Initial Catalog=PRODUCTION18;Persist Security Info=True;Integrated Security=true;") { }
+
+        public Production18() : base("Data Source=Server-DC;Initial Catalog=PRODUCTION18;Persist Security Info=True;Integrated Security=false; user=production; password=W4lkPr0duct!0n") { }
+
+
 
         public Table<eisagogiParagogis> eisagogiParagogis;
         public Table<BOMS3> BOMS3;

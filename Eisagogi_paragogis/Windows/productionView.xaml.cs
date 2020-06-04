@@ -204,7 +204,7 @@ namespace Eisagogi_paragogis
                                      join bo in context.Boading
                                      on c.barcode equals bo.AccessNo into z
                                      from bo in z.DefaultIfEmpty()
-                                     where c.Total_Id == Static_Variables.prodviewtotalid && c.Col_Id == colid
+                                     where c.Col_Id == colid
                                      select new
                                      {
                                          c.AutoNo,

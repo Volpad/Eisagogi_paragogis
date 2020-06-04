@@ -18,6 +18,8 @@ using System.Data.SqlClient;
 using System.Security.Permissions;
 using System.Runtime.Caching;
 using Eisagogi_paragogis.Domain;
+using System.Threading;
+using System.IO;
 
 namespace Eisagogi_paragogis
 {
@@ -63,9 +65,7 @@ namespace Eisagogi_paragogis
         private static IEnumerable<Machineqty> Machinenamecreate = from Machineqty in changesToProduction.Machineqty
                                                                    orderby Machineqty.queueNo descending, Machineqty.AccessNo descending, Machineqty.ID
                                                                    select Machineqty;
-
-
-
+        
         List<Production_Plan_Changes> production_plan_changes = production_Plan_Changes.ToList();
         List<Machineqty> machineqty = MachineQty.ToList();
         List<DELTIO_FINISH_SUPER1> deltio_finish_super1 = Deltio_Finish_Super1.ToList();
@@ -90,19 +90,15 @@ namespace Eisagogi_paragogis
         List<TextBox> listofprevioustextboxes = new List<TextBox>();
         int changecounter = 0;
         string ProductForBalance;
-        NotificationTest notificationTest = new NotificationTest();
-
-       // ToolTip toolTip;
-
-        private static string connectionString = "server=SERVER-DC;database=PRODUCTION18;Trusted_Connection=Yes;";
-        //private SqlConnection connection = new SqlConnection(connectionString);
-
-        SqlDependencyEx Check_machineQty = new SqlDependencyEx(connectionString, "Production18", "Machineqty", identity: 1);
-        // SqlDependencyEx Check_eisagogiParagogis = new SqlDependencyEx(connectionString, "Production18", "eisagogiParagogisView", identity: 2);
-        
+        private static string connectionString = "server=SERVER-DC;database=PRODUCTION18;Trusted_Connection=Yes;Integrated Security=false; user=production; password=W4lkPr0duct!0n";
+        static System.Random rnd = new System.Random();
+        static int random = rnd.Next(1, 100000);
+        SqlDependencyEx Check_machineQty = new SqlDependencyEx(connectionString, "Production18", "Machineqty", identity: random);
         //double DaysWorkingPermonth = 21.32; //Υπολογισμός 4 βδομάδες μαζί με Σάββατα
         double DaysWorkingPermonth = 20; //Υπολογισμός 4 βδομάδες ΧΩΡΙΣ Σάββατα
 
+       // static ThreadStart ts = new ThreadStart(Restart_Check_machineQty);
+       // Thread backgroundThread = new Thread(ts);
 
 
         public Production_Plan()
@@ -467,7 +463,29 @@ namespace Eisagogi_paragogis
             }
             Check_machineQty.TableChanged += (o, e) => toReload(e.Data.Value);
             Check_machineQty.Start();
+
+         //   backgroundThread.Start();
+
         }
+
+        //private static void Restart_Check_machineQty()
+        //{
+        //    if (!Check_machineQty.Active)
+        //    {
+        //        string filePath = @"S:\Production\RestartedLog.txt";
+        //        using (StreamWriter writer = new StreamWriter(filePath, true))
+        //        {
+        //            writer.WriteLine("-----------------------------------------------------------------------------");
+        //            writer.WriteLine("Date : " + DateTime.Now.ToString());
+        //            writer.WriteLine("User: " + Environment.UserName);
+        //            writer.WriteLine();
+        //        }
+        //        MessageBox.Show("needs to start");
+        //        Check_machineQty.Start();
+        //    }
+        //    Thread.Sleep(5000);
+        //    Restart_Check_machineQty();
+        //}
 
         private void toReload(string value)
         {
@@ -485,6 +503,7 @@ namespace Eisagogi_paragogis
                 reloadMachine(macno, macpos);
 
             });
+
         }
 
 
@@ -551,6 +570,7 @@ namespace Eisagogi_paragogis
             TextBox idbox = (TextBox)FindName("id" + "M" + machinecounter + "R" + rowcounter);
             idbox.Text = machineqty.ID.ToString();
             return idbox;
+            
         }
 
         private TextBox create_Rest_boxes(int rowcounter, int machinecounter, int? rest)
@@ -586,6 +606,47 @@ namespace Eisagogi_paragogis
             if (!String.IsNullOrEmpty(machineqty.AccessNo.ToString()))
                 TotalId.Text = machineqty.AccessNo.ToString();
             TotalId.Visibility = Visibility.Visible;
+
+      //      using (var context = new Production18())
+         //   {
+              //  var order = context.DELTIO_FINISH_SUPER.Any(c => c.TOTAL_ID == Convert.ToInt32(TotalId.Text)) ? context.DELTIO_FINISH_SUPER.Where(c => c.TOTAL_ID == Convert.ToInt32(TotalId.Text)).Select(f => f.OrderNo).FirstOrDefault() : null;
+               // var deliveryDate = context.DELTIO_FINISH_SUPER.Any(c => c.TOTAL_ID == Convert.ToInt32(TotalId.Text)) ? context.DELTIO_FINISH_SUPER.Where(c => c.TOTAL_ID == Convert.ToInt32(TotalId.Text)).Select(f => f.DeliveryDate).FirstOrDefault() : null;
+               // var Comments = context.DELTIO_FINISH_SUPER.Any(c => c.TOTAL_ID == Convert.ToInt32(TotalId.Text)) ? context.DELTIO_FINISH_SUPER.Where(c => c.TOTAL_ID == Convert.ToInt32(TotalId.Text)).Select(f => f.comments).FirstOrDefault() : null;
+
+                var order = deltio_finish_super.Any(c => c.TOTAL_ID == Convert.ToInt32(TotalId.Text)) ? deltio_finish_super.Where(c => c.TOTAL_ID == Convert.ToInt32(TotalId.Text)).Select(f => f.OrderNo).FirstOrDefault() : null;
+                var deliveryDate = deltio_finish_super.Any(c => c.TOTAL_ID == Convert.ToInt32(TotalId.Text)) ? deltio_finish_super.Where(c => c.TOTAL_ID == Convert.ToInt32(TotalId.Text)).Select(f => f.DeliveryDate).FirstOrDefault() : null;
+                var Comments = deltio_finish_super.Any(c => c.TOTAL_ID == Convert.ToInt32(TotalId.Text)) ? deltio_finish_super.Where(c => c.TOTAL_ID == Convert.ToInt32(TotalId.Text)).Select(f => f.comments).FirstOrDefault() : null;
+
+                if (order != null && deliveryDate != null && Comments != null)
+                {
+                    TotalId.ToolTip = "Order: " + order + " \n " + "Delivery Date: " + deliveryDate + " \n " + "Comments: " + Comments;
+                }
+                else if (order == null && deliveryDate != null && Comments != null)
+                {
+                    TotalId.ToolTip = "Delivery Date: " + deliveryDate + " \n " + "Comments: " + Comments;
+                }
+                else if (order != null && deliveryDate == null && Comments != null)
+                {
+                    TotalId.ToolTip = "Order: " + order + " \n " + "Comments: " + Comments;
+                }
+                else if (order != null && deliveryDate != null && Comments == null)
+                {
+                    TotalId.ToolTip = "Order: " + order + " \n " + "Delivery Date: " + deliveryDate;
+                }
+                else if (order == null && deliveryDate == null && Comments != null)
+                {
+                    TotalId.ToolTip = "Comments: " + Comments;
+                }
+                else if (order == null && deliveryDate != null && Comments == null)
+                {
+                    TotalId.ToolTip = "Delivery Date: " + deliveryDate;
+                }
+                else if (order != null && deliveryDate == null && Comments == null)
+                {
+                    TotalId.ToolTip = "Order: " + order;
+                }
+           // }
+
             return TotalId;
         }
 
@@ -594,16 +655,16 @@ namespace Eisagogi_paragogis
 
             int? sumoftsouvalia = 0;
 
-            int? Orderqty = Deltio_Finish_Super1.Where(i => i.TOTAL_ID == machineqty.AccessNo).Sum(x => x.Production);
+            int? Orderqty = deltio_finish_super1.Where(i => i.TOTAL_ID == machineqty.AccessNo).Sum(x => x.Production);
 
-            //foreach (DELTIO_FINISH_SUPER deltio_finish_super in deltio_finish_super.Where(n => n.TOTAL_ID.Equals(machineqty.AccessNo)))
-            //foreach (var deltio_finish_super in context.DELTIO_FINISH_SUPER.Where(n => n.TOTAL_ID.Equals(machineqty.AccessNo)))
-            //{
-            //    finishapid = deltio_finish_super.FINISHAP_ID;
-            //}
+           // foreach (DELTIO_FINISH_SUPER deltio_finish_super in deltio_finish_super.Where(n => n.TOTAL_ID.Equals(machineqty.AccessNo)))
+           //// foreach (var deltio_finish_super in context.DELTIO_FINISH_SUPER.Where(n => n.TOTAL_ID.Equals(machineqty.AccessNo)))
+           // {
+           //     finishapid = deltio_finish_super.FINISHAP_ID;
+           // }
 
             //foreach (DELTIO_FINISH_SUPER1 deltio_finish_super1 in deltio_finish_super1.Where(n => n.TOTAL_ID.Equals(machineqty.AccessNo)))
-            foreach (var deltio_finish_super1 in Deltio_Finish_Super1.Where(n => n.TOTAL_ID.Equals(machineqty.AccessNo)))
+            foreach (var deltio_finish_super1 in deltio_finish_super1.Where(n => n.TOTAL_ID.Equals(machineqty.AccessNo)))
             {
                 //  var dos = context.eisagogiParagogis.Any(i => i.Col_Id == deltio_finish_super1.COL_ID) ? context.eisagogiParagogis.Where(i => i.Col_Id == deltio_finish_super1.COL_ID).Sum(x => x.dozen * 24) : 0 ;
                 //var soc = context.eisagogiParagogis.Any(i => i.Col_Id == deltio_finish_super1.COL_ID) ? context.eisagogiParagogis.Where(i => i.Col_Id == deltio_finish_super1.COL_ID).Sum(x => x.socks) : 0;
@@ -779,8 +840,8 @@ namespace Eisagogi_paragogis
             txt2.PreviewTextInput += new TextCompositionEventHandler(NumberValidationTextBox);
             txt2.KeyUp += new KeyEventHandler(TotalId_Key_Pressed);
             txt2.MouseDoubleClick += new MouseButtonEventHandler(TotalId_Double_Clicked);
-           // txt2.MouseEnter += new MouseEventHandler(MouseEnter);
-            
+            //txt2.ToolTip = Mouse.GetPosition(txt2).X + " " + Mouse.GetPosition(txt2).Y + " \n " + txt2.TabIndex;
+
             txt2.TabIndex = i;
             txt2.MaxLength = 5;
         }
@@ -1384,6 +1445,46 @@ namespace Eisagogi_paragogis
                     Name.Text = findname.Where(i => i.TOTAL_ID == mqty2.AccessNo).Select(c => c.FINISHAP_ID).FirstOrDefault().ToString();
                     TotalId.Text = mqty2.AccessNo.ToString();
 
+                    var order = context.DELTIO_FINISH_SUPER.Any(c => c.TOTAL_ID == Convert.ToInt32(TotalId.Text)) ?  context.DELTIO_FINISH_SUPER.Where(c => c.TOTAL_ID == Convert.ToInt32(TotalId.Text)).Select(f => f.OrderNo).FirstOrDefault() : null;
+                    var deliveryDate = context.DELTIO_FINISH_SUPER.Any(c => c.TOTAL_ID == Convert.ToInt32(TotalId.Text)) ? context.DELTIO_FINISH_SUPER.Where(c => c.TOTAL_ID == Convert.ToInt32(TotalId.Text)).Select(f => f.DeliveryDate).FirstOrDefault() : null;
+                    var Comments = context.DELTIO_FINISH_SUPER.Any(c => c.TOTAL_ID == Convert.ToInt32(TotalId.Text)) ? context.DELTIO_FINISH_SUPER.Where(c => c.TOTAL_ID == Convert.ToInt32(TotalId.Text)).Select(f => f.comments).FirstOrDefault() : null;
+
+                    if (order != null && deliveryDate != null && Comments != null)
+                    {
+                        TotalId.ToolTip = "Order: " + order + " \n " + "Delivery Date: " + deliveryDate + " \n " + "Comments: " + Comments; 
+                    }
+                    else if(order == null && deliveryDate != null && Comments != null)
+                    {
+                        TotalId.ToolTip = "Delivery Date: " + deliveryDate + " \n " + "Comments: " + Comments;
+                    }
+                    else if(order != null && deliveryDate == null && Comments != null)
+                    {
+                        TotalId.ToolTip = "Order: " + order + " \n "  + "Comments: " + Comments;
+                    }
+                    else if(order != null && deliveryDate != null && Comments == null)
+                    {
+                        TotalId.ToolTip = "Order: " + order + " \n " + "Delivery Date: " + deliveryDate;
+                    }
+                    else if(order == null && deliveryDate == null && Comments != null)
+                    {
+                        TotalId.ToolTip =  "Comments: " + Comments;
+                    }
+                    else if (order == null && deliveryDate != null && Comments == null)
+                    {
+                        TotalId.ToolTip = "Delivery Date: " + deliveryDate;
+                    }
+                    else if (order != null && deliveryDate == null && Comments == null)
+                    {
+                        TotalId.ToolTip = "Order: " + order;
+                    }
+
+
+
+                    //TotalId.ToolTip = (TotalId.Text != null || (order.Equals("") && deliveryDate.Equals("") && Comments.Equals(""))) ? 
+                    //    (order != null ? order  : null) + (deliveryDate != null ? deliveryDate :null) + (Comments != null ? Comments : null): null;
+
+                    
+
 
                     int? sumoftsouvalia = 0;
                     int? rest = 0;
@@ -1453,9 +1554,6 @@ namespace Eisagogi_paragogis
         //fixed
         private void del_click(object sender, RoutedEventArgs e)
         {
-
-
-
 
             Button del = sender as Button;
             TextBox Finid, Totalid, Rest, Mac, id;
@@ -1693,9 +1791,10 @@ namespace Eisagogi_paragogis
 
         private void Production_Plan_Closing(object sender, CancelEventArgs e)
         {
+            //backgroundThread.Abort();
             Check_machineQty.Stop();
             //Check_eisagogiParagogis.Stop();
-           // notificationTest.Termination();
+            // notificationTest.Termination();
             // If not saved, notify user and ask for a response
             if (!this.saved)
             {
@@ -2242,16 +2341,25 @@ namespace Eisagogi_paragogis
                 }
 
             }
-            if (!f)
-            {
-                //Window print = new forma_ektyposis();
-                //print.Show();
-            }
 
+            NewWindowHandler(this, e);
+        }
 
+        private void NewWindowHandler(object sender, RoutedEventArgs e)
+        {
+            Thread newWindowThread = new Thread(new ThreadStart(ThreadStartingPoint));
+            newWindowThread.SetApartmentState(ApartmentState.STA);
+            newWindowThread.IsBackground = true;
+            newWindowThread.Start();
+        }
+
+        private void ThreadStartingPoint()
+        {
             Remaining_Productions remaining_Productions = new Remaining_Productions();
             remaining_Productions.Show();
+            System.Windows.Threading.Dispatcher.Run();
         }
+
 
         private void search_TextChanged(object sender, TextChangedEventArgs e)
         {

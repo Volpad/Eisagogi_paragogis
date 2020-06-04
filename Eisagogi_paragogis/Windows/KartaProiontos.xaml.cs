@@ -86,6 +86,7 @@ namespace Eisagogi_paragogis
                 program.Text = dfs1.Select(c => c.PROGRAM).FirstOrDefault();
                 oname.Text = dfs.Select(c => c.OrderNo).FirstOrDefault();
                 ddate.Text = dfs.Select(c => c.DeliveryDate).FirstOrDefault();
+                colcomb.Text = dfs1.Select(c => c.SuplierColor).FirstOrDefault() + " . " + dfs1.Select(c => c.SuplierColorDesc).FirstOrDefault();
                 user.Text = "";
                 date.Text = "";
                 counter.Text = "";
