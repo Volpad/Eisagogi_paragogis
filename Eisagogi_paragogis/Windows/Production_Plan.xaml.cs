@@ -1821,7 +1821,7 @@ namespace Eisagogi_paragogis
             {
                 if (win.Tag != null)
                 {
-                    if (win.Tag.ToString() == "productionView" || win.Tag.ToString() == "teleiwmena_tsouvalia" || win.Tag.ToString() == "kataxwrisi_deltiwn_paragogis" || win.Tag.ToString() == "eisagogi_imietoimwn" || win.Tag.ToString() == "tsouvali" || win.Tag.ToString() == "eisagogiapoparagogi" || win.Tag.ToString() == "RemainingProductions" || win.Tag.ToString() == "balance" || win.Tag.ToString() == "deltiomixanis" || win.Tag.ToString() == "ektypwsi")
+                    if (win.Tag.ToString() == "productionView" || win.Tag.ToString() == "mo" || win.Tag.ToString() == "teleiwmena_tsouvalia" || win.Tag.ToString() == "kataxwrisi_deltiwn_paragogis" || win.Tag.ToString() == "eisagogi_imietoimwn" || win.Tag.ToString() == "tsouvali" || win.Tag.ToString() == "eisagogiapoparagogi" || win.Tag.ToString() == "RemainingProductions" || win.Tag.ToString() == "balance" || win.Tag.ToString() == "deltiomixanis" || win.Tag.ToString() == "ektypwsi")
                     {
                         win.Close();
                     }
@@ -2717,10 +2717,11 @@ namespace Eisagogi_paragogis
             tel_tsouv.Show();
         }
 
-
-
-
-
+        private void MO_calc_Click(object sender, RoutedEventArgs e)
+        {
+            Window mo = new MO_Paragogis();
+            mo.Show();
+        }
     }
 }
 

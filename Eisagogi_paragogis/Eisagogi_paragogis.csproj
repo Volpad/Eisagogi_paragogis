@@ -122,6 +122,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="MO_Paragogis.xaml.cs">
+      <DependentUpon>MO_Paragogis.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SqlDependencyEx.cs" />
     <Compile Include="SQL_Tables\MachinePosition.cs" />
     <Compile Include="Windows\AddTsouvali.xaml.cs">
@@ -204,6 +207,10 @@
     <Compile Include="SQL_Tables\ToBePlanned.cs" />
     <Compile Include="SQL_Tables\Unit.cs" />
     <Compile Include="SQL_Tables\walk_prd_FullItemLinesList.cs" />
+    <Page Include="MO_Paragogis.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\AddTsouvali.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

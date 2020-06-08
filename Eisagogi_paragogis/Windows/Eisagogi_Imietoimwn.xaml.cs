@@ -492,7 +492,7 @@ namespace Eisagogi_paragogis
                         prodbox.Text = context.DELTIO_FINISH_SUPER1.Where(c => c.TOTAL_ID == (context.eisagogiParagogis.Where(f => f.barcode == barcode.Text).Select(g => g.Total_Id).FirstOrDefault())).Select(d => d.FINISHAP_ID).FirstOrDefault();
                         colorbox.Text = context.DELTIO_FINISH_SUPER1.Where(c => c.TOTAL_ID == (context.eisagogiParagogis.Where(f => f.barcode == barcode.Text).Select(g => g.Total_Id).FirstOrDefault())).Select(d => d.COLORID).FirstOrDefault() + "." 
                                         + context.DELTIO_FINISH_SUPER1.Where(c => c.TOTAL_ID == (context.eisagogiParagogis.Where(f => f.barcode == barcode.Text).Select(g => g.Total_Id).FirstOrDefault())).Select(d => d.COLOR).FirstOrDefault();
-                        sizebox.Text = context.DELTIO_FINISH_SUPER1.Where(c => c.TOTAL_ID == (context.eisagogiParagogis.Where(f => f.barcode == barcode.Text).Select(g => g.Total_Id).FirstOrDefault())).Select(d => d.SIZE).FirstOrDefault();
+                        sizebox.Text = context.DELTIO_FINISH_SUPER1.Where(c => c.COL_ID == (context.eisagogiParagogis.Where(f => f.barcode == barcode.Text).Select(g => g.Col_Id).FirstOrDefault())).Select(d => d.SIZE).FirstOrDefault();
                         dozenbox.Text = context.eisagogiParagogis.Where(c => c.barcode == barcode.Text).Select(d => d.dozen).FirstOrDefault().ToString();
                         sockbox.Text = context.eisagogiParagogis.Where(c => c.barcode == barcode.Text).Select(d => d.socks).FirstOrDefault().ToString();
 

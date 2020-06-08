@@ -272,7 +272,10 @@
                 <ComboBoxItem>
                     <Button x:Name="eisagogi2" Content="Καταχώρηση Παραγωγής" Height="25" VerticalAlignment="Stretch" Width="150" Click="eisagogi2_Click" Foreground="WhiteSmoke"  Background="DimGray"/>
                 </ComboBoxItem>
-                
+                <ComboBoxItem>
+                    <Button x:Name="MO_calc" Content="Έλεγχος ΜΟ παραγωγ΄΄ης" Height="25" VerticalAlignment="Stretch" Width="150" Click="MO_calc_Click"  Foreground="WhiteSmoke"  Background="DimGray"/>
+                </ComboBoxItem>
+
             </ComboBox>
 
             <Button x:Name="test" Content="test " Visibility="Hidden" Height="20" VerticalAlignment="Stretch" Width="115" Click="test_Click" Foreground="WhiteSmoke" />
