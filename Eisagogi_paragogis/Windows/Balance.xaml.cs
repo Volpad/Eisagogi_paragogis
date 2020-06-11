@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -17,29 +18,71 @@ namespace Eisagogi_paragogis
     /// </summary>
     public partial class Balance : Window
     {
-        
+        public static string[] SuggestionValues;
+
         public Balance()
         {
+
+            using (var context = new Production18())
+            {
+                SuggestionValues = context.ItemBalances.GroupBy(c => c.ItemCode).Select(d => d.Key).ToArray();
+            }
+
+
             InitializeComponent();
 
             //fromdate.SelectedDate = DateTime.Now.Date;
             //todate.SelectedDate = DateTime.Now.AddDays(1).Date;
 
-            if(Static_Variables.finishid != "")
+
+
+            if (Static_Variables.finishid != "")
             {
                 using (var context = new Production18())
                 {
                     setGrid(context, Static_Variables.finishid);
                     productName.Text = Static_Variables.finishid;
+                    // productName.ItemsSource = context.ItemBalances.GroupBy(c => c.ItemCode).Select(d => d.Key);
+                   // sv = context.ItemBalances.GroupBy(c => c.ItemCode).Select(d => d.Key).ToArray();
+                    
                 }
+
+
             }
 
         }
 
+        private string _currentInput = "";
+        private string _currentSuggestion = "";
+        private string _currentText = "";
+
+        private int _selectionStart;
+        private int _selectionLength;
+
+        //private static readonly string[] SuggestionValues = {
+        //    "England",
+        //    "USA",
+        //    "France",
+        //    "Estonia"
+        //};
 
         private void productName_TextChanged(object sender, TextChangedEventArgs e)
         {
+            var input = productName.Text.ToUpper();
+            if (input.Length > _currentInput.Length && input != _currentSuggestion && !input.Equals(null))
+            {
+                _currentSuggestion = SuggestionValues.FirstOrDefault(x => x.StartsWith(input));
+                if (_currentSuggestion != null)
+                {
+                    _currentText = _currentSuggestion;
+                    _selectionStart = input.Length;
+                    _selectionLength = _currentSuggestion.Length - input.Length;
 
+                    productName.Text = _currentText;
+                    productName.Select(_selectionStart, _selectionLength);
+                }
+            }
+            _currentInput = input;
 
         }
 
@@ -247,10 +290,19 @@ namespace Eisagogi_paragogis
             Static_Variables.finishid = "";
         }
 
-        private void refresh_Click(object sender, RoutedEventArgs e)
+        private async void refresh_Click(object sender, RoutedEventArgs e)
         {
+            totalsales.Text = "Searching";
 
-            using(var context = new Production18())
+            string pnam = productName.Text;
+
+            await Task.Run(()=> look_for_sales(pnam));
+
+        }
+
+        internal void look_for_sales(string pname)
+        {
+            using (var context = new Production18())
             {
 
 
@@ -259,27 +311,15 @@ namespace Eisagogi_paragogis
                                   where walk_prd_FullItemLinesList.ItemCode.Equals(productName.Text) &&
                                   walk_prd_FullItemLinesList.RegistrationDate > DateTime.Parse(fromdate.ToString()).AddDays(-1) &&
                                   walk_prd_FullItemLinesList.RegistrationDate < DateTime.Parse(todate.ToString()).AddDays(1) &&
-                                  walk_prd_FullItemLinesList.CompWRHCode.Equals("1")// &&
-                                  // (walk_prd_FullItemLinesList.EntryTypeDescription.Equals("Stock - Sales (QTY)") ||
-                                    // walk_prd_FullItemLinesList.EntryTypeDescription.Equals("Stock - Sales (VALUE/QTY)") ||
-                                    //walk_prd_FullItemLinesList.EntryTypeDescription.Equals("Stock - Dispense (VALUE/QTY)"))
+                                  walk_prd_FullItemLinesList.CompWRHCode.Equals("1")
                                   select walk_prd_FullItemLinesList;
 
-                //var deltiaepistr = from walk_prd_FullItemLinesList in context.walk_prd_FullItemLinesList
-                //             where walk_prd_FullItemLinesList.ItemCode.Equals(productName.Text) &&
-                //             walk_prd_FullItemLinesList.RegistrationDate > DateTime.Parse(fromdate.ToString()).AddDays(-1) &&
-                //             walk_prd_FullItemLinesList.RegistrationDate < DateTime.Parse(todate.ToString()).AddDays(1) &&
-                //                  walk_prd_FullItemLinesList.CompWRHCode.Equals("1") &&
-                //               (walk_prd_FullItemLinesList.EntryTypeDescription.Equals("Stock - Dispense negative  (VALUE/QTY)") || 
-                //               walk_prd_FullItemLinesList.EntryTypeDescription.Equals("Stock - Sales return (QTY)") || 
-                //               walk_prd_FullItemLinesList.EntryTypeDescription.Equals("Stock - Sales return (VALUE/QTY)"))
-                //            select walk_prd_FullItemLinesList;
 
                 var test2 = from ItemBalances in context.ItemBalances
                             join wpfll in deltiaapost
                             on new { ItemBalances.ColorCode, ItemBalances.SizeCode } equals new { wpfll.ColorCode, wpfll.SizeCode } into g
-                          //  join wpfll2 in deltiaepistr
-                          //  on new { ItemBalances.ColorCode, ItemBalances.SizeCode } equals new { wpfll2.ColorCode, wpfll2.SizeCode } into f
+                            //  join wpfll2 in deltiaepistr
+                            //  on new { ItemBalances.ColorCode, ItemBalances.SizeCode } equals new { wpfll2.ColorCode, wpfll2.SizeCode } into f
                             orderby ItemBalances.ColorCode
                             where ItemBalances.ItemCode.Equals(productName.Text)
                             select new
@@ -291,69 +331,31 @@ namespace Eisagogi_paragogis
                                 Παραγγελίες = ItemBalances.OrderQty,
                                 Πωλήσεις = g.Sum(d => (Nullable<int>)d.Quantity)
                                 //Πωλήσεις = (g.Sum(d => (Nullable<int>)d.Quantity) - f.Sum(d => d.Quantity)) == null ? g.Sum(d => (Nullable<int>)d.Quantity) : g.Sum(d => (Nullable<int>)d.Quantity) - f.Sum(d => (Nullable<int>)d.Quantity),
-                               // Επιστροφές = f.Sum(d => (Nullable<int>)d.Quantity)
-                              
+                                // Επιστροφές = f.Sum(d => (Nullable<int>)d.Quantity)
+
                             };
 
-
-
-                //var deltiaapost2 = from walk_prd_FullItemLinesList in context.walk_prd_FullItemLinesList
-                //                   where walk_prd_FullItemLinesList.ItemCode.Equals(productName.Text) &&
-                //                   walk_prd_FullItemLinesList.RegistrationDate > DateTime.Parse(fromdate.ToString()).AddDays(-1) &&
-                //                   walk_prd_FullItemLinesList.RegistrationDate < DateTime.Parse(todate.ToString()).AddDays(1) &&
-                //                   walk_prd_FullItemLinesList.CompWRHCode == "1" &&
-                //                    (walk_prd_FullItemLinesList.EntryTypeDescription == "Stock - Sales (QTY)" ||
-                //                      walk_prd_FullItemLinesList.EntryTypeDescription == "Stock - Sales (VALUE/QTY)" ||
-                //                     walk_prd_FullItemLinesList.EntryTypeDescription == "Stock - Dispense (VALUE/QTY)")
-                //                   group walk_prd_FullItemLinesList by new
-                //                   {
-                //                       walk_prd_FullItemLinesList.ColorCode,
-                //                       walk_prd_FullItemLinesList.SizeCode
-
-                //                   } into g
-                //                   select new
-                //                   {
-                //                        g.Key.ColorCode,
-                //                        g.Key.SizeCode,
-                //                       qty = g.Sum(c => c.Quantity)
-                //                   };
-
-                //var final = from ItemBalances in context.ItemBalances
-                //            join wpfll in deltiaapost2
-                //            on new { ItemBalances.ColorCode, ItemBalances.SizeCode } equals new { wpfll.ColorCode, wpfll.SizeCode } into g
-                //            orderby ItemBalances.ColorCode
-                //            where ItemBalances.ItemCode.Equals(productName.Text)
-                //            select new
-                //            {
-                //                ItemBalances.ItemCode,
-                //                Χρώμα = ItemBalances.ColorCode + "." + ItemBalances.ColorGRdesc,
-                //                ItemBalances.SizeDesc,
-                //                Αποθήκη = ItemBalances.Warehouse,
-                //                Παραγγελίες = ItemBalances.OrderQty,
-                //                Πωλήσεις2 = g.Sum(d => (Nullable<int>)d.qty),
-                                
-                //                //Πωλήσεις = (g.Sum(d => (Nullable<int>)d.Quantity) - f.Sum(d => d.Quantity)) == null ? g.Sum(d => (Nullable<int>)d.Quantity) : g.Sum(d => (Nullable<int>)d.Quantity) - f.Sum(d => (Nullable<int>)d.Quantity),
-                //                //Επιστροφές = f.Sum(d => (Nullable<int>)d.Quantity)
-
-                //            };
-
-
-
-                if (test2.Any(c => c.ItemCode.Equals(productName.Text)))
-                {
 
                     //var sizes = ib.Where(f => f.ItemCode.Equals(product)).GroupBy(c => new { c.SizeDesc, c.Αποθήκη }).Select(d => new { d.Key.SizeDesc });
 
                     // var colors = ib.Where(f => f.ItemCode.Equals(product)).GroupBy(c => new { c.ColorCode, c.ColorGRdesc }).Select(d => new { d.Key.ColorCode, d.Key.ColorGRdesc });
 
+                
 
-                    balance.IsReadOnly = true;
-                    balance.ItemsSource = test2;//.Where(c => c.ItemCode.Equals(product));
-                    totalsales.Text = test2.Sum(c => (Nullable<int>)c.Πωλήσεις).ToString();
-                                                //balance.ItemsSource = test.Where(c => c.ItemCode.StartsWith("W333"));
-                }
+                    balance.Dispatcher.Invoke(() =>
+                    {
+                        if (test2.Any(c => c.ItemCode.Equals(pname)))
+                        {
+                            balance.IsReadOnly = true;
+                            balance.ItemsSource = test2;//.Where(c => c.ItemCode.Equals(product));
+                            totalsales.Text = test2.Sum(c => (Nullable<int>)c.Πωλήσεις).ToString();
+                        }
+                    });
+
+
+                    //balance.ItemsSource = test.Where(c => c.ItemCode.StartsWith("W333"));
+                
             }
-
         }
     }
 }

@@ -79,6 +79,7 @@ namespace Eisagogi_paragogis
                             Window kp = new KartaProiontos();
                             prodcounter = prodcounter - 500;
                             sequence++;
+                            counter++;
                         }
 
                         c.sequence = sequence.ToString();
