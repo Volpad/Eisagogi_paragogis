@@ -1821,7 +1821,7 @@ namespace Eisagogi_paragogis
             {
                 if (win.Tag != null)
                 {
-                    if (win.Tag.ToString() == "productionView" || win.Tag.ToString() == "mo" || win.Tag.ToString() == "teleiwmena_tsouvalia" || win.Tag.ToString() == "kataxwrisi_deltiwn_paragogis" || win.Tag.ToString() == "eisagogi_imietoimwn" || win.Tag.ToString() == "tsouvali" || win.Tag.ToString() == "eisagogiapoparagogi" || win.Tag.ToString() == "RemainingProductions" || win.Tag.ToString() == "balance" || win.Tag.ToString() == "deltiomixanis" || win.Tag.ToString() == "ektypwsi")
+                    if (win.Tag.ToString() == "productionView" || win.Tag.ToString() == "ProdSpec" || win.Tag.ToString() == "mo" || win.Tag.ToString() == "teleiwmena_tsouvalia" || win.Tag.ToString() == "kataxwrisi_deltiwn_paragogis" || win.Tag.ToString() == "eisagogi_imietoimwn" || win.Tag.ToString() == "tsouvali" || win.Tag.ToString() == "eisagogiapoparagogi" || win.Tag.ToString() == "RemainingProductions" || win.Tag.ToString() == "balance" || win.Tag.ToString() == "deltiomixanis" || win.Tag.ToString() == "ektypwsi")
                     {
                         win.Close();
                     }
@@ -2486,9 +2486,8 @@ namespace Eisagogi_paragogis
             Balance balance = new Balance();
             balance.Show();
 
-
-
         }
+
 
         private void prod_KeyUp(object sender, KeyEventArgs e)
         {
@@ -2504,7 +2503,7 @@ namespace Eisagogi_paragogis
 
                     var p = dfs.Where(c => c.FINISHAP_ID.Equals(prod.Text)).Select(d => d.TOTAL_ID).FirstOrDefault();
 
-                    if (p != 0)
+                    if (p != 0 )
                     {
                         Static_Variables.prodviewtotalid = p;
 
@@ -2523,7 +2522,7 @@ namespace Eisagogi_paragogis
                         }
                         else
                         {
-                            MessageBox.Show("Wrong Product Ref");
+                            MessageBox.Show("Wrong Product Ref or no production available");
                         }
                     }
 
@@ -2721,6 +2720,20 @@ namespace Eisagogi_paragogis
         {
             Window mo = new MO_Paragogis();
             mo.Show();
+        }
+
+        private void ProdSpec_Click(object sender, RoutedEventArgs e)
+        {
+            Window ps = new Product_Specification();
+            ps.Show();
+        }
+
+        private void Specs_Click(object sender, RoutedEventArgs e)
+        {
+            Static_Variables.finishid = ProductForBalance;
+        
+            Window ps = new Product_Specification();
+            ps.Show();
         }
     }
 }

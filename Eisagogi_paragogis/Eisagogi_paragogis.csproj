@@ -121,11 +121,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Windows\Ask_Product.xaml.cs">
+      <DependentUpon>Ask_Product.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SQL_Tables\BOMS_2.cs" />
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="MO_Paragogis.xaml.cs">
+    <Compile Include="Windows\MO_Paragogis.xaml.cs">
       <DependentUpon>MO_Paragogis.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SqlDependencyEx.cs" />
+    <Compile Include="Windows\Product_Specification.xaml.cs">
+      <DependentUpon>Product_Specification.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SQL_Tables\Product_spec_changes.cs" />
+    <Compile Include="Helping_Classes\SqlDependencyEx.cs" />
     <Compile Include="SQL_Tables\MachinePosition.cs" />
     <Compile Include="Windows\AddTsouvali.xaml.cs">
       <DependentUpon>AddTsouvali.xaml</DependentUpon>
@@ -207,7 +215,15 @@
     <Compile Include="SQL_Tables\ToBePlanned.cs" />
     <Compile Include="SQL_Tables\Unit.cs" />
     <Compile Include="SQL_Tables\walk_prd_FullItemLinesList.cs" />
-    <Page Include="MO_Paragogis.xaml">
+    <Page Include="Windows\Ask_Product.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MO_Paragogis.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Product_Specification.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

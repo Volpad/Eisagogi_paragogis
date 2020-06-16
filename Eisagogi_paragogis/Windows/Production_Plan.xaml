@@ -26,6 +26,7 @@
         <ContextMenu x:Key="cmenu" Tag="cmenu">
             <!--<MenuItem Header="Put On Machine" Click="Click_OnMachine"/>-->
             <MenuItem Header="Check Balance" Click="Balance_Click"/>
+            <MenuItem Header="Specs" Click="Specs_Click"/>
             <!--<MenuItem Header="Copy Access No" Click="Click_Copy_Access_Number"/>
             <MenuItem Header="Delete" Click="Click_Delete"/>-->
         </ContextMenu>
@@ -274,6 +275,9 @@
                 </ComboBoxItem>
                 <ComboBoxItem>
                     <Button x:Name="MO_calc" Content="Έλεγχος ΜΟ παραγωγ΄΄ης" Height="25" VerticalAlignment="Stretch" Width="150" Click="MO_calc_Click"  Foreground="WhiteSmoke"  Background="DimGray"/>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <Button x:Name="ProdSpec" Content="Προδιαγραφές Κωδικών" Height="25" VerticalAlignment="Stretch" Width="150" Click="ProdSpec_Click"  Foreground="WhiteSmoke"  Background="DimGray"/>
                 </ComboBoxItem>
 
             </ComboBox>

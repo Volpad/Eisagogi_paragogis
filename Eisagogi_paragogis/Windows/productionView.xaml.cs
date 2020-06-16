@@ -344,5 +344,13 @@ namespace Eisagogi_paragogis
             balance.Show();
 
         }
+
+        private void Specs_Click(object sender, RoutedEventArgs e)
+        {
+            Static_Variables.finishid = product.Text;
+            Window ps = new Product_Specification();
+            ps.Show();
+
+        }
     }
 }

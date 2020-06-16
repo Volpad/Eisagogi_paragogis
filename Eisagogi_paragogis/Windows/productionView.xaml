@@ -37,7 +37,8 @@
             <TextBlock Canvas.Left="257" TextWrapping="Wrap" Text="Αρ. Παραγγελίας" Height="20" RenderTransformOrigin="0.203,0.583" Width="102"/>
             <TextBlock Canvas.Left="394" TextWrapping="Wrap" Text="Ημερ. Παράδοσης" Height="20" Width="103"/>
             <TextBlock Canvas.Left="537" TextWrapping="Wrap" Text="Ολοκλήρωση παραγωγής" Height="20" Width="103"/>
-            <Button Canvas.Left="781" Content="Έλεγχος αποθήκης" Height="20" Width="104" Click="whcheck_Click"/>
+            <Button Canvas.Left="781" Content="Έλεγχος αποθήκης" Height="20" Width="108" Click="whcheck_Click"/>
+            <Button Canvas.Left="900" Content="Προδιαγραφές " Height="20" Width="104" Click="Specs_Click"/>
         </Canvas>
         <Canvas x:Name="ycanvas" Margin="10,0" Background="LightYellow" Grid.Row="1" Grid.ColumnSpan="3">
             <TextBlock x:Name="date" Canvas.Left="10" TextWrapping="Wrap" Text="Date" Width="71" Height="18"/>

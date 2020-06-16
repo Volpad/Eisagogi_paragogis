@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Eisagogi_paragogis
 {
-    [Table(Name = "BOMS3")]
+    [Table(Name = "GMP")]
     public class GMP
     {
-        [Column(Name = "FINISHAP ID")] public string FINISHAP_ID { get; set; }
+        [Column(Name = "FINISHSAP ID")] public string FINISHAP_ID { get; set; }
         [Column] public string PROGRAM { get; set; }
         [Column(IsPrimaryKey = true, IsDbGenerated = true)] public int ID { get; set; }
     }

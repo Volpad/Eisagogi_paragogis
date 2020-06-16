@@ -1,0 +1,335 @@
+﻿<Window x:Class="Eisagogi_paragogis.Product_Specification"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Eisagogi_paragogis"
+        mc:Ignorable="d"
+        Title="Product_Specification" Height="908.338" Width="1537.177"
+        Tag="ProdSpec">
+    <Window.Background>
+        <VisualBrush TileMode="Tile" Viewport="0,0,20,20" ViewportUnits="Absolute">
+            <VisualBrush.Visual>
+                <Image Source="pictures/bg.png"></Image>
+            </VisualBrush.Visual>
+        </VisualBrush>
+    </Window.Background>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="720"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBox  HorizontalAlignment="Stretch" TextAlignment="Center" FontSize="28" FontFamily="calibri" Height="42" Margin="5,5,25,0" TextWrapping="Wrap" Text="ΠΡΟΔΙΑΓΡΑΦΕΣ ΠΡΟΙΟΝΤΟΣ" VerticalAlignment="Top" IsReadOnly="True" Focusable="False"  Foreground="Blue"/>
+        <Grid x:Name="specifications" Margin="0,47,0,0" Grid.Column="0">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="700"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Margin="5,0,5,0">
+                        <Grid Background="White" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="108"/>
+                                <ColumnDefinition Width="266"/>
+                                <ColumnDefinition Width="316"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30*"/>
+                                <RowDefinition Height="30*"/>
+                            </Grid.RowDefinitions>
+                            <TextBox TextAlignment="Center" Grid.Column="0" Grid.Row="0" Text="ΚΩΔΙΚΟΣ" FontWeight="Bold" BorderThickness="2,1,0,0" IsReadOnly="True" Focusable="False" FontFamily="Calibri" FontSize="17" Foreground="Blue"/>
+                            <TextBox TextAlignment="Center" Grid.Column="0" Grid.Row="1" Text="ΠΕΛΑΤΗΣ" FontWeight="Bold" BorderThickness="2,0,0,2" IsReadOnly="True" Focusable="False" FontFamily="Calibri" FontSize="17" Foreground="Blue"/>
+                            <TextBox x:Name="prodname" Grid.Column="1" Grid.Row="0" Text="REDMWC35" BorderThickness="2,1,1,1" FontFamily="Calibri" FontSize="17"/>
+                            <TextBox x:Name="customer" Grid.Column="1" Grid.Row="1" Text="NEW CONCEPT ENTERPRISE" BorderThickness="2,1,1,2" FontFamily="Calibri" FontSize="17"/>
+                            <ComboBox x:Name="customerc" Grid.Column="1" Grid.Row="1" Visibility="Collapsed" BorderThickness="2,1,1,2" FontFamily="Calibri" FontSize="17"/>
+                            <TextBox x:Name="description" Grid.Column="2" Grid.Row="0" Text="ΑΝΔΡΙΚΗ ΒΑΜΒΑΚΕΡΗ 100%" TextWrapping="Wrap" Width="316" MaxHeight="100" Height="auto" BorderThickness="1,1,2,1" FontFamily="Calibri" FontSize="17" />
+                            <TextBox x:Name="composition" Grid.Column="2" Grid.Row="1" Text="100% Βαμβακερό Pur Fil D' Ecosse" TextWrapping="Wrap" Width="316" MaxHeight="100" Height="auto" BorderThickness="1,1,2,2" FontFamily="Calibri" FontSize="17" />
+                        </Grid>
+                        <Grid Background="White" Height="35">
+                            <Grid Height="25">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="108"/>
+                                    <ColumnDefinition Width="266"/>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox TextAlignment="Center" Grid.Column="0" Grid.Row="0" Text="ΠΛΕΞΗ" FontWeight="Bold" BorderThickness="2,2,1,2" IsReadOnly="True" Focusable="False" FontFamily="Calibri" FontSize="17" Foreground="Blue"/>
+                                <TextBox x:Name="plexi" Grid.Column="1" Grid.Row="0" Text="ΠΕΤΣΕΤΑ" BorderThickness="1,2,1,2" FontFamily="Calibri" FontSize="17"/>
+                                <TextBox TextAlignment="Center"  Grid.Column="2" Grid.Row="0" Text="ΕΝΩΣΗ ΜΥΤΗΣ" BorderThickness="1,2,1,2" IsReadOnly="True" Focusable="False" FontWeight="Bold" FontFamily="Calibri" FontSize="17" Foreground="Blue"/>
+                                <TextBox x:Name="myti" Grid.Column="3" Grid.Row="0" Text="Rosso" BorderThickness="1,2,2,2" FontFamily="Calibri" FontSize="17"/>
+                                <ComboBox x:Name="mytic" Grid.Column="3" Grid.Row="0" Visibility="Collapsed"  BorderThickness="1,2,2,2" FontFamily="Calibri" FontSize="17"/>
+
+                            </Grid>
+
+                        </Grid>
+                        <Grid Background="White">
+                            <Grid Background="White" Margin="0,20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Tag="μηχανη" Grid.Column="0">
+                                            <Border BorderBrush="#abadb3" BorderThickness="2">
+                                                <StackPanel>
+                                                    <TextBox Text="ΜΗΧΑΝΗ" BorderThickness="0" TextAlignment="Center" FontFamily="calibri" FontSize="12" Foreground="Blue" Focusable="False" IsReadOnly="True"/>
+                                                    <DataGrid x:Name="machines" AlternationCount="2">
+                                                        <DataGrid.RowStyle>
+                                                            <Style TargetType="{x:Type DataGridRow}">
+                                                                <Style.Triggers>
+                                                                    <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                                                        <Setter Property="Background" Value="white"/>
+                                                                    </Trigger>
+                                                                    <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                                                        <Setter Property="Background" Value="#f2f2f2"/>
+                                                                    </Trigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </DataGrid.RowStyle>
+                                                    </DataGrid>
+                                                </StackPanel>
+                                            </Border>
+                                        </Grid>
+                                        <Grid Tag="Πρόγραμμα" Grid.Column="1" >
+                                            <Border BorderBrush="#abadb3" BorderThickness="2">
+                                                <StackPanel>
+                                                    <TextBox Text="ΠΡΟΓΡΑΜΜΑ" BorderThickness="0" TextAlignment="Center" FontFamily="calibri" FontSize="12" Foreground="Blue" Focusable="False" IsReadOnly="True"/>
+                                                    <DataGrid x:Name="programs" AlternationCount="2">
+                                                        <DataGrid.RowStyle>
+                                                            <Style TargetType="{x:Type DataGridRow}">
+                                                                <Style.Triggers>
+                                                                    <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                                                        <Setter Property="Background" Value="white"/>
+                                                                    </Trigger>
+                                                                    <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                                                        <Setter Property="Background" Value="#f2f2f2"/>
+                                                                    </Trigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </DataGrid.RowStyle>
+                                                    </DataGrid>
+                                                </StackPanel>
+                                            </Border>
+                                        </Grid>
+
+                                    </Grid>
+                                    <Grid Grid.Row="1">
+                                        <StackPanel>
+                                            <TextBox Text="ΕΙΔΙΚΗ ΟΔΗΓΙΑ ΕΠΕΞΕΡΓΑΣΙΑΣ:" TextAlignment="Center" Height="24" Foreground="Blue" FontFamily="calibri" FontSize="17" FontWeight="Bold" IsReadOnly="True" Focusable="False" BorderThickness="2,0,1,1" />
+                                            <TextBox x:Name="eidod" VerticalAlignment="Stretch" Text="LOT: 3 ΖΕΥΓΗ ΑΠΟ ΚΑΘΕ ΧΡΩΜΑ ΣΕ ΣΑΚΟΥΛΑΚΙ 40x40 ΚΛΠ ΚΛΠ" Width="336" TextWrapping="Wrap" FontFamily="calibri" FontSize="15" Margin="4,4,4,4" BorderThickness="1" />
+                                        </StackPanel>
+                                    </Grid>
+                                </Grid>
+                                <Border BorderBrush="#abadb3" BorderThickness="2" Grid.Column="1">
+                                    <Grid>
+                                        <StackPanel>
+                                            <TextBox Text="ΝΗΜΑΤΑ" TextAlignment="Center" BorderThickness="0" Foreground="Blue" FontFamily="calibri" FontSize="17" FontWeight="Bold" IsReadOnly="True" Focusable="False"/>
+                                            <DataGrid x:Name="yarns" HeadersVisibility="None" AlternationCount="2">
+                                                <DataGrid.RowStyle>
+                                                    <Style TargetType="{x:Type DataGridRow}">
+                                                        <Style.Triggers>
+                                                            <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                                                <Setter Property="Background" Value="white"/>
+                                                            </Trigger>
+                                                            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                                                <Setter Property="Background" Value="#f2f2f2"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </DataGrid.RowStyle>
+                                            </DataGrid>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </Grid>
+                        <Border BorderThickness="2" BorderBrush="#abadb3">
+                            <Grid Background="White">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="27"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <TextBox Text="ΠΡΟΔΙΑΓΡΑΦΕΣ ΜΕΓΕΘΩΝ" Margin="0,3,0,0" Grid.Row="0" TextAlignment="Center" BorderThickness="0" Foreground="Blue" FontFamily="calibri" FontSize="17" FontWeight="Bold" IsReadOnly="True" Focusable="False"/>
+                                <DataGrid x:Name="sizes" Grid.Row="1" Margin="0,0,0,20" AlternationCount="2" GridLinesVisibility="None" AutoGenerateColumns="False" IsReadOnly="True">
+                                    <DataGrid.ColumnHeaderStyle>
+                                        <Style TargetType="DataGridColumnHeader">
+                                            <Setter Property="ContentTemplate">
+                                                <Setter.Value>
+                                                    <DataTemplate>
+                                                        <TextBlock TextWrapping="Wrap" FontWeight="SemiBold" Text="{Binding}"></TextBlock>
+                                                    </DataTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </DataGrid.ColumnHeaderStyle>
+                                    <DataGrid.RowStyle>
+                                        <Style TargetType="{x:Type DataGridRow}">
+                                            <Style.Triggers>
+                                                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                                    <Setter Property="Background" Value="white"/>
+                                                </Trigger>
+                                                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                                    <Setter Property="Background" Value="#f2f2f2"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </DataGrid.RowStyle>
+                                    <DataGrid.CellStyle>
+                                        <Style TargetType="DataGridCell">
+                                            <Setter Property="BorderBrush" Value="#d0cece" />
+                                            <Setter Property="BorderThickness" Value="1 1 1 1" />
+                                            <Setter Property="Margin" Value="2,0,2,0" />
+
+                                        </Style>
+                                    </DataGrid.CellStyle>
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="ΜΕΓΕΘΟΣ"  Binding="{Binding Path = NO}" MinWidth="80"/>
+                                        <DataGridTextColumn Header="ΜΕΓΕΘΟΣ ΜΗΧΑΝΗΣ" Binding="{Binding Path = MACH_SIZE}" Width="70"/>
+                                        <DataGridTextColumn Header="ΦΟΡΜΕΣ ΣΙΔΕΡΩΜΑΤΟΣ" Binding="{Binding Path = FORMES}" Width="100"/>
+                                        <DataGridTextColumn Header="ΜΗΚΟΣ ΠΑΤΟΥΣΑΣ" Binding="{Binding Path = PAT}" Width="70"/>
+                                        <DataGridTextColumn Header="ΜΗΚΟΣ ΚΑΛΑΜΙΟΥ" Binding="{Binding Path = MKAL}" Width="80"/>
+                                        <DataGridTextColumn Header="ΠΛΑΤΟΣ ΚΑΛΤΣΑΣ" FontWeight="Bold" Binding="{Binding Path = PKAL}" Width="90"/>
+                                        <DataGridTextColumn Header="ΥΨΟΣ ΛΑΣΤΙΧΟΥ" Binding="{Binding Path = YLAS}" Width="70"/>
+                                        <DataGridTextColumn Header="ΠΛΑΤΟΣ ΛΑΣΤΙΧΟΥ" Binding="{Binding Path = PLAS}" Width="70"/>
+                                        <DataGridTextColumn Header="ΒΑΡΟΣ" Binding="{Binding Path = WEIG}" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
+                        </Border>
+                        <Grid Background="White">
+                            <Border BorderThickness="2" Margin="0,5,0,0" BorderBrush="#abadb3">
+                                <Grid Background="White">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="27"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBox Text="ΠΡΟΔΙΑΓΡΑΦΕΣ ΣΥΣΚΕΥΑΣΙΑΣ" Margin="0,3,0,0" Grid.Row="0" TextAlignment="Center" BorderThickness="0" Foreground="Blue" FontFamily="calibri" FontSize="17" FontWeight="Bold" IsReadOnly="True" Focusable="False"/>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <Grid Background="White">
+                            <Border BorderThickness="2" Margin="0,5,0,0" BorderBrush="#abadb3">
+                                <Grid Background="White">
+                                    <Grid Margin="0,20,0,20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="260"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <TextBox Text="ETIKETA" FontWeight="Bold" Grid.Column="0" Grid.Row="0" BorderThickness="0" TextAlignment="Right" FontFamily="calibri" FontSize="12" Foreground="Blue" Focusable="False" IsReadOnly="True" Margin="0,2,5,0"/>
+                                        <TextBox Text="ΚΟΥΤΙ" FontWeight="Bold" Grid.Column="0" Grid.Row="1" BorderThickness="0" TextAlignment="Right" FontFamily="calibri" FontSize="12" Foreground="Blue" Focusable="False" IsReadOnly="True" Margin="0,2,5,0"/>
+                                        <TextBox x:Name="etiketa" Margin="0,2,2,2" Text="WALK ΠΑΙΔΙΚΟΣ ΦΑΚΕΛΟΣ" Grid.Column="1" Grid.Row="0"  FontFamily="calibri" FontSize="12" Foreground="Black" />
+                                        <TextBox x:Name="syskeuasia" Margin="0,2,2,2" Text="ΑΝΑ 6 LOT ΤΩΝ 3 ΖΕΥΓΩΝ ΣΕ ΣΑΚΟΥΛΑΚΙ 40χ40 ΤΟΣΟ  ΩΣΤΕ ΝΑ ΠΑΕΙ ΣΤΗ ΚΑΤΩ ΓΡΑΜΜΗ" TextWrapping="Wrap" Grid.Column="1" Grid.Row="1"  FontFamily="calibri" FontSize="12" Foreground="Black" />
+                                        <Grid Grid.Column="2" Grid.Row="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBox Text="ΣΙΔΕΡΟΤΥΠΟ" FontWeight="Bold" Grid.Column="0" Grid.Row="0" BorderThickness="0" TextAlignment="Right" FontFamily="calibri" FontSize="12" Foreground="Blue" Focusable="False" IsReadOnly="True" Margin="0,2,5,0"/>
+                                            <TextBox Text="ΑΥΤΟΚΟΛΛΗΤΟ" FontWeight="Bold" Grid.Column="0" Grid.Row="1" BorderThickness="0" TextAlignment="Right" FontFamily="calibri" FontSize="12" Foreground="Blue" Focusable="False" IsReadOnly="True" Margin="0,2,5,0"/>
+                                        </Grid>
+                                        <Grid Grid.Column="3" Grid.Row="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBox x:Name="irontag" Margin="0,2,2,2" Text="NAI, PUR FIL D'ECOSSE" Grid.Row="0"  FontFamily="calibri" FontSize="12" Foreground="Black" />
+                                            <TextBox x:Name="sticker" Margin="0,2,2,2" Text="OXI" Grid.Row="1"  FontFamily="calibri" FontSize="12" Foreground="Black" />
+                                        </Grid>
+                                        <Grid Grid.Column="2" Grid.Row="1">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBox Text="ΡΙΖΟΧΑΡΤΟ" FontWeight="Bold" Grid.Column="0" Grid.Row="0" BorderThickness="0" TextAlignment="Right" FontFamily="calibri" FontSize="12" Foreground="Blue" Focusable="False" IsReadOnly="True" Margin="0,2,5,0"/>
+                                            <TextBox Text="ΖΩΝΑΚΙ" FontWeight="Bold" Grid.Column="0" Grid.Row="1" BorderThickness="0" TextAlignment="Right" FontFamily="calibri" FontSize="12" Foreground="Blue" Focusable="False" IsReadOnly="True" Margin="0,2,5,0"/>
+                                        </Grid>
+                                        <Grid Grid.Column="3" Grid.Row="1">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="60"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBox x:Name="rizoxarto" Margin="0,2,2,2" Text="OXI" Grid.Row="0" Grid.Column="0"  FontFamily="calibri" FontSize="12" Foreground="Black"/>
+                                            <TextBox x:Name="zonaki" Text="OXI" Margin="0,2,2,2" Grid.Row="1" Grid.Column="0"  FontFamily="calibri" FontSize="12" Foreground="Black" />
+                                            <TextBox Text="ΧΑΡΤΙ" FontWeight="Bold" Grid.Column="1" Grid.Row="0" BorderThickness="0" TextAlignment="Right" FontFamily="calibri" FontSize="12" Foreground="Blue" Focusable="False" IsReadOnly="True" Margin="0,2,5,0"/>
+                                            <TextBox Text="ΠΡΟΤΥΠΟ" FontWeight="Bold" Grid.Column="1" Grid.Row="1" BorderThickness="0" TextAlignment="Right" FontFamily="calibri" FontSize="12" Foreground="Blue" Focusable="False" IsReadOnly="True" Margin="0,2,5,0"/>
+                                            <TextBox x:Name="paper" Margin="0,2,2,2" Text="OXI" Grid.Row="0" Grid.Column="2"  FontFamily="calibri" FontSize="12" Foreground="Black" />
+                                            <TextBox x:Name="protypo" Margin="0,2,2,2" Text="100" Grid.Row="1" Grid.Column="2"  FontFamily="calibri" FontSize="12" Foreground="Black" />
+                                            <ComboBox x:Name="protypoc" Margin="0,2,2,2" Visibility="Collapsed" Grid.Row="1" Grid.Column="2"  FontFamily="calibri" FontSize="12" Foreground="Black" />
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <Grid Background="White">
+                            <Grid Background="White" Margin="0,20,0,20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="535"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0">
+                                    <TextBox Text="Καταχώρηση" FontWeight="Bold"  BorderThickness="0" TextAlignment="Center" FontFamily="calibri" FontSize="12" Foreground="Blue" Focusable="False" IsReadOnly="True" Margin="0,0,5,0"/>
+                                    <TextBox x:Name="dateCreated"  Text="15/06/20" Margin="2,2,2,2"  FontFamily="calibri" FontSize="12" Foreground="Black" />
+                                    <TextBox x:Name="userCreated"  Text="ΟΓ" Margin="2,2,2,2" FontFamily="calibri" FontSize="12" Foreground="Black" />
+                                    <TextBox Text="Τελευταία Μετατροπή" FontWeight="Bold" Grid.Column="0" BorderThickness="0" TextAlignment="Center" FontFamily="calibri" FontSize="12" Foreground="Blue" Focusable="False" IsReadOnly="True" Margin="0,0,5,0"/>
+                                    <TextBox x:Name="dateModified"  Text="15/06/20" Margin="2,2,2,2" FontFamily="calibri" FontSize="12" Foreground="Black" />
+                                    <TextBox x:Name="userModified"  Text="ΟΓ" Margin="2,2,2,2" FontFamily="calibri" FontSize="12" Foreground="Black" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="1">
+                                    <TextBox Text="ΠΑΡΑΤΗΡΗΣΕΙΣ" FontWeight="Bold"  BorderThickness="0" TextAlignment="Center" FontFamily="calibri" FontSize="12" Foreground="Blue" Focusable="False" IsReadOnly="True" Margin="0,0,5,0"/>
+                                    <TextBox x:Name="comments" FontWeight="Bold" Text="Lot: 3 ΖΕΥΓΗ ΙΔΙΟΥ ΧΡΩΜΑΤΟΣ ΣΕ ΠΑΙΔΙΚΟ ΦΑΚΕΛΟ." Margin="10,2,10,2" FontFamily="calibri" FontSize="12" Foreground="Black" />
+
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="500"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+
+                </Grid.RowDefinitions>
+                <Image x:Name="image" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="450"/>
+                <StackPanel Grid.Column="1" Grid.Row="0">
+                    <TextBox x:Name="productref" Width="77" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" KeyUp="productref_KeyUp"/>
+                    <Button x:Name="copy_ref" Click="copy_ref_Click" Height="25" Width="92" Content="Copy Ref" HorizontalAlignment="Left"/>
+                    <Button x:Name="Change" Height="25" Width="98" Content="Change Values" Click="Change_Click" HorizontalAlignment="Left"/>
+                </StackPanel>
+
+            </Grid>
+        </Grid>
+
+    </Grid>
+</Window>

@@ -21,6 +21,7 @@ namespace Eisagogi_paragogis
 
 
         public Table<eisagogiParagogis> eisagogiParagogis;
+        public Table<BOMS_2> BOMS_2;
         public Table<BOMS3> BOMS3;
         public Table<boms3a> boms3a;
         public Table<BOMS4> BOMS4;
@@ -52,6 +53,7 @@ namespace Eisagogi_paragogis
         public Table<walk_prd_FullItemLinesList> walk_prd_FullItemLinesList;
         public Table<Boarding> Boading;
         public Table<MachinePosition> MachinePosition;
+        public Table<Product_spec_changes> Product_Spec_Changes;
 
     }
 }
