@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Printing;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -9,9 +11,14 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Xps;
+using System.Windows.Xps.Packaging;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace Eisagogi_paragogis
 {
@@ -20,7 +27,7 @@ namespace Eisagogi_paragogis
     /// </summary>
     public partial class Product_Specification : Window
     {
-        String finishId = "redmwc35";
+        String finishId = "";
         bool tochange = false;
 
         public Product_Specification()
@@ -29,6 +36,10 @@ namespace Eisagogi_paragogis
             InitializeComponent();
             Initial_Values();
 
+            if (Static_Variables.print_form)
+            {
+                print_();
+            }
 
         }
 
@@ -82,8 +93,8 @@ namespace Eisagogi_paragogis
                 paper.Text = context.BOMS4.Where(c => c.FINISHAP_ID == finishId).Select(d => d.PAPER).FirstOrDefault().TrimEnd();
                 protypo.Text = context.BOMS4.Where(c => c.FINISHAP_ID == finishId).Select(d => d.FORM).FirstOrDefault().TrimEnd();
 
-                dateModified.Text = "";
-                userModified.Text = "";
+                dateModified.Text = context.Product_Spec_Changes.Any(f => f.ProductName == finishId) ? context.Product_Spec_Changes.Where(c => c.ProductName == finishId).OrderByDescending(d => d.date_modified).Select(f => f.date_modified.Value).FirstOrDefault().ToString("dd/MM/yy") : "";
+                userModified.Text = context.Product_Spec_Changes.Any(f => f.ProductName == finishId) ? context.Product_Spec_Changes.Where(c => c.ProductName == finishId).OrderByDescending(d => d.date_modified).Select(f => f.user_modified).FirstOrDefault() : ""; ;
 
                 machines.ItemsSource = context.GM.Where(c => c.FINISHAP_ID == finishId).Select(d => new { mach = d.MHXANH.TrimEnd() });
 
@@ -296,11 +307,31 @@ namespace Eisagogi_paragogis
 
                 string desc = "";
                 string comp = "";
+                string plex = "";
+                string eido = "";
+                string etik = "";
+                string sysk = "";
+                string iron = "";
+                string stick = "";
+                string rizox = "";
+                string zon = "";
+                string pap = "";
+                string comm = "";
 
                 using (var context = new Production18())
                 {
                     desc = context.Finish1.Any(c => c.FINISHAP_ID == finishId) ? context.Finish1.Where(c => c.FINISHAP_ID == finishId).Select(d => d.DESCRIPTION).FirstOrDefault().TrimEnd() : "";
                     comp = context.Finish1.Where(c => c.FINISHAP_ID.Equals(finishId)).Select(d => d.COMP.Equals(null) ? "" : d.COMP).FirstOrDefault().TrimEnd();
+                    plex = context.Finish1.Any(c => c.FINISHAP_ID == finishId) ? context.Finish1.Where(c => c.FINISHAP_ID == finishId).Select(d => d.PLEJH).FirstOrDefault().TrimEnd() : "";
+                    eido = context.Finish1.Any(c => c.FINISHAP_ID == finishId) ? context.Finish1.Where(c => c.FINISHAP_ID == finishId).Select(d => d.SPI.Equals(null) ? "" : d.SPI).FirstOrDefault().TrimEnd() : "";
+                    etik = context.BOMS4.Where(c => c.FINISHAP_ID == finishId).Select(d => d.LABEL).FirstOrDefault().TrimEnd();
+                    sysk = context.BOMS4.Where(c => c.FINISHAP_ID == finishId).Select(d => d.BOX).FirstOrDefault().TrimEnd();
+                    iron = context.BOMS4.Where(c => c.FINISHAP_ID == finishId).Select(d => d.IRON).FirstOrDefault().TrimEnd();
+                    stick = context.BOMS4.Where(c => c.FINISHAP_ID == finishId).Select(d => d.STICKER).FirstOrDefault().TrimEnd();
+                    rizox = context.BOMS4.Where(c => c.FINISHAP_ID == finishId).Select(d => d.ΡΙΖΟΧΑΡΤΟ).FirstOrDefault().TrimEnd();
+                    zon = context.BOMS4.Where(c => c.FINISHAP_ID == finishId).Select(d => d.ΖΩΝΑΚΙ).FirstOrDefault().TrimEnd();
+                    pap = context.BOMS4.Where(c => c.FINISHAP_ID == finishId).Select(d => d.PAPER).FirstOrDefault().TrimEnd();
+                    comm = context.Finish1.Any(c => c.FINISHAP_ID == finishId) ? context.Finish1.Where(c => c.FINISHAP_ID == finishId).Select(d => d.COMMENTS.Equals(null) ? "" : d.COMMENTS).FirstOrDefault().TrimEnd() : "";
                 }
 
 
@@ -325,7 +356,6 @@ namespace Eisagogi_paragogis
                         }
                         description.Foreground = new SolidColorBrush(Colors.Black);
                     }
-
                     if (composition.Foreground.ToString() == "#FFFF0000")
                     {
                         Product_spec_changes input = new Product_spec_changes
@@ -344,11 +374,246 @@ namespace Eisagogi_paragogis
                         }
                         composition.Foreground = new SolidColorBrush(Colors.Black);
                     }
+                    if (plexi.Foreground.ToString() == "#FFFF0000")
+                    {
+                        Product_spec_changes input = new Product_spec_changes
+                        {
+                            user_modified = Environment.UserName,
+                            date_modified = DateTime.Now,
+                            specification_changed = "Plexi",
+                            old_value = plex,
+                            new_value = plexi.Text,
+                            ProductName = finishId
+                        };
+                        context.Product_Spec_Changes.InsertOnSubmit(input);
+                        foreach (var c in context.Finish1.Where(d => d.FINISHAP_ID == finishId))
+                        {
+                            c.PLEJH = plexi.Text;
+                        }
+                        plexi.Foreground = new SolidColorBrush(Colors.Black);
+                    }
+                    if (eidod.Foreground.ToString() == "#FFFF0000")
+                    {
+                        Product_spec_changes input = new Product_spec_changes
+                        {
+                            user_modified = Environment.UserName,
+                            date_modified = DateTime.Now,
+                            specification_changed = "Eidiki Odigia",
+                            old_value = eido,
+                            new_value = eidod.Text,
+                            ProductName = finishId
+                        };
+                        context.Product_Spec_Changes.InsertOnSubmit(input);
+                        foreach (var c in context.Finish1.Where(d => d.FINISHAP_ID == finishId))
+                        {
+                            c.SPI = eidod.Text;
+                        }
+                        eidod.Foreground = new SolidColorBrush(Colors.Black);
+                    }
+                    if (etiketa.Foreground.ToString() == "#FFFF0000")
+                    {
+                        Product_spec_changes input = new Product_spec_changes
+                        {
+                            user_modified = Environment.UserName,
+                            date_modified = DateTime.Now,
+                            specification_changed = "Etiketa",
+                            old_value = etik,
+                            new_value = etiketa.Text,
+                            ProductName = finishId
+                        };
+                        context.Product_Spec_Changes.InsertOnSubmit(input);
+                        foreach (var c in context.BOMS4.Where(d => d.FINISHAP_ID == finishId))
+                        {
+                            c.LABEL = etiketa.Text;
+                        }
+                        etiketa.Foreground = new SolidColorBrush(Colors.Black);
+                    }
+                    if (syskeuasia.Foreground.ToString() == "#FFFF0000")
+                    {
+                        Product_spec_changes input = new Product_spec_changes
+                        {
+                            user_modified = Environment.UserName,
+                            date_modified = DateTime.Now,
+                            specification_changed = "Tropos Syskeuasias (box)",
+                            old_value = sysk,
+                            new_value = syskeuasia.Text,
+                            ProductName = finishId
+                        };
+                        context.Product_Spec_Changes.InsertOnSubmit(input);
+                        foreach (var c in context.BOMS4.Where(d => d.FINISHAP_ID == finishId))
+                        {
+                            c.BOX = syskeuasia.Text;
+                        }
+                        syskeuasia.Foreground = new SolidColorBrush(Colors.Black);
+                    }
+                    if (irontag.Foreground.ToString() == "#FFFF0000")
+                    {
+                        Product_spec_changes input = new Product_spec_changes
+                        {
+                            user_modified = Environment.UserName,
+                            date_modified = DateTime.Now,
+                            specification_changed = "Irontag",
+                            old_value = iron,
+                            new_value = irontag.Text,
+                            ProductName = finishId
+                        };
+                        context.Product_Spec_Changes.InsertOnSubmit(input);
+                        foreach (var c in context.BOMS4.Where(d => d.FINISHAP_ID == finishId))
+                        {
+                            c.IRON = irontag.Text;
+                        }
+                        irontag.Foreground = new SolidColorBrush(Colors.Black);
+                    }
+                    if (sticker.Foreground.ToString() == "#FFFF0000")
+                    {
+                        Product_spec_changes input = new Product_spec_changes
+                        {
+                            user_modified = Environment.UserName,
+                            date_modified = DateTime.Now,
+                            specification_changed = "Sticker",
+                            old_value = stick,
+                            new_value = sticker.Text,
+                            ProductName = finishId
+                        };
+                        context.Product_Spec_Changes.InsertOnSubmit(input);
+                        foreach (var c in context.BOMS4.Where(d => d.FINISHAP_ID == finishId))
+                        {
+                            c.STICKER = sticker.Text;
+                        }
+                        sticker.Foreground = new SolidColorBrush(Colors.Black);
+                    }
+                    if (rizoxarto.Foreground.ToString() == "#FFFF0000")
+                    {
+                        Product_spec_changes input = new Product_spec_changes
+                        {
+                            user_modified = Environment.UserName,
+                            date_modified = DateTime.Now,
+                            specification_changed = "Rizoxarto",
+                            old_value = rizox,
+                            new_value = rizoxarto.Text,
+                            ProductName = finishId
+                        };
+                        context.Product_Spec_Changes.InsertOnSubmit(input);
+                        foreach (var c in context.BOMS4.Where(d => d.FINISHAP_ID == finishId))
+                        {
+                            c.ΡΙΖΟΧΑΡΤΟ = rizoxarto.Text;
+                        }
+                        rizoxarto.Foreground = new SolidColorBrush(Colors.Black);
+                    }
+                    if (zonaki.Foreground.ToString() == "#FFFF0000")
+                    {
+                        Product_spec_changes input = new Product_spec_changes
+                        {
+                            user_modified = Environment.UserName,
+                            date_modified = DateTime.Now,
+                            specification_changed = "Zonaki",
+                            old_value = zon,
+                            new_value = zonaki.Text,
+                            ProductName = finishId
+                        };
+                        context.Product_Spec_Changes.InsertOnSubmit(input);
+                        foreach (var c in context.BOMS4.Where(d => d.FINISHAP_ID == finishId))
+                        {
+                            c.ΖΩΝΑΚΙ = zonaki.Text;
+                        }
+                        zonaki.Foreground = new SolidColorBrush(Colors.Black);
+                    }
+                    if (paper.Foreground.ToString() == "#FFFF0000")
+                    {
+                        Product_spec_changes input = new Product_spec_changes
+                        {
+                            user_modified = Environment.UserName,
+                            date_modified = DateTime.Now,
+                            specification_changed = "Paper",
+                            old_value = pap,
+                            new_value = paper.Text,
+                            ProductName = finishId
+                        };
+                        context.Product_Spec_Changes.InsertOnSubmit(input);
+                        foreach (var c in context.BOMS4.Where(d => d.FINISHAP_ID == finishId))
+                        {
+                            c.PAPER = paper.Text;
+                        }
+                        paper.Foreground = new SolidColorBrush(Colors.Black);
+                    }
+                    if (comments.Foreground.ToString() == "#FFFF0000")
+                    {
+                        Product_spec_changes input = new Product_spec_changes
+                        {
+                            user_modified = Environment.UserName,
+                            date_modified = DateTime.Now,
+                            specification_changed = "Comments",
+                            old_value = comm,
+                            new_value = comments.Text,
+                            ProductName = finishId
+                        };
+                        context.Product_Spec_Changes.InsertOnSubmit(input);
+                        foreach (var c in context.Finish1.Where(d => d.FINISHAP_ID == finishId))
+                        {
+                            c.COMMENTS = comments.Text;
+                        }
+                        comments.Foreground = new SolidColorBrush(Colors.Black);
+                    }
+                    if (protypoc.Foreground.ToString() == "#FFFF0000")
+                    {
+                        Product_spec_changes input = new Product_spec_changes
+                        {
+                            user_modified = Environment.UserName,
+                            date_modified = DateTime.Now,
+                            specification_changed = "Protypo Sideromatos",
+                            old_value = protypo.Text,
+                            new_value = protypoc.Text,
+                            ProductName = finishId
+                        };
+                        context.Product_Spec_Changes.InsertOnSubmit(input);
+                        foreach (var c in context.BOMS4.Where(d => d.FINISHAP_ID == finishId))
+                        {
+                            c.FORM = protypoc.Text;
+                        }
+                        protypoc.Foreground = new SolidColorBrush(Colors.Black);
+                    }
+                    if (mytic.Foreground.ToString() == "#FFFF0000")
+                    {
+                        Product_spec_changes input = new Product_spec_changes
+                        {
+                            user_modified = Environment.UserName,
+                            date_modified = DateTime.Now,
+                            specification_changed = "Rafi Mytis",
+                            old_value = myti.Text,
+                            new_value = mytic.Text,
+                            ProductName = finishId
+                        };
+                        context.Product_Spec_Changes.InsertOnSubmit(input);
+                        foreach (var c in context.Finish1.Where(d => d.FINISHAP_ID == finishId))
+                        {
+                            c.ENOSI= mytic.Text;
+                        }
+                        mytic.Foreground = new SolidColorBrush(Colors.Black);
+                    }
+                    if (customerc.Foreground.ToString() == "#FFFF0000")
+                    {
+                        Product_spec_changes input = new Product_spec_changes
+                        {
+                            user_modified = Environment.UserName,
+                            date_modified = DateTime.Now,
+                            specification_changed = "Rafi Mytis",
+                            old_value = customer.Text,
+                            new_value = customerc.Text,
+                            ProductName = finishId
+                        };
+                        context.Product_Spec_Changes.InsertOnSubmit(input);
+                        foreach (var c in context.Finish1.Where(d => d.FINISHAP_ID == finishId))
+                        {
+                            c.COUNTRY = customerc.Text;
+                        }
+                        customerc.Foreground = new SolidColorBrush(Colors.Black);
+                    }
 
 
                     context.SubmitChanges();
                 }
 
+                Initial_Values();
 
             }
             else
@@ -400,11 +665,13 @@ namespace Eisagogi_paragogis
 
 
 
+
                 using (var context = new Production18())
                 {
                     mytic.ItemsSource = context.Finish1.GroupBy(c => c.ENOSI).OrderBy(f => f.Key).Select(d => d.Key);
                     customerc.ItemsSource = context.Finish1.GroupBy(c => c.COUNTRY).OrderBy(f => f.Key).Select(d => d.Key);
                     protypoc.ItemsSource = context.BOMS4.GroupBy(c => c.FORM).OrderBy(f => f.Key).Select(d => d.Key);
+
                 }
 
                 protypoc.SelectionChanged += new SelectionChangedEventHandler(Combo_SelectionChanged);
@@ -427,6 +694,72 @@ namespace Eisagogi_paragogis
             BrushConverter bc = new BrushConverter();
             ComboBox tb = sender as ComboBox;
             tb.Foreground = (Brush)bc.ConvertFrom("#FFFF0000");
+        }
+
+        private void MachinesPicking_Click(object sender, RoutedEventArgs e)
+        {
+            Static_Variables.finishid = finishId;
+            Window mp = new Machines_Picking();
+
+            //await Task.Run(() => mp.Show());
+
+            mp.ShowDialog();
+
+            if (Static_Variables.ProductMachinesChanged)
+            {
+                using (var context = new Production18())
+                {
+                    machines.ItemsSource = context.GM.Where(c => c.FINISHAP_ID == finishId).Select(d => new { mach = d.MHXANH.TrimEnd() });
+                }
+                Static_Variables.ProductMachinesChanged = false;
+            }
+        }
+
+        internal void print_Click(object sender, RoutedEventArgs e)
+        {
+            print_();
+
+        }
+
+        private void print_()
+        {
+            if (Static_Variables.print_form)
+            {
+                PrintDialog printDlg = new PrintDialog();
+                Size pageSize = new Size(printDlg.PrintableAreaWidth, printDlg.PrintableAreaHeight);
+
+                specifications.Measure(pageSize);
+                specifications.Arrange(new Rect(0, 0, pageSize.Width, pageSize.Height));
+
+                PrintDialog dl = new PrintDialog();
+
+
+                if (printDlg.ShowDialog() == true)
+                {
+
+                    System.Printing.PrintCapabilities capabilities = printDlg.PrintQueue.GetPrintCapabilities(printDlg.PrintTicket);
+
+
+                    double scale = Math.Min(specifications.ActualWidth / capabilities.PageImageableArea.ExtentWidth, specifications.ActualHeight / capabilities.PageImageableArea.ExtentHeight);
+                    specifications.LayoutTransform = new ScaleTransform(scale, scale);
+                    Size sz = new Size(capabilities.PageImageableArea.ExtentWidth, capabilities.PageImageableArea.ExtentHeight);
+
+                    specifications.Measure(sz);
+                    specifications.Arrange(new Rect(new Point(capabilities.PageImageableArea.OriginWidth, capabilities.PageImageableArea.OriginHeight), sz));
+                    specifications.UpdateLayout();
+
+                    printDlg.PrintVisual(specifications, "First Fit to Page WPF Print");
+                }
+                Static_Variables.print_form = false;
+
+            }
+            else
+            {
+                Static_Variables.finishid = finishId;
+                Static_Variables.print_form = true;
+                Window wd = new Product_Specification();
+
+            }
         }
     }
 }

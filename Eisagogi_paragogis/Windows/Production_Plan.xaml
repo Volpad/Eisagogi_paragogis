@@ -279,6 +279,9 @@
                 <ComboBoxItem>
                     <Button x:Name="ProdSpec" Content="Προδιαγραφές Κωδικών" Height="25" VerticalAlignment="Stretch" Width="150" Click="ProdSpec_Click"  Foreground="WhiteSmoke"  Background="DimGray"/>
                 </ComboBoxItem>
+                <ComboBoxItem>
+                    <Button x:Name="calendar" Content="Calendar" Height="25" VerticalAlignment="Stretch" Width="150" Click="calendar_Click"  Foreground="WhiteSmoke"  Background="DimGray"/>
+                </ComboBoxItem>
 
             </ComboBox>
 

@@ -2735,6 +2735,12 @@ namespace Eisagogi_paragogis
             Window ps = new Product_Specification();
             ps.Show();
         }
+
+        private void calendar_Click(object sender, RoutedEventArgs e)
+        {
+            Window cal = new Calendar();
+            cal.Show();
+        }
     }
 }
 

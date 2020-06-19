@@ -30,6 +30,7 @@ namespace Eisagogi_paragogis
 #pragma warning restore CS0649 // Field 'Static_Variables.document' is never assigned to, and will always have its default value null
         public static FixedDocument fixedDoc;
         public static bool tsouvali_click = false;
-
+        public static bool ProductMachinesChanged = false;
+        public static bool print_form = false;
     }
 }
