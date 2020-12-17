@@ -1419,7 +1419,7 @@
                         <TextBlock x:Name="dosencount" Text="35 δωδεκάδες" TextAlignment="Right" HorizontalAlignment="Left" Width="104" Margin="594,77,0,-77"/>
                         <Border BorderThickness="2" BorderBrush="Black" Margin="0,0,0,-119" HorizontalAlignment="Left" Width="703" Height="37" VerticalAlignment="Bottom">
                             <Viewbox HorizontalAlignment="Center" Height="35" Margin="0,0,0,0" VerticalAlignment="Top">
-                                <TextBlock x:Name="memo" TextAlignment="Center" Text="Memo" Foreground="Red" Height="17"  />
+                                <TextBlock x:Name="memo" TextAlignment="Center" Text="Memo" Foreground="Red" FontWeight="Bold" Height="17"  />
                             </Viewbox>
                         </Border>
 

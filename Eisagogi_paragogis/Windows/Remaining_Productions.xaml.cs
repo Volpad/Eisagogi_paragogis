@@ -66,13 +66,13 @@ namespace Eisagogi_paragogis
                 
                 var mqty = from Machineqty in context.Machineqty
                            orderby Machineqty.queueNo descending, Machineqty.AccessNo descending, Machineqty.ID
-                           where Machineqty.MachineNo != null && Machineqty.queueNo != "deleted"
+                           where Machineqty.MachineNo != null && Machineqty.queueNo != "deleted" && Machineqty.queueNo != "returned"
                            select Machineqty;
 
                 var mqtyfull = from Machineqty in context.Machineqty
                            orderby Machineqty.queueNo descending, Machineqty.AccessNo descending, Machineqty.ID
-                           where Machineqty.MachineNo != null
-                           select Machineqty;
+                           where Machineqty.MachineNo != null && Machineqty.queueNo != "returned"
+                               select Machineqty;
 
                 var fns1 = from Finish1 in context.Finish1
                            select Finish1;

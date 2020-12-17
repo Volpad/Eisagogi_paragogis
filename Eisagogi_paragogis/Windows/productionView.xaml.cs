@@ -78,6 +78,7 @@ namespace Eisagogi_paragogis
                 var Memo = context.DELTIO_FINISH_SUPER.Where(c => c.TOTAL_ID == Static_Variables.prodviewtotalid).Select(d => d.ΜΕΜΟ).FirstOrDefault();
 
                 var orderfinishdate = context.Orders_Fin.Where(c => c.TOTAL_ID == Static_Variables.prodviewtotalid).Select(d => d.DATE_ENTRY).FirstOrDefault();
+                var orderfinishnumber = context.Orders_Fin.Where(c => c.TOTAL_ID == Static_Variables.prodviewtotalid).Select(d => d.id).FirstOrDefault();
                 if (orderfinishdate < DateTime.Now.AddMonths(-1000))
                 {
                     OrderFinish.Text = "";
@@ -91,7 +92,7 @@ namespace Eisagogi_paragogis
                 }
                 else
                 {
-                    OrderFinish.Text = orderfinishdate.ToString();
+                    OrderFinish.Text = orderfinishnumber.ToString() + " - " + orderfinishdate.ToString("dd/MM/yy");
                     ycanvas.Background = new SolidColorBrush(Colors.Green);
                     product.Foreground = new SolidColorBrush(Colors.White);
                     date.Foreground = new SolidColorBrush(Colors.White);

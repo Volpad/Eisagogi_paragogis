@@ -110,13 +110,15 @@ namespace Eisagogi_paragogis
         {
             if (e.Key == Key.Enter)
             {
-                FocusNavigationDirection focusDirection = FocusNavigationDirection.Next;
-                TraversalRequest request = new TraversalRequest(focusDirection);
-                UIElement elementWithFocus = Keyboard.FocusedElement as UIElement;
-                if (elementWithFocus != null)
-                {
-                    if (elementWithFocus.MoveFocus(request)) e.Handled = true;
-                }
+                //FocusNavigationDirection focusDirection = FocusNavigationDirection.Next;
+                //TraversalRequest request = new TraversalRequest(focusDirection);
+                //UIElement elementWithFocus = Keyboard.FocusedElement as UIElement;
+                //if (elementWithFocus != null)
+                //{
+                //    if (elementWithFocus.MoveFocus(request)) e.Handled = true;
+                //}
+
+                save.Focus();
 
             }
         }
@@ -199,6 +201,41 @@ namespace Eisagogi_paragogis
 
         private void save_GotFocus(object sender, RoutedEventArgs e)
         {
+
+            using (var context = new Production18())
+            {
+                //  var colid = context.eisagogiParagogis.Where(c => c.barcode == access_no.Text).Select(x => x.Col_Id).FirstOrDefault();
+                int index = access_no.Text.IndexOf("-");
+                int backSlashIndex = access_no.Text.IndexOf("-");
+
+                var colid = (backSlashIndex > 0) ? int.Parse(access_no.Text.Substring(0, backSlashIndex)) : 0;
+                if (context.eisagogiParagogis.Any(c => c.barcode == access_no.Text))
+                {
+                    reference.Text = context.DELTIO_FINISH_SUPER1.Where(c => c.COL_ID == colid).Select(x => x.FINISHAP_ID).FirstOrDefault();
+                    colour.Text = context.DELTIO_FINISH_SUPER1.Where(c => c.COL_ID == colid).Select(x => x.COLORID).FirstOrDefault() + "." + context.DELTIO_FINISH_SUPER1.Where(c => c.COL_ID == colid).Select(x => x.COLOR).FirstOrDefault();
+                    size.Text = context.DELTIO_FINISH_SUPER1.Where(c => c.COL_ID == colid).Select(x => x.SIZE).FirstOrDefault();
+                }
+                else
+                {
+
+                    if (context.DELTIO_FINISH_SUPER1.Any(c => c.COL_ID == colid))
+                    {
+                        MessageBox.Show("Το δελτίο δεν έχει περαστεί απο τη παραγωγή.", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                        access_no.Text = "";
+                        access_no.Focus();
+                    }
+                    else
+                    {
+                        if (access_no.Text != "")
+                        {
+                            MessageBox.Show("Λάθος αριθμός καταχώρησης", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                            access_no.Text = "";
+                            access_no.Focus();
+                        }
+                    }
+                }
+            }
+
             if (access_no.Text == "")
             {
                 access_no.Focus();

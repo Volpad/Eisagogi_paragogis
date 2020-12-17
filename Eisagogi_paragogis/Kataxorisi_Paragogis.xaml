@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Eisagogi_paragogis"
         mc:Ignorable="d"
-        Title="Kataxorisi_Paragogis" Height="553.068" Width="936.63">
+        Title="Kataxorisi_Paragogis" Height="1180.068" Width="1665.63">
     <Window.Background>
         <VisualBrush TileMode="Tile" Viewport="0,0,20,20" ViewportUnits="Absolute">
             <VisualBrush.Visual>
@@ -14,6 +14,987 @@
         </VisualBrush>
     </Window.Background>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="250"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <Grid Margin="10,25,10,25" Grid.Row="0">
+            <Grid.ColumnDefinitions>
 
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="170"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="150*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="65"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="Κωδικός" Foreground="WhiteSmoke" FontFamily="calibri" FontSize="17" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"/>
+            <TextBlock x:Name="mref" Grid.Column="0" Grid.Row="1" Text="W100ETT5" Foreground="LightSteelBlue" FontFamily="calibri" FontSize="27" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextAlignment="Center"/>
+            <TextBlock Grid.Column="1" Grid.Row="0" Text="Αρ. Παραγγελίας" Foreground="WhiteSmoke" FontFamily="calibri" FontSize="17" VerticalAlignment="Center"  TextAlignment="Center" HorizontalAlignment="Center"/>
+            <ComboBox x:Name="morderno" Grid.Column="1" Grid.Row="1" Text="Rennes Distribution 22/06/20" FontFamily="calibri" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Stretch" IsReadOnly="False" IsEditable="True"  Margin="5,0,5,0"/>
+            <TextBlock Grid.Column="2" Grid.Row="0" Text="Ημ. Παράδοσης" Foreground="WhiteSmoke" FontFamily="calibri" FontSize="17" VerticalAlignment="Center"  TextAlignment="Center" HorizontalAlignment="Center" />
+            <TextBox x:Name="mdeliverydate" Grid.Column="2" Grid.Row="1" Text=" 22/06/20" FontFamily="calibri" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextAlignment="Center" Margin="5,0,5,0"/>
+            <TextBlock Grid.Column="3" Grid.Row="0" Text="Μονάδα" Foreground="WhiteSmoke" FontFamily="calibri" FontSize="17" VerticalAlignment="Center"  TextAlignment="Center" HorizontalAlignment="Center" />
+            <ComboBox x:Name="mmonada" Grid.Column="3" Grid.Row="1" Text=" 22/06/20" FontFamily="calibri" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Stretch"  Margin="5,0,5,0"/>
+            <TextBlock Grid.Column="4" Grid.Row="0" Text="Αριθμός Καταχώρησης" Foreground="WhiteSmoke" FontFamily="calibri" FontSize="17" VerticalAlignment="Center"  TextAlignment="Center" HorizontalAlignment="Center" />
+            <TextBlock x:Name="totalid" Grid.Column="4" Grid.Row="1" Text="17215" FontFamily="calibri" FontSize="28" Foreground="WhiteSmoke" FontWeight="Bold"  VerticalAlignment="Center" HorizontalAlignment="Stretch" TextAlignment="Center" Margin="5,0,5,0"/>
+            <Button Grid.Column="5" Grid.Row="1" Content="Αντιγραφή" FontFamily="calibri" FontSize="25" Foreground="Black"   VerticalAlignment="Center" HorizontalAlignment="Stretch"  Margin="5,0,5,0"/>
+            <!--<TextBlock Grid.Column="5" Grid.Row="0" Text="Εκτυπωση παραγωγης" Foreground="WhiteSmoke" FontFamily="calibri" FontSize="17" VerticalAlignment="Center"  TextAlignment="Center" HorizontalAlignment="Center" />-->
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="Μηχανή" Foreground="WhiteSmoke" FontFamily="calibri" FontSize="17" VerticalAlignment="Center"  TextAlignment="Center" HorizontalAlignment="Center" />
+            <ComboBox x:Name="mmachine" Grid.Column="0" Grid.Row="3" Text="LONATI L1" FontFamily="calibri" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center"
+                      Margin="5,0,5,0"/>
+            <TextBlock Grid.Column="1" Grid.Row="2" Text="Σχόλια" Foreground="WhiteSmoke" FontFamily="calibri" FontSize="17" VerticalAlignment="Center"  TextAlignment="Center" HorizontalAlignment="Center" />
+            <TextBox x:Name="mcomments" Grid.Column="1" Grid.Row="3" Text="Production_Comments" FontFamily="calibri" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextAlignment="Center" Margin="5,0,5,0"/>
+            <TextBlock Grid.Column="2" Grid.Row="2" Text="Νημα" Foreground="WhiteSmoke" FontFamily="calibri" FontSize="17" VerticalAlignment="Center"  TextAlignment="Center" HorizontalAlignment="Center" />
+            <ComboBox x:Name="myarn" Grid.Column="2" Grid.Row="3" Text="2ΧΒ.1.20 + Ε.170" FontFamily="calibri" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center" IsReadOnly="False" IsEditable="True"  Margin="5,0,5,0" />
+            <TextBlock Grid.Column="3" Grid.Row="2" Text="Πρόγραμμα" Foreground="WhiteSmoke" FontFamily="calibri" FontSize="17" VerticalAlignment="Center"  TextAlignment="Center" HorizontalAlignment="Center" />
+            <ComboBox x:Name="mprog" Grid.Column="3" Grid.Row="3" Text="REDMWC35" FontFamily="calibri" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center" IsReadOnly="False" IsEditable="True"  Margin="5,0,5,0"/>
+            <TextBlock Grid.Column="4" Grid.Row="2" Text="Χρώμα" Foreground="WhiteSmoke" FontFamily="calibri" FontSize="17" VerticalAlignment="Center"  TextAlignment="Center" HorizontalAlignment="Center" />
+            <ComboBox x:Name="mcolno"  Grid.Column="4" Grid.Row="3" HorizontalContentAlignment="Center" Text="020975" FontFamily="calibri" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Stretch" IsReadOnly="False" IsEditable="True"  Margin="20,5,20,5" SelectionChanged="mcolno_SelectionChanged"/>
+            <ComboBox x:Name="mcolna" Grid.Column="4" Grid.Row="3" HorizontalContentAlignment="Center" Text="ΜΑΥΡΟ-ΑΝΘΡΑΚΙ-ΑΝΘΡΑΚΙ" FontFamily="calibri" FontSize="15" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" IsReadOnly="False" IsEditable="True"  Margin="10,5,10,5" SelectionChanged="mcolna_SelectionChanged"/>
+            <!--<TextBlock Grid.Column="5" Grid.Row="2" Text="Προσθηκη" Foreground="WhiteSmoke" FontFamily="calibri" FontSize="17" VerticalAlignment="Center"  TextAlignment="Center" HorizontalAlignment="Center" />-->
+            <Button Grid.Column="5" Grid.Row="3" Content="Προσθηκη" FontFamily="calibri" FontSize="28" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Stretch"  Margin="5,0,5,0"/>
+
+        </Grid>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" >
+            <Grid Background="SlateGray">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="28*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Margin="0,2.5,0,2.5" Background="LightGray">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="75"/>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="27"/>
+                    </Grid.ColumnDefinitions>
+                    <Border x:Name="bord1" Grid.Column="0" BorderBrush="#FFABADB3" BorderThickness="1" Background="WhiteSmoke" Margin="5,2.5">
+                        <TextBlock x:Name="rownum1" Text="1" VerticalAlignment="Center"  HorizontalAlignment="Stretch" TextAlignment="Center" Focusable="False"  />
+                    </Border>
+                    <ComboBox x:Name="colname1" Grid.Column="1" IsEditable="True" VerticalContentAlignment="Center" Text="MAYRO - MAYRO - MAYRO" Margin="5,2.5"/>
+                    <ComboBox x:Name="colno1" Grid.Column="2" IsEditable="True" VerticalContentAlignment="Center" Text="020202" Margin="5,2.5" />
+                    <ComboBox x:Name="prog1" Grid.Column="3" IsEditable="True" VerticalContentAlignment="Center" Text="MCK256" Margin="5,2.5" />
+                    <ComboBox x:Name="yarn1" Grid.Column="4" IsEditable="True" VerticalContentAlignment="Center" Text="2ΧΒ.1.20 + Ε.170" Margin="5,2.5" />
+                    <Grid Grid.Column="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="size11" Grid.Row="0" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size12" Grid.Row="1" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed" />
+                        <TextBox x:Name="size13" Grid.Row="2" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"  />
+                        <TextBox x:Name="size14" Grid.Row="3" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed" />
+                        <TextBox x:Name="size15" Grid.Row="4" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed" />
+                        <TextBox x:Name="size16" Grid.Row="5" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="size17" Grid.Row="6" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="size18" Grid.Row="7" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="qty11" Grid.Row="0" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty12" Grid.Row="1" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed" />
+                        <TextBox x:Name="qty13" Grid.Row="2" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed" />
+                        <TextBox x:Name="qty14" Grid.Row="3" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty15" Grid.Row="4" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty16" Grid.Row="5" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty17" Grid.Row="6" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty18" Grid.Row="7" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="stock11" Grid.Row="0" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock12" Grid.Row="1" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed" />
+                        <TextBox x:Name="stock13" Grid.Row="2" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed" />
+                        <TextBox x:Name="stock14" Grid.Row="3" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock15" Grid.Row="4" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock16" Grid.Row="5" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock17" Grid.Row="6" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock18" Grid.Row="7" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="prod11" Grid.Row="0" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" />
+                        <TextBox x:Name="prod12" Grid.Row="1" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed" />
+                        <TextBox x:Name="prod13" Grid.Row="2" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed" />
+                        <TextBox x:Name="prod14" Grid.Row="3" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod15" Grid.Row="4" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod16" Grid.Row="5" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod17" Grid.Row="6" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod18" Grid.Row="7" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+
+
+                    </Grid>
+                    <ComboBox x:Name="special1" Grid.Column="6" IsEditable="True" VerticalContentAlignment="Center" Text="specialinstruction" Margin="5,2.5" />
+                    <ComboBox x:Name="suplcolno1" Grid.Column="7" IsEditable="True" VerticalContentAlignment="Center" Text="020202" Margin="5,2.5" />
+                    <TextBox x:Name="suplcolna1" Grid.Column="8"  VerticalContentAlignment="Center" Text="ΜΑΥΡΟ - ΜΑΥΡΟ - ΜΑΥΡΟ" Margin="5,2.5" />
+                    <Button x:Name="btn1" Background="Transparent" Grid.Column="9" Click="Button_Click">
+                        <Image Source="pictures/x.ico" />
+                    </Button>
+
+                </Grid>
+                <Grid Grid.Row="1" Margin="0,2.5,0,2.5" Background="Gray">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="75"/>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="27"/>
+                    </Grid.ColumnDefinitions>
+                    <Border x:Name="bord2" Grid.Column="0" BorderBrush="#FFABADB3" BorderThickness="1" Background="WhiteSmoke" Margin="5,2.5">
+                        <TextBlock x:Name="rownum2" Text="2" VerticalAlignment="Center"  HorizontalAlignment="Stretch" TextAlignment="Center" Focusable="False"  />
+                    </Border>
+                    <ComboBox x:Name="colname2" Grid.Column="1" IsEditable="True" VerticalContentAlignment="Center" Text="MAYRO - MAYRO - MAYRO" Margin="5,2.5"/>
+                    <ComboBox x:Name="colno2" Grid.Column="2" IsEditable="True" VerticalContentAlignment="Center" Text="020202" Margin="5,2.5" />
+                    <ComboBox x:Name="prog2" Grid.Column="3" IsEditable="True" VerticalContentAlignment="Center" Text="MCK256" Margin="5,2.5" />
+                    <ComboBox x:Name="yarn2" Grid.Column="4" IsEditable="True" VerticalContentAlignment="Center" Text="2ΧΒ.1.20 + Ε.170" Margin="5,2.5" />
+                    <Grid Grid.Column="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="size21" Grid.Row="0" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size22" Grid.Row="1" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size23" Grid.Row="2" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size24" Grid.Row="3" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed" />
+                        <TextBox x:Name="size25" Grid.Row="4" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed" />
+                        <TextBox x:Name="size26" Grid.Row="5" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="size27" Grid.Row="6" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="size28" Grid.Row="7" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="qty21" Grid.Row="0" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty22" Grid.Row="1" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty23" Grid.Row="2" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty24" Grid.Row="3" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty25" Grid.Row="4" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty26" Grid.Row="5" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty27" Grid.Row="6" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty28" Grid.Row="7" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="stock21" Grid.Row="0" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock22" Grid.Row="1" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock23" Grid.Row="2" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock24" Grid.Row="3" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock25" Grid.Row="4" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock26" Grid.Row="5" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock27" Grid.Row="6" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock28" Grid.Row="7" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="prod21" Grid.Row="0" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" />
+                        <TextBox x:Name="prod22" Grid.Row="1" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="prod23" Grid.Row="2" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="prod24" Grid.Row="3" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod25" Grid.Row="4" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod26" Grid.Row="5" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod27" Grid.Row="6" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod28" Grid.Row="7" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+
+
+                    </Grid>
+                    <ComboBox x:Name="special2" Grid.Column="6" IsEditable="True" VerticalContentAlignment="Center" Text="specialinstruction" Margin="5,2.5" />
+                    <ComboBox x:Name="suplcolno2" Grid.Column="7" IsEditable="True" VerticalContentAlignment="Center" Text="020202" Margin="5,2.5" />
+                    <TextBox x:Name="suplcolna2" Grid.Column="8"  VerticalContentAlignment="Center" Text="ΜΑΥΡΟ - ΜΑΥΡΟ - ΜΑΥΡΟ" Margin="5,2.5" />
+                    <Button x:Name="btn2" Background="Transparent" Grid.Column="9" Click="Button_Click">
+                        <Image Source="pictures/x.ico" />
+                    </Button>
+
+                </Grid>
+                <Grid Grid.Row="2" Margin="0,2.5,0,2.5" Background="LightGray">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="75"/>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="27"/>
+                    </Grid.ColumnDefinitions>
+                    <Border x:Name="bord3" Grid.Column="0" BorderBrush="#FFABADB3" BorderThickness="1" Background="WhiteSmoke" Margin="5,2.5">
+                        <TextBlock x:Name="rownum3" Text="3" VerticalAlignment="Center"  HorizontalAlignment="Stretch" TextAlignment="Center" Focusable="False"  />
+                    </Border>
+                    <ComboBox x:Name="colname3" Grid.Column="1" IsEditable="True" VerticalContentAlignment="Center" Text="MAYRO - MAYRO - MAYRO" Margin="5,2.5"/>
+                    <ComboBox x:Name="colno3" Grid.Column="2" IsEditable="True" VerticalContentAlignment="Center" Text="020202" Margin="5,2.5" />
+                    <ComboBox x:Name="prog3" Grid.Column="3" IsEditable="True" VerticalContentAlignment="Center" Text="MCK256" Margin="5,2.5" />
+                    <ComboBox x:Name="yarn3" Grid.Column="4" IsEditable="True" VerticalContentAlignment="Center" Text="2ΧΒ.1.20 + Ε.170" Margin="5,2.5" />
+                    <Grid Grid.Column="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="size31" Grid.Row="0" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size32" Grid.Row="1" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size33" Grid.Row="2" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size34" Grid.Row="3" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed" />
+                        <TextBox x:Name="size35" Grid.Row="4" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed" />
+                        <TextBox x:Name="size36" Grid.Row="5" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="size37" Grid.Row="6" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="size38" Grid.Row="7" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="qty31" Grid.Row="0" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty32" Grid.Row="1" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty33" Grid.Row="2" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty34" Grid.Row="3" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty35" Grid.Row="4" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty36" Grid.Row="5" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty37" Grid.Row="6" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty38" Grid.Row="7" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="stock31" Grid.Row="0" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock32" Grid.Row="1" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock33" Grid.Row="2" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock34" Grid.Row="3" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock35" Grid.Row="4" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock36" Grid.Row="5" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock37" Grid.Row="6" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock38" Grid.Row="7" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="prod31" Grid.Row="0" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" />
+                        <TextBox x:Name="prod32" Grid.Row="1" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="prod33" Grid.Row="2" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="prod34" Grid.Row="3" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod35" Grid.Row="4" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod36" Grid.Row="5" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod37" Grid.Row="6" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod38" Grid.Row="7" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+
+
+                    </Grid>
+                    <ComboBox x:Name="special3" Grid.Column="6" IsEditable="True" VerticalContentAlignment="Center" Text="specialinstruction" Margin="5,2.5" />
+                    <ComboBox x:Name="suplcolno3" Grid.Column="7" IsEditable="True" VerticalContentAlignment="Center" Text="020202" Margin="5,2.5" />
+                    <TextBox x:Name="suplcolna3" Grid.Column="8"  VerticalContentAlignment="Center" Text="ΜΑΥΡΟ - ΜΑΥΡΟ - ΜΑΥΡΟ" Margin="5,2.5" />
+                    <Button x:Name="btn3" Background="Transparent" Grid.Column="9" Click="Button_Click">
+                        <Image Source="pictures/x.ico" />
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="3" Margin="0,2.5,0,2.5" Background="Gray">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="75"/>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="27"/>
+                    </Grid.ColumnDefinitions>
+                    <Border x:Name="bord4" Grid.Column="0" BorderBrush="#FFABADB3" BorderThickness="1" Background="WhiteSmoke" Margin="5,2.5">
+                        <TextBlock x:Name="rownum4" Text="4" VerticalAlignment="Center"  HorizontalAlignment="Stretch" TextAlignment="Center" Focusable="False"  />
+                    </Border>
+                    <ComboBox x:Name="colname4" Grid.Column="1" IsEditable="True" VerticalContentAlignment="Center" Text="MAYRO - MAYRO - MAYRO" Margin="5,2.5"/>
+                    <ComboBox x:Name="colno4" Grid.Column="2" IsEditable="True" VerticalContentAlignment="Center" Text="020202" Margin="5,2.5" />
+                    <ComboBox x:Name="prog4" Grid.Column="3" IsEditable="True" VerticalContentAlignment="Center" Text="MCK256" Margin="5,2.5" />
+                    <ComboBox x:Name="yarn4" Grid.Column="4" IsEditable="True" VerticalContentAlignment="Center" Text="2ΧΒ.1.20 + Ε.170" Margin="5,2.5" />
+                    <Grid Grid.Column="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="size41" Grid.Row="0" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size42" Grid.Row="1" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size43" Grid.Row="2" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size44" Grid.Row="3" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed" />
+                        <TextBox x:Name="size45" Grid.Row="4" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed" />
+                        <TextBox x:Name="size46" Grid.Row="5" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="size47" Grid.Row="6" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="size48" Grid.Row="7" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="qty41" Grid.Row="0" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty42" Grid.Row="1" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty43" Grid.Row="2" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty44" Grid.Row="3" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty45" Grid.Row="4" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty46" Grid.Row="5" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty47" Grid.Row="6" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty48" Grid.Row="7" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="stock41" Grid.Row="0" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock42" Grid.Row="1" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock43" Grid.Row="2" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock44" Grid.Row="3" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock45" Grid.Row="4" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock46" Grid.Row="5" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock47" Grid.Row="6" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock48" Grid.Row="7" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="prod41" Grid.Row="0" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" />
+                        <TextBox x:Name="prod42" Grid.Row="1" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="prod43" Grid.Row="2" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="prod44" Grid.Row="3" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod45" Grid.Row="4" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod46" Grid.Row="5" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod47" Grid.Row="6" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod48" Grid.Row="7" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+
+
+                    </Grid>
+                    <ComboBox x:Name="special4" Grid.Column="6" IsEditable="True" VerticalContentAlignment="Center" Text="specialinstruction" Margin="5,2.5" />
+                    <ComboBox x:Name="suplcolno4" Grid.Column="7" IsEditable="True" VerticalContentAlignment="Center" Text="020202" Margin="5,2.5" />
+                    <TextBox x:Name="suplcolna4" Grid.Column="8"  VerticalContentAlignment="Center" Text="ΜΑΥΡΟ - ΜΑΥΡΟ - ΜΑΥΡΟ" Margin="5,2.5" />
+                    <Button x:Name="btn4" Background="Transparent" Grid.Column="9" Click="Button_Click">
+                        <Image Source="pictures/x.ico" />
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="4" Margin="0,2.5,0,2.5" Background="LightGray">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="75"/>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="27"/>
+                    </Grid.ColumnDefinitions>
+                    <Border x:Name="bord5" Grid.Column="0" BorderBrush="#FFABADB3" BorderThickness="1" Background="WhiteSmoke" Margin="5,2.5">
+                        <TextBlock x:Name="rownum5" Text="5" VerticalAlignment="Center"  HorizontalAlignment="Stretch" TextAlignment="Center" Focusable="False"  />
+                    </Border>
+                    <ComboBox x:Name="colname5" Grid.Column="1" IsEditable="True" VerticalContentAlignment="Center" Text="MAYRO - MAYRO - MAYRO" Margin="5,2.5"/>
+                    <ComboBox x:Name="colno5" Grid.Column="2" IsEditable="True" VerticalContentAlignment="Center" Text="020202" Margin="5,2.5" />
+                    <ComboBox x:Name="prog5" Grid.Column="3" IsEditable="True" VerticalContentAlignment="Center" Text="MCK256" Margin="5,2.5" />
+                    <ComboBox x:Name="yarn5" Grid.Column="4" IsEditable="True" VerticalContentAlignment="Center" Text="2ΧΒ.1.20 + Ε.170" Margin="5,2.5" />
+                    <Grid Grid.Column="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="size51" Grid.Row="0" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size52" Grid.Row="1" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size53" Grid.Row="2" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size54" Grid.Row="3" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed" />
+                        <TextBox x:Name="size55" Grid.Row="4" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed" />
+                        <TextBox x:Name="size56" Grid.Row="5" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="size57" Grid.Row="6" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="size58" Grid.Row="7" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="qty51" Grid.Row="0" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty52" Grid.Row="1" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty53" Grid.Row="2" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty54" Grid.Row="3" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty55" Grid.Row="4" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty56" Grid.Row="5" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty57" Grid.Row="6" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty58" Grid.Row="7" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="stock51" Grid.Row="0" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock52" Grid.Row="1" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock53" Grid.Row="2" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock54" Grid.Row="3" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock55" Grid.Row="4" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock56" Grid.Row="5" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock57" Grid.Row="6" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock58" Grid.Row="7" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="prod51" Grid.Row="0" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" />
+                        <TextBox x:Name="prod52" Grid.Row="1" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="prod53" Grid.Row="2" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="prod54" Grid.Row="3" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod55" Grid.Row="4" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod56" Grid.Row="5" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod57" Grid.Row="6" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod58" Grid.Row="7" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+
+
+                    </Grid>
+                    <ComboBox x:Name="special5" Grid.Column="6" IsEditable="True" VerticalContentAlignment="Center" Text="specialinstruction" Margin="5,2.5" />
+                    <ComboBox x:Name="suplcolno5" Grid.Column="7" IsEditable="True" VerticalContentAlignment="Center" Text="020202" Margin="5,2.5" />
+                    <TextBox x:Name="suplcolna5" Grid.Column="8"  VerticalContentAlignment="Center" Text="ΜΑΥΡΟ - ΜΑΥΡΟ - ΜΑΥΡΟ" Margin="5,2.5" />
+                    <Button x:Name="btn5" Background="Transparent" Grid.Column="9" Click="Button_Click">
+                        <Image Source="pictures/x.ico" />
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="5" Margin="0,2.5,0,2.5" Background="Gray">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="75"/>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="27"/>
+                    </Grid.ColumnDefinitions>
+                    <Border x:Name="bord6" Grid.Column="0" BorderBrush="#FFABADB3" BorderThickness="1" Background="WhiteSmoke" Margin="5,2.5">
+                        <TextBlock x:Name="rownum6" Text="6" VerticalAlignment="Center"  HorizontalAlignment="Stretch" TextAlignment="Center" Focusable="False"  />
+                    </Border>
+                    <ComboBox x:Name="colname6" Grid.Column="1" IsEditable="True" VerticalContentAlignment="Center" Text="MAYRO - MAYRO - MAYRO" Margin="5,2.5"/>
+                    <ComboBox x:Name="colno6" Grid.Column="2" IsEditable="True" VerticalContentAlignment="Center" Text="020202" Margin="5,2.5" />
+                    <ComboBox x:Name="prog6" Grid.Column="3" IsEditable="True" VerticalContentAlignment="Center" Text="MCK256" Margin="5,2.5" />
+                    <ComboBox x:Name="yarn6" Grid.Column="4" IsEditable="True" VerticalContentAlignment="Center" Text="2ΧΒ.1.20 + Ε.170" Margin="5,2.5" />
+                    <Grid Grid.Column="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="size61" Grid.Row="0" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size62" Grid.Row="1" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size63" Grid.Row="2" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size64" Grid.Row="3" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed" />
+                        <TextBox x:Name="size65" Grid.Row="4" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed" />
+                        <TextBox x:Name="size66" Grid.Row="5" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="size67" Grid.Row="6" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="size68" Grid.Row="7" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="qty61" Grid.Row="0" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty62" Grid.Row="1" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty63" Grid.Row="2" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty64" Grid.Row="3" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty65" Grid.Row="4" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty66" Grid.Row="5" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty67" Grid.Row="6" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty68" Grid.Row="7" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="stock61" Grid.Row="0" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock62" Grid.Row="1" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock63" Grid.Row="2" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock64" Grid.Row="3" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock65" Grid.Row="4" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock66" Grid.Row="5" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock67" Grid.Row="6" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock68" Grid.Row="7" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="prod61" Grid.Row="0" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" />
+                        <TextBox x:Name="prod62" Grid.Row="1" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="prod63" Grid.Row="2" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="prod64" Grid.Row="3" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod65" Grid.Row="4" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod66" Grid.Row="5" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod67" Grid.Row="6" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod68" Grid.Row="7" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+
+
+                    </Grid>
+                    <ComboBox x:Name="special6" Grid.Column="6" IsEditable="True" VerticalContentAlignment="Center" Text="specialinstruction" Margin="5,2.5" />
+                    <ComboBox x:Name="suplcolno6" Grid.Column="7" IsEditable="True" VerticalContentAlignment="Center" Text="020202" Margin="5,2.5" />
+                    <TextBox x:Name="suplcolna6" Grid.Column="8"  VerticalContentAlignment="Center" Text="ΜΑΥΡΟ - ΜΑΥΡΟ - ΜΑΥΡΟ" Margin="5,2.5" />
+                    <Button x:Name="btn6" Background="Transparent" Grid.Column="9" Click="Button_Click">
+                        <Image Source="pictures/x.ico" />
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="6" Margin="0,2.5,0,2.5" Background="LightGray">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="75"/>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="27"/>
+                    </Grid.ColumnDefinitions>
+                    <Border x:Name="bord7" Grid.Column="0" BorderBrush="#FFABADB3" BorderThickness="1" Background="WhiteSmoke" Margin="5,2.5">
+                        <TextBlock x:Name="rownum7" Text="7" VerticalAlignment="Center"  HorizontalAlignment="Stretch" TextAlignment="Center" Focusable="False"  />
+                    </Border>
+                    <ComboBox x:Name="colname7" Grid.Column="1" IsEditable="True" VerticalContentAlignment="Center" Text="MAYRO - MAYRO - MAYRO" Margin="5,2.5"/>
+                    <ComboBox x:Name="colno7" Grid.Column="2" IsEditable="True" VerticalContentAlignment="Center" Text="020202" Margin="5,2.5" />
+                    <ComboBox x:Name="prog7" Grid.Column="3" IsEditable="True" VerticalContentAlignment="Center" Text="MCK256" Margin="5,2.5" />
+                    <ComboBox x:Name="yarn7" Grid.Column="4" IsEditable="True" VerticalContentAlignment="Center" Text="2ΧΒ.1.20 + Ε.170" Margin="5,2.5" />
+                    <Grid Grid.Column="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="size71" Grid.Row="0" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size72" Grid.Row="1" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size73" Grid.Row="2" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size74" Grid.Row="3" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed" />
+                        <TextBox x:Name="size75" Grid.Row="4" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed" />
+                        <TextBox x:Name="size76" Grid.Row="5" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="size77" Grid.Row="6" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="size78" Grid.Row="7" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="qty71" Grid.Row="0" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty72" Grid.Row="1" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty73" Grid.Row="2" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty74" Grid.Row="3" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty75" Grid.Row="4" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty76" Grid.Row="5" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty77" Grid.Row="6" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty78" Grid.Row="7" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="stock71" Grid.Row="0" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock72" Grid.Row="1" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock73" Grid.Row="2" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock74" Grid.Row="3" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock75" Grid.Row="4" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock76" Grid.Row="5" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock77" Grid.Row="6" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock78" Grid.Row="7" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="prod71" Grid.Row="0" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" />
+                        <TextBox x:Name="prod72" Grid.Row="1" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="prod73" Grid.Row="2" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="prod74" Grid.Row="3" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod75" Grid.Row="4" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod76" Grid.Row="5" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod77" Grid.Row="6" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod78" Grid.Row="7" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+
+
+                    </Grid>
+                    <ComboBox x:Name="special7" Grid.Column="6" IsEditable="True" VerticalContentAlignment="Center" Text="specialinstruction" Margin="5,2.5" />
+                    <ComboBox x:Name="suplcolno7" Grid.Column="7" IsEditable="True" VerticalContentAlignment="Center" Text="020202" Margin="5,2.5" />
+                    <TextBox x:Name="suplcolna7" Grid.Column="8"  VerticalContentAlignment="Center" Text="ΜΑΥΡΟ - ΜΑΥΡΟ - ΜΑΥΡΟ" Margin="5,2.5" />
+                    <Button x:Name="btn7" Background="Transparent" Grid.Column="9" Click="Button_Click">
+                        <Image Source="pictures/x.ico" />
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="7" Margin="0,2.5,0,2.5" Background="Gray">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="75"/>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="27"/>
+                    </Grid.ColumnDefinitions>
+                    <Border x:Name="bord8" Grid.Column="0" BorderBrush="#FFABADB3" BorderThickness="1" Background="WhiteSmoke" Margin="5,2.5">
+                        <TextBlock x:Name="rownum8" Text="8" VerticalAlignment="Center"  HorizontalAlignment="Stretch" TextAlignment="Center" Focusable="False"  />
+                    </Border>
+                    <ComboBox x:Name="colname8" Grid.Column="1" IsEditable="True" VerticalContentAlignment="Center" Text="MAYRO - MAYRO - MAYRO" Margin="5,2.5"/>
+                    <ComboBox x:Name="colno8" Grid.Column="2" IsEditable="True" VerticalContentAlignment="Center" Text="020202" Margin="5,2.5" />
+                    <ComboBox x:Name="prog8" Grid.Column="3" IsEditable="True" VerticalContentAlignment="Center" Text="MCK256" Margin="5,2.5" />
+                    <ComboBox x:Name="yarn8" Grid.Column="4" IsEditable="True" VerticalContentAlignment="Center" Text="2ΧΒ.1.20 + Ε.170" Margin="5,2.5" />
+                    <Grid Grid.Column="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="size81" Grid.Row="0" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size82" Grid.Row="1" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size83" Grid.Row="2" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size84" Grid.Row="3" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed" />
+                        <TextBox x:Name="size85" Grid.Row="4" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed" />
+                        <TextBox x:Name="size86" Grid.Row="5" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="size87" Grid.Row="6" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="size88" Grid.Row="7" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="qty81" Grid.Row="0" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty82" Grid.Row="1" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty83" Grid.Row="2" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty84" Grid.Row="3" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty85" Grid.Row="4" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty86" Grid.Row="5" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty87" Grid.Row="6" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty88" Grid.Row="7" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="stock81" Grid.Row="0" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock82" Grid.Row="1" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock83" Grid.Row="2" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock84" Grid.Row="3" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock85" Grid.Row="4" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock86" Grid.Row="5" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock87" Grid.Row="6" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock88" Grid.Row="7" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="prod81" Grid.Row="0" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" />
+                        <TextBox x:Name="prod82" Grid.Row="1" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="prod83" Grid.Row="2" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="prod84" Grid.Row="3" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod85" Grid.Row="4" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod86" Grid.Row="5" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod87" Grid.Row="6" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod88" Grid.Row="7" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+
+
+                    </Grid>
+                    <ComboBox x:Name="special8" Grid.Column="6" IsEditable="True" VerticalContentAlignment="Center" Text="specialinstruction" Margin="5,2.5" />
+                    <ComboBox x:Name="suplcolno8" Grid.Column="7" IsEditable="True" VerticalContentAlignment="Center" Text="020202" Margin="5,2.5" />
+                    <TextBox x:Name="suplcolna8" Grid.Column="8"  VerticalContentAlignment="Center" Text="ΜΑΥΡΟ - ΜΑΥΡΟ - ΜΑΥΡΟ" Margin="5,2.5" />
+                    <Button x:Name="btn8" Background="Transparent" Grid.Column="9" Click="Button_Click">
+                        <Image Source="pictures/x.ico" />
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="8" Margin="0,2.5,0,2.5" Background="LightGray">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="75"/>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="27"/>
+                    </Grid.ColumnDefinitions>
+                    <Border x:Name="bord9" Grid.Column="0" BorderBrush="#FFABADB3" BorderThickness="1" Background="WhiteSmoke" Margin="5,2.5">
+                        <TextBlock x:Name="rownum9" Text="9" VerticalAlignment="Center"  HorizontalAlignment="Stretch" TextAlignment="Center" Focusable="False"  />
+                    </Border>
+                    <ComboBox x:Name="colname9" Grid.Column="1" IsEditable="True" VerticalContentAlignment="Center" Text="MAYRO - MAYRO - MAYRO" Margin="5,2.5"/>
+                    <ComboBox x:Name="colno9" Grid.Column="2" IsEditable="True" VerticalContentAlignment="Center" Text="020202" Margin="5,2.5" />
+                    <ComboBox x:Name="prog9" Grid.Column="3" IsEditable="True" VerticalContentAlignment="Center" Text="MCK256" Margin="5,2.5" />
+                    <ComboBox x:Name="yarn9" Grid.Column="4" IsEditable="True" VerticalContentAlignment="Center" Text="2ΧΒ.1.20 + Ε.170" Margin="5,2.5" />
+                    <Grid Grid.Column="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="size91" Grid.Row="0" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size92" Grid.Row="1" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size93" Grid.Row="2" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size94" Grid.Row="3" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed" />
+                        <TextBox x:Name="size95" Grid.Row="4" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed" />
+                        <TextBox x:Name="size96" Grid.Row="5" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="size97" Grid.Row="6" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="size98" Grid.Row="7" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="qty91" Grid.Row="0" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty92" Grid.Row="1" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty93" Grid.Row="2" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty94" Grid.Row="3" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty95" Grid.Row="4" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty96" Grid.Row="5" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty97" Grid.Row="6" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty98" Grid.Row="7" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="stock91" Grid.Row="0" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock92" Grid.Row="1" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock93" Grid.Row="2" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock94" Grid.Row="3" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock95" Grid.Row="4" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock96" Grid.Row="5" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock97" Grid.Row="6" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock98" Grid.Row="7" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="prod91" Grid.Row="0" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" />
+                        <TextBox x:Name="prod92" Grid.Row="1" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="prod93" Grid.Row="2" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="prod94" Grid.Row="3" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod95" Grid.Row="4" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod96" Grid.Row="5" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod97" Grid.Row="6" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod98" Grid.Row="7" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                    </Grid>
+                    <ComboBox x:Name="special9" Grid.Column="6" IsEditable="True" VerticalContentAlignment="Center" Text="specialinstruction" Margin="5,2.5" />
+                    <ComboBox x:Name="suplcolno9" Grid.Column="7" IsEditable="True" VerticalContentAlignment="Center" Text="020202" Margin="5,2.5" />
+                    <TextBox x:Name="suplcolna9" Grid.Column="8"  VerticalContentAlignment="Center" Text="ΜΑΥΡΟ - ΜΑΥΡΟ - ΜΑΥΡΟ" Margin="5,2.5" />
+                    <Button x:Name="btn9" Background="Transparent" Grid.Column="9" Click="Button_Click">
+                        <Image Source="pictures/x.ico" />
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="9" Margin="0,2.5,0,2.5" Background="Gray">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="75"/>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="27"/>
+                    </Grid.ColumnDefinitions>
+                    <Border x:Name="bord10" Grid.Column="0" BorderBrush="#FFABADB3" BorderThickness="1" Background="WhiteSmoke" Margin="5,2.5">
+                        <TextBlock x:Name="rownum10" Text="10" VerticalAlignment="Center"  HorizontalAlignment="Stretch" TextAlignment="Center" Focusable="False"  />
+                    </Border>
+                    <ComboBox x:Name="colname10" Grid.Column="1" IsEditable="True" VerticalContentAlignment="Center" Text="MAYRO - MAYRO - MAYRO" Margin="5,2.5"/>
+                    <ComboBox x:Name="colno10" Grid.Column="2" IsEditable="True" VerticalContentAlignment="Center" Text="020202" Margin="5,2.5" />
+                    <ComboBox x:Name="prog10" Grid.Column="3" IsEditable="True" VerticalContentAlignment="Center" Text="MCK256" Margin="5,2.5" />
+                    <ComboBox x:Name="yarn10" Grid.Column="4" IsEditable="True" VerticalContentAlignment="Center" Text="2ΧΒ.1.20 + Ε.170" Margin="5,2.5" />
+                    <Grid Grid.Column="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="size101" Grid.Row="0" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size102" Grid.Row="1" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size103" Grid.Row="2" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size104" Grid.Row="3" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed" />
+                        <TextBox x:Name="size105" Grid.Row="4" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed" />
+                        <TextBox x:Name="size106" Grid.Row="5" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="size107" Grid.Row="6" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="size108" Grid.Row="7" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="qty101" Grid.Row="0" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty102" Grid.Row="1" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty103" Grid.Row="2" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty104" Grid.Row="3" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty105" Grid.Row="4" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty106" Grid.Row="5" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty107" Grid.Row="6" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty108" Grid.Row="7" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="stock101" Grid.Row="0" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock102" Grid.Row="1" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock103" Grid.Row="2" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock104" Grid.Row="3" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock105" Grid.Row="4" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock106" Grid.Row="5" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock107" Grid.Row="6" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock108" Grid.Row="7" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="prod101" Grid.Row="0" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" />
+                        <TextBox x:Name="prod102" Grid.Row="1" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="prod103" Grid.Row="2" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="prod104" Grid.Row="3" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod105" Grid.Row="4" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod106" Grid.Row="5" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod107" Grid.Row="6" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod108" Grid.Row="7" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                    </Grid>
+                    <ComboBox x:Name="special10" Grid.Column="6" IsEditable="True" VerticalContentAlignment="Center" Text="specialinstruction" Margin="5,2.5" />
+                    <ComboBox x:Name="suplcolno10" Grid.Column="7" IsEditable="True" VerticalContentAlignment="Center" Text="020202" Margin="5,2.5" />
+                    <TextBox x:Name="suplcolna10" Grid.Column="8"  VerticalContentAlignment="Center" Text="ΜΑΥΡΟ - ΜΑΥΡΟ - ΜΑΥΡΟ" Margin="5,2.5" />
+                    <Button x:Name="btn10" Background="Transparent" Grid.Column="9" Click="Button_Click">
+                        <Image Source="pictures/x.ico" />
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="10" Margin="0,2.5,0,2.5" Background="LightGray">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="75"/>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="27"/>
+                    </Grid.ColumnDefinitions>
+                    <Border x:Name="bord11" Grid.Column="0" BorderBrush="#FFABADB3" BorderThickness="1" Background="WhiteSmoke" Margin="5,2.5">
+                        <TextBlock x:Name="rownum11" Text="11" VerticalAlignment="Center"  HorizontalAlignment="Stretch" TextAlignment="Center" Focusable="False"  />
+                    </Border>
+                    <ComboBox x:Name="colname11" Grid.Column="1" IsEditable="True" VerticalContentAlignment="Center" Text="MAYRO - MAYRO - MAYRO" Margin="5,2.5"/>
+                    <ComboBox x:Name="colno11" Grid.Column="2" IsEditable="True" VerticalContentAlignment="Center" Text="020202" Margin="5,2.5" />
+                    <ComboBox x:Name="prog11" Grid.Column="3" IsEditable="True" VerticalContentAlignment="Center" Text="MCK256" Margin="5,2.5" />
+                    <ComboBox x:Name="yarn11" Grid.Column="4" IsEditable="True" VerticalContentAlignment="Center" Text="2ΧΒ.1.20 + Ε.170" Margin="5,2.5" />
+                    <Grid Grid.Column="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="size111" Grid.Row="0" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size112" Grid.Row="1" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size113" Grid.Row="2" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" />
+                        <TextBox x:Name="size114" Grid.Row="3" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed" />
+                        <TextBox x:Name="size115" Grid.Row="4" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed" />
+                        <TextBox x:Name="size116" Grid.Row="5" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="size117" Grid.Row="6" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="size118" Grid.Row="7" Grid.Column="0" IsReadOnly="True" VerticalContentAlignment="Center" Text="One Size" Margin="5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="qty111" Grid.Row="0" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty112" Grid.Row="1" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty113" Grid.Row="2" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="qty114" Grid.Row="3" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty115" Grid.Row="4" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty116" Grid.Row="5" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty117" Grid.Row="6" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="qty118" Grid.Row="7" Grid.Column="1" Foreground="Blue" Text="5" FontWeight="SemiBold" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="stock111" Grid.Row="0" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock112" Grid.Row="1" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock113" Grid.Row="2" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="stock114" Grid.Row="3" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock115" Grid.Row="4" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock116" Grid.Row="5" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock117" Grid.Row="6" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="stock118" Grid.Row="7" Grid.Column="2" Foreground="Red" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="prod111" Grid.Row="0" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" />
+                        <TextBox x:Name="prod112" Grid.Row="1" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="prod113" Grid.Row="2" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5"/>
+                        <TextBox x:Name="prod114" Grid.Row="3" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod115" Grid.Row="4" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod116" Grid.Row="5" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod117" Grid.Row="6" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                        <TextBox x:Name="prod118" Grid.Row="7" Grid.Column="3" Foreground="Green" FontWeight="SemiBold" Text="5" TextAlignment="Center" VerticalContentAlignment="Center" Margin="5,2.5,5,2.5" Visibility="Collapsed"/>
+                    </Grid>
+                    <ComboBox x:Name="special11" Grid.Column="6" IsEditable="True" VerticalContentAlignment="Center" Text="specialinstruction" Margin="5,2.5" />
+                    <ComboBox x:Name="suplcolno11" Grid.Column="7" IsEditable="True" VerticalContentAlignment="Center" Text="020202" Margin="5,2.5" />
+                    <TextBox x:Name="suplcolna11" Grid.Column="8"  VerticalContentAlignment="Center" Text="ΜΑΥΡΟ - ΜΑΥΡΟ - ΜΑΥΡΟ" Margin="5,2.5" />
+                    <Button x:Name="btn11" Background="Transparent" Grid.Column="9" Click="Button_Click">
+                        <Image Source="pictures/x.ico" />
+                    </Button>
+                </Grid>
+
+                <!--<TextBox Grid.Row="0" Grid.Column="0" Text="1" TextAlignment="Center" Margin="5,2.5" FontFamily="calibri" FontSize="14" VerticalAlignment="Stretch"/>-->
+                <!--<TextBox Grid.Row="1" Grid.Column="0" Text="2" TextAlignment="Center" Margin="5,2.5" FontFamily="calibri" FontSize="14" VerticalAlignment="Stretch"/>-->
+
+
+            </Grid>
+        </ScrollViewer>
+        <TabControl Grid.Row="2"/>
     </Grid>
 </Window>

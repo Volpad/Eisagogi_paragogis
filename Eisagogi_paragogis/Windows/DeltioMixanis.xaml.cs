@@ -77,9 +77,58 @@ namespace Eisagogi_paragogis
                 var countsizes = dsf1.GroupBy(c => c.MACH_SIZE).Count();
                 WidthCalc(countsizes);
 
+
+
+                //var sizesordered = from f in context.DELTIO_FINISH_SUPER1
+                //                   join c in context.SIZESORTING
+                //                   on f.MACH_SIZE equals c.SIZE into g
+                //                   from c in g.DefaultIfEmpty()
+                //                   where f.TOTAL_ID == totalidt
+                //                   orderby f.QueueNo, f.SIZESORTING, c.SORTING
+                //                   select new
+                //                   {
+                //                      f.COLOR,
+                //                      f.COLORID,
+                //                      f.COL_ID,
+                //                      f.FINISHAP_ID,
+                //                      f.FORMES,
+                //                      f.InStock,
+                //                      f.MACH_SIZE,
+                //                      f.mID,
+                //                      f.Production,
+                //                      f.PROGRAM,
+                //                      f.QueueNo,
+                //                      f.sequence,
+                //                      f.set,
+                //                      f.SIZE,
+                //                      f.SIZESORTING,
+                //                      f.SpecialInstruction,
+                //                      f.SuplierColor,
+                //                      f.SuplierColorDesc,
+                //                      f.TOTAL_ID,
+                //                      f.YarnTitle,
+                //                      f.ΠΟΣΟΤΗΤΑ,
+                //                      c.SORTING
+                //                     };
+
+                //   var sizes = sizesordered.GroupBy(c => c.MACH_SIZE);
+
+
                 //puts sizes in textblocks
-                var sizes = dsf1.GroupBy(c => c.MACH_SIZE);
+                //var sizes = dsf1.GroupBy(c => c.MACH_SIZE);
+
+                var sizes = (from d in dsf1
+                             group d by new { d.MACH_SIZE, d.SIZESORTING } into gr
+                             select new
+                             {
+                                 Key = gr.Key.MACH_SIZE,
+                                 sort = gr.Key.SIZESORTING
+                             }).OrderBy(k => k.sort);
+
                 int i = 1;
+
+                
+
                 foreach (var s in sizes)
                 {
                     TextBlock size = (TextBlock)FindName("tbs" + i);
@@ -196,8 +245,13 @@ namespace Eisagogi_paragogis
                         TextBlock yarns = (TextBlock)FindName("yarns" + i);
 
                         colour.Text = "(" + col.COLORID.ToString() + ")";
-                        prog.Text = dsf1.Where(c => c.COLORID == col.COLORID.ToString()).Select(x => x.PROGRAM).FirstOrDefault();
-                        yarns.Text = dsf1.Where(c => c.COLORID == col.COLORID.ToString()).Select(x => x.YarnTitle).FirstOrDefault();
+
+                        prog.Text = dsf1.Where(c => c.QueueNo == col.QueueNo).Select(x => x.PROGRAM).FirstOrDefault();
+                        yarns.Text = dsf1.Where(c => c.QueueNo == col.QueueNo).Select(x => x.YarnTitle).FirstOrDefault();
+
+
+                        // prog.Text = dsf1.Where(c => c.COLORID == col.COLORID.ToString()).Select(x => x.PROGRAM).FirstOrDefault();
+                       // yarns.Text = dsf1.Where(c => c.COLORID == col.COLORID.ToString()).Select(x => x.YarnTitle).FirstOrDefault();
 
                         z = 1;
                         i++;
@@ -212,6 +266,8 @@ namespace Eisagogi_paragogis
             this.Close();
 
         }
+
+
 
         private void WidthCalc(int countsizes)
         {

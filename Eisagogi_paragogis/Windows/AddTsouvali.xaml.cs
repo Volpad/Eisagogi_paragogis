@@ -314,7 +314,7 @@ namespace Eisagogi_paragogis
                     }
                     if (!onMachine)
                     {
-                        int max = Convert.ToInt32(context.Machineqty.Where(c => c.MachineNo == machc.Text && c.queueNo != "deleted").OrderByDescending(f => f.queueNo).Select(x => x.queueNo).FirstOrDefault());
+                        int max = Convert.ToInt32(context.Machineqty.Where(c => c.MachineNo == machc.Text && c.queueNo != "deleted" && c.queueNo != "returned").OrderByDescending(f => f.queueNo).Select(x => x.queueNo).FirstOrDefault());
                         max = max + 1;
 
                         Machineqty inputm = new Machineqty
@@ -366,7 +366,7 @@ namespace Eisagogi_paragogis
 
                     if (!onMachine)
                     {
-                        int max = Convert.ToInt32(context.Machineqty.Where(c => c.MachineNo == machc.Text && c.queueNo != "deleted").OrderByDescending(f => f.queueNo).Select(x => x.queueNo).FirstOrDefault());
+                        int max = Convert.ToInt32(context.Machineqty.Where(c => c.MachineNo == machc.Text && c.queueNo != "deleted" && c.queueNo != "returned").OrderByDescending(f => f.queueNo).Select(x => x.queueNo).FirstOrDefault());
                         max = max + 1;
 
                         Machineqty inputm = new Machineqty

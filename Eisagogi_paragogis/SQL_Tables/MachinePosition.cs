@@ -13,5 +13,7 @@ namespace Eisagogi_paragogis
         [Column(IsPrimaryKey = true, IsDbGenerated = true)] public int ID { get; set; }
         [Column] public string MachineNo { get; set; }
         [Column] public string MachinePos { get; set; }
+        [Column] public bool Working { get; set; }
+        [Column] public bool NightShift { get; set; }
     }
 }

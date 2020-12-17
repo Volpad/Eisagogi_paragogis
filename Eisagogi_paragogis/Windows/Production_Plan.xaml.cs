@@ -33,7 +33,7 @@ namespace Eisagogi_paragogis
 
         private static IEnumerable<Machineqty> MachineQty = from Machineqty in production18.Machineqty
                                                             orderby Machineqty.queueNo descending, Machineqty.AccessNo descending, Machineqty.ID
-                                                            where Machineqty.MachineNo != null && Machineqty.queueNo != "deleted"
+                                                            where Machineqty.MachineNo != null && Machineqty.queueNo != "deleted" && Machineqty.queueNo != "returned"
                                                             select Machineqty;
 
         private static IEnumerable<DELTIO_FINISH_SUPER1> Deltio_Finish_Super1 = from DELTIO_FINISH_SUPER1 in production18.DELTIO_FINISH_SUPER1
@@ -65,7 +65,11 @@ namespace Eisagogi_paragogis
         private static IEnumerable<Machineqty> Machinenamecreate = from Machineqty in changesToProduction.Machineqty
                                                                    orderby Machineqty.queueNo descending, Machineqty.AccessNo descending, Machineqty.ID
                                                                    select Machineqty;
-        
+
+        private static IEnumerable<MachinePosition> machinePosition = from MachinePosition in production18.MachinePosition
+                                                                      select MachinePosition;
+
+
         List<Production_Plan_Changes> production_plan_changes = production_Plan_Changes.ToList();
         List<Machineqty> machineqty = MachineQty.ToList();
         List<DELTIO_FINISH_SUPER1> deltio_finish_super1 = Deltio_Finish_Super1.ToList();
@@ -74,6 +78,7 @@ namespace Eisagogi_paragogis
         List<Machineqty> machineQty = MachineQty.ToList();
         List<DailyProduction> dailiproduction = dailyProduction.ToList();
         List<Machineqty> machinenamecreate = MachineQty.ToList();
+        List<MachinePosition> machpos = machinePosition.ToList();
 
         string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
         private bool saved = true;
@@ -90,12 +95,20 @@ namespace Eisagogi_paragogis
         List<TextBox> listofprevioustextboxes = new List<TextBox>();
         int changecounter = 0;
         string ProductForBalance;
+        string productId;
+        string productionId;
         private static string connectionString = "server=SERVER-DC;database=PRODUCTION18;Trusted_Connection=Yes;Integrated Security=false; user=production; password=W4lkPr0duct!0n";
         static System.Random rnd = new System.Random();
         static int random = rnd.Next(1, 100000);
+        static int random2 = rnd.Next(100000, 1000000000);
         SqlDependencyEx Check_machineQty = new SqlDependencyEx(connectionString, "Production18", "Machineqty", identity: random);
+        SqlDependencyEx Check_Working = new SqlDependencyEx(connectionString, "Production18", "MachinePosition", identity: (random2));
         //double DaysWorkingPermonth = 21.32; //Υπολογισμός 4 βδομάδες μαζί με Σάββατα
         double DaysWorkingPermonth = 20; //Υπολογισμός 4 βδομάδες ΧΩΡΙΣ Σάββατα
+        bool reloadFlag = true;
+        bool WorkingFlag = true;
+        string wmach;
+        bool NS = false;
 
        // static ThreadStart ts = new ThreadStart(Restart_Check_machineQty);
        // Thread backgroundThread = new Thread(ts);
@@ -120,18 +133,10 @@ namespace Eisagogi_paragogis
             CheckBox ChbBox = new CheckBox();
             var delbutton = new Button();
             var addbutton = new Button();
+            var wstack = new StackPanel();
             
-            //  var MACHINEQTY = MachineQty.ToList();
-
-           // TextBlock textMO = (TextBlock)FindName("totalMO");
-           
-            //using ( var context = new Production18())
-            //{
-            //    text = eisagogiparagogis.Where(i => i.date > DateTime.Now.Date.AddDays(-28)).Sum(c => ((c.dozen * 24 + c.socks)) / DaysWorkingPermonth) / 24;
-
-            //}
             var  text = eisagogiparagogis.Where(i => i.date > DateTime.Now.Date.AddDays(-28)).Sum(c => ((c.dozen * 24 + c.socks)) / DaysWorkingPermonth) / 24;
-            //textMO.Text = "MO: " + Decimal.Round(Convert.ToDecimal(text), 1).ToString(); 
+          
             Button updateMo = (Button)FindName("Update");
             updateMo.Content = "MO: " + Decimal.Round(Convert.ToDecimal(text), 1).ToString(); 
 
@@ -423,15 +428,15 @@ namespace Eisagogi_paragogis
                 }
                 canvas.UpdateLayout();
 
-                foreach (Machineqty machinenamecreate in Machinenamecreate.Where(n => n.MachineNo.StartsWith(machine, StringComparison.OrdinalIgnoreCase)))
+                foreach (MachinePosition c in machpos.Where(n => n.MachineNo.StartsWith(machine, StringComparison.OrdinalIgnoreCase)))
                 {
                     if (rowcounter == 0)
                     {
-                        Machinename = create_Machinename_boxes(rowcounter, machinecounter, machinenamecreate);
+                        Machinename = create_Machinename_boxes(rowcounter, machinecounter, c);
                     }
                     rowcounter++;
-
                 }
+
                 rowcounter = 0;
 
                 foreach (Machineqty machineqty in machineqty.Where(n => n.MachineNo.StartsWith(machine, StringComparison.OrdinalIgnoreCase)))
@@ -461,71 +466,161 @@ namespace Eisagogi_paragogis
                 machinecounter++;
                 rowcounter = 0;
             }
+
             Check_machineQty.TableChanged += (o, e) => toReload(e.Data.Value);
             Check_machineQty.Start();
+           // Check_Working.TableChanged += (o, e) => Working();
+            Check_Working.TableChanged += (o, e) => WorkingMac(e.Data.Value);
+            Check_Working.Start();
 
          //   backgroundThread.Start();
 
         }
 
-        //private static void Restart_Check_machineQty()
-        //{
-        //    if (!Check_machineQty.Active)
-        //    {
-        //        string filePath = @"S:\Production\RestartedLog.txt";
-        //        using (StreamWriter writer = new StreamWriter(filePath, true))
-        //        {
-        //            writer.WriteLine("-----------------------------------------------------------------------------");
-        //            writer.WriteLine("Date : " + DateTime.Now.ToString());
-        //            writer.WriteLine("User: " + Environment.UserName);
-        //            writer.WriteLine();
-        //        }
-        //        MessageBox.Show("needs to start");
-        //        Check_machineQty.Start();
-        //    }
-        //    Thread.Sleep(5000);
-        //    Restart_Check_machineQty();
-        //}
-
         private void toReload(string value)
         {
-            string macno;
-            string macpos;
-            using (var context = new Production18())
+           
+            if (reloadFlag)
             {
-                macno = value.Substring(0, 5);
-                macpos = context.MachinePosition.Where(c => c.MachineNo.StartsWith(macno)).Select(f => f.MachinePos).FirstOrDefault();
 
+
+                string macno;
+                string macpos;
+                using (var context = new Production18())
+                {
+                    macno = value.Substring(0, 5);
+                    macpos = context.MachinePosition.Where(c => c.MachineNo.StartsWith(macno)).Select(f => f.MachinePos).FirstOrDefault();
+
+                }
+
+                this.Dispatcher.Invoke(() =>
+                {
+                    reloadMachine(macno, macpos);
+
+                });
             }
-
-            this.Dispatcher.Invoke(() =>
-            {
-                reloadMachine(macno, macpos);
-
-            });
+            reloadFlag = true;
 
         }
 
+
+        private void Machname_RightClick (object sender, MouseButtonEventArgs e)
+        {
+            TextBox Mach = sender as TextBox;
+            wmach = Mach.Text.Substring(0, 2);
+
+
+
+            ContextMenu cm = this.FindResource("cmenu2") as ContextMenu;
+            cm.IsOpen = true;
+            //throw new NotImplementedException();
+        }
+
+        private void Toggle_Working(object sender, RoutedEventArgs e)
+        {
+            var WSM = (StackPanel)FindName("SM" + wmach);
+
+            using (var context = new Production18())
+            {
+                var b = context.MachinePosition.Where(c => c.MachineNo.StartsWith(wmach)).Select(d => d.Working).FirstOrDefault();
+                if (b)
+                {
+                    WSM.Opacity = 0.5;
+                    foreach (var c in context.MachinePosition.Where(c => c.MachineNo.StartsWith(wmach)))
+                    {
+                        c.Working = false;
+                    }
+                }
+                else
+                {
+                    WSM.Opacity = 1;
+                    foreach (var c in context.MachinePosition.Where(c => c.MachineNo.StartsWith(wmach)))
+                    {
+                        c.Working = true;
+                    }
+                }
+                WorkingFlag = false;
+                context.SubmitChanges();
+                WMach.Text = "Working Machines: " + context.MachinePosition.Count(c => c.Working == true);
+
+            }
+
+        }
+
+        private void Toggle_NightShift(object sender, RoutedEventArgs e)
+        {
+
+            var WSM = (StackPanel)FindName("SM" + wmach);
+
+            using (var context = new Production18())
+            {
+                var b = context.MachinePosition.Where(c => c.MachineNo.StartsWith(wmach)).Select(d => d.NightShift).FirstOrDefault();
+                if (b)
+                {
+                   // WSM.Opacity = 0.5;
+                    foreach (var c in context.MachinePosition.Where(c => c.MachineNo.StartsWith(wmach)))
+                    {
+                        c.NightShift = false;
+                    }
+                }
+                else
+                {
+                  //  WSM.Opacity = 1;
+                    foreach (var c in context.MachinePosition.Where(c => c.MachineNo.StartsWith(wmach)))
+                    {
+                        c.NightShift = true;
+                    }
+                }
+                context.SubmitChanges();
+
+                WNS.Text = "Night Shift: " + context.MachinePosition.Count(c => c.NightShift == true);
+                Nightshift();
+
+            }
+
+        }
 
         private void Pname_rightClick(object sender, MouseButtonEventArgs e)
         {
             TextBox t = sender as TextBox;
 
+            var n = t.Name;
+
+            var tid = "TotalId" + n.Remove(0, 4);
+            var id = "id" + n.Remove(0, 4);
+
+            TextBox ti = (TextBox)FindName(tid);
+            TextBox i = (TextBox)FindName(id);
+
+            productionId = i.Text;
+            productId = ti.Text;
             ProductForBalance = t.Text;
             ContextMenu cm = this.FindResource("cmenu") as ContextMenu;
             cm.IsOpen = true;
             //throw new NotImplementedException();
         }
 
-        private TextBox create_Machinename_boxes(int rowcounter, int machinecounter, Machineqty machineqty)
+
+        private TextBox create_Machinename_boxes(int rowcounter, int machinecounter, MachinePosition machineqty)
         {
             TextBox Machinename = (TextBox)FindName("Title" + "M" + machinecounter + "R" + rowcounter);
-            Machinename.Text = machineqty.MachineNo.ToUpper() + "  " + machinename(machineqty.MachineNo);
+            Machinename.Text = machineqty.MachineNo.TrimEnd().ToUpper() + "          " + machinename(machineqty.MachineNo);
             Machinename.Background = machinecolour(machineqty.MachineNo, Machinename);
 
+            Machinename.MouseRightButtonUp += new MouseButtonEventHandler(Machname_RightClick);
 
             return Machinename;
         }
+
+        //private TextBox create_Machinename_boxes(int rowcounter, int machinecounter, Machineqty machineqty)
+        //{
+        //    TextBox Machinename = (TextBox)FindName("Title" + "M" + machinecounter + "R" + rowcounter);
+        //    Machinename.Text = machineqty.MachineNo.ToUpper() + "  " + machinename(machineqty.MachineNo);
+        //    Machinename.Background = machinecolour(machineqty.MachineNo, Machinename);
+
+
+        //    return Machinename;
+        //}
 
         private static void morph_boxes(int rowcounter, TextBox TotalId, TextBox Productname, TextBox Rest, Button delbutton, Machineqty machineqty, BrushConverter bc)
         {
@@ -741,38 +836,53 @@ namespace Eisagogi_paragogis
             addTextblock.Margin = new Thickness(90, -4, 0, 0);
             double? text;
 
-                var Machinenamecreate = from Machineqty in changesToProduction.Machineqty
-                                        orderby Machineqty.queueNo descending, Machineqty.AccessNo descending, Machineqty.ID
-                                        select Machineqty;
-                var Eisagogioaragogis = from eisagogiParagogis in production18.eisagogiParagogis
-                                        orderby eisagogiParagogis.Total_Id descending
-                                        where eisagogiParagogis.date > DateTime.Now.AddMonths(-10) && eisagogiParagogis.barcode != null
-                                        select eisagogiParagogis;
+            var machinePosition = from MachinePosition in production18.MachinePosition
+                                  select MachinePosition;
 
 
-                string machinename2 = Machinenamecreate.Where(i => i.MachineNo.StartsWith(machinename)).Select(k => k.MachineNo).FirstOrDefault().ToString();
+            var Machinenamecreate = from Machineqty in changesToProduction.Machineqty
+                                    orderby Machineqty.queueNo descending, Machineqty.AccessNo descending, Machineqty.ID
+                                    select Machineqty;
+            var Eisagogioaragogis = from eisagogiParagogis in production18.eisagogiParagogis
+                                    orderby eisagogiParagogis.Total_Id descending
+                                    where eisagogiParagogis.date > DateTime.Now.AddMonths(-10) && eisagogiParagogis.barcode != null
+                                    select eisagogiParagogis;
 
-                if (Eisagogioaragogis.Where(i => i.Machine == machinename2.TrimEnd()).Equals(null))
-                {
-                    text = 0;
 
-                }
-                else
-                {
+            //string machinename2 = Machinenamecreate.Where(i => i.MachineNo.StartsWith(machinename)).Select(k => k.MachineNo).FirstOrDefault().ToString();
+            string machinename2 = machinePosition.Where(i => i.MachineNo.StartsWith(machinename)).Select(k => k.MachineNo).FirstOrDefault().ToString();
+            bool? wmachine = machinePosition.Where(i => i.MachineNo.StartsWith(machinename)).Select(k => k.Working).FirstOrDefault();
+            if (wmachine == false)
+            {
+                var SM = (StackPanel)FindName("SM" + machinename2.Substring(0, 2));
+                SM.Opacity = 0.5;
+            }
+
+            WMach.Text = "Working Machines: " + machinePosition.Count(c => c.Working == true);
+            WNS.Text = "Night Shift: " + machinePosition.Count(c => c.NightShift == true);
+
+
+            if (Eisagogioaragogis.Where(i => i.Machine == machinename2.TrimEnd()).Equals(null))
+            {
+                text = 0;
+
+            }
+            else
+            {
                 text = Eisagogioaragogis.Where(i => i.Machine == machinename2.TrimEnd().ToUpper() && i.date > DateTime.Now.Date.AddDays(-28)).Sum(c => ((c.dozen * 24 + c.socks)) / DaysWorkingPermonth) / 24;
-                }
+            }
 
-                decimal test2 = Convert.ToDecimal(text);
+            decimal test2 = Convert.ToDecimal(text);
 
-                if (test2 == 0)
-                {
-                    addTextblock.Text = null;
-                }
-                else
-                {
-                    addTextblock.Text = Decimal.Round(test2, 1).ToString();
-                }
-            
+            if (test2 == 0)
+            {
+                addTextblock.Text = null;
+            }
+            else
+            {
+                addTextblock.Text = Decimal.Round(test2, 1).ToString();
+            }
+
         }
 
         private void Delbutton(int margincalc, int machinecounter, int i, TextBox txt2, TextBox txt, TextBox txt3, Button del)
@@ -1249,7 +1359,7 @@ namespace Eisagogi_paragogis
 
                             var machineqtyfilter1 = from Machineqty in context.Machineqty
                                                     orderby Machineqty.queueNo descending, Machineqty.AccessNo descending, Machineqty.ID
-                                                    where Machineqty.MachineNo == Mac.Text.Substring(0, 5) && Machineqty.AccessNo > 0 && Machineqty.queueNo != "deleted"
+                                                    where Machineqty.MachineNo == Mac.Text.Substring(0, 5) && Machineqty.AccessNo > 0 && Machineqty.queueNo != "deleted" && Machineqty.queueNo != "returned"
                                                     select Machineqty;
 
                             foreach (var filter in machineqtyfilter1)
@@ -1387,6 +1497,7 @@ namespace Eisagogi_paragogis
                 machineqty = MachineQty.ToList();
 
                 e.Handled = true;
+                reloadFlag = false;
                 reloadMachine(Mac.Text, Mac.Name);
             }
 
@@ -1402,7 +1513,7 @@ namespace Eisagogi_paragogis
                 var test = text.Substring(0, 5);
                 var mqty = from Machineqty in context.Machineqty
                            orderby Machineqty.queueNo descending, Machineqty.AccessNo descending, Machineqty.ID
-                           where Machineqty.MachineNo == text.Substring(0,5) && Machineqty.queueNo != "deleted" 
+                           where Machineqty.MachineNo == text.Substring(0,5) && Machineqty.queueNo != "deleted" && Machineqty.queueNo != "returned"
                            select Machineqty;
 
                 var findname = from DELTIO_FINISH_SUPER in context.DELTIO_FINISH_SUPER
@@ -1590,6 +1701,10 @@ namespace Eisagogi_paragogis
 
                 context.SubmitChanges();
             }
+
+            reloadFlag = false;
+            //reloadMachine(Mac.Text, Mac.Name);
+
             //saved = false;
             //Image image = (Image)FindName("savedi");
             //image.Visibility = Visibility.Collapsed;
@@ -1690,6 +1805,8 @@ namespace Eisagogi_paragogis
                     return "Komet 124 HCS";
                 case "K4":
                     return "Komet 136 HCS";
+                case "K1":
+                    return "Komet 200 LT-JL";
                 default:
                     return "Wrong input";
             }
@@ -1793,6 +1910,7 @@ namespace Eisagogi_paragogis
         {
             //backgroundThread.Abort();
             Check_machineQty.Stop();
+            Check_Working.Stop();
             //Check_eisagogiParagogis.Stop();
             // notificationTest.Termination();
             // If not saved, notify user and ask for a response
@@ -2312,7 +2430,7 @@ namespace Eisagogi_paragogis
             //printDlg.PrintVisual(pan2, "Window Printing");
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Orders_Click(object sender, RoutedEventArgs e)
         {
             Button s = sender as Button;
             if (s.Name.Equals("walkorders"))
@@ -2326,7 +2444,9 @@ namespace Eisagogi_paragogis
                 Static_Variables.isothersopen = true;
             }
 
+#pragma warning disable CS0219 // The variable 'f' is assigned but its value is never used
             var f = false;
+#pragma warning restore CS0219 // The variable 'f' is assigned but its value is never used
 
             foreach (Window win in Application.Current.Windows)
             {
@@ -2359,7 +2479,6 @@ namespace Eisagogi_paragogis
             remaining_Productions.Show();
             System.Windows.Threading.Dispatcher.Run();
         }
-
 
         private void search_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -2488,7 +2607,6 @@ namespace Eisagogi_paragogis
 
         }
 
-
         private void prod_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -2613,6 +2731,45 @@ namespace Eisagogi_paragogis
 
         }
 
+        private void Specs_Click(object sender, RoutedEventArgs e)
+        {
+            Static_Variables.finishid = ProductForBalance;
+
+            Window ps = new Product_Specification();
+            ps.Show();
+        }
+
+        private void Return_Order_Click(object sender, RoutedEventArgs e)
+        {
+
+            using (var context = new Production18())
+            {
+
+                var bo = context.ToBePlanned.Any(c => c.AccessNo == Convert.ToInt32(productId));
+
+                if (bo)
+                {
+                    List<ToBePlanned> list = context.ToBePlanned.ToList();
+                    List<Machineqty> listM = context.Machineqty.ToList();
+
+
+                    list = context.ToBePlanned.AsEnumerable().Where(c => c.AccessNo == Convert.ToInt32(productId)).Select(d => { d.GetType().GetProperties().Single(x => x.Name.Equals("OnMachine")).SetValue(d, false, null); return d; }).ToList();
+                    list = context.ToBePlanned.AsEnumerable().Where(c => c.AccessNo == Convert.ToInt32(productId)).Select(d => { d.GetType().GetProperties().Single(x => x.Name.Equals("Deleted")).SetValue(d, false, null); return d; }).ToList();
+                 //   listM = context.Machineqty.AsEnumerable().Where(c => c.ID == Convert.ToInt32(productionId)).Select(d => { d.GetType().GetProperties().Single(x => x.Name.Equals("queueNo")).SetValue(d, "returned", null); return d; }).ToList();
+
+                    foreach (var c in listM.Where(d => d.AccessNo == Convert.ToInt32(productId)))
+                    {
+                        c.queueNo = "returned";
+                    }
+
+                   // productionId
+
+                    context.SubmitChanges();
+                }
+            }
+
+        }
+
         private void test_Click(object sender, RoutedEventArgs e)
         {
             Static_Variables.finishid = "w100";
@@ -2728,18 +2885,113 @@ namespace Eisagogi_paragogis
             ps.Show();
         }
 
-        private void Specs_Click(object sender, RoutedEventArgs e)
-        {
-            Static_Variables.finishid = ProductForBalance;
-        
-            Window ps = new Product_Specification();
-            ps.Show();
-        }
-
         private void calendar_Click(object sender, RoutedEventArgs e)
         {
             Window cal = new Calendar();
             cal.Show();
+        }
+
+        private void New_Production_Click(object sender, RoutedEventArgs e)
+        {
+            Window newproduction = new Kataxorisi_Paragogis("w100et");
+            newproduction.Show();
+
+        }
+
+        private void Night_Shift_Click(object sender, RoutedEventArgs e)
+        {
+            if (!NS)
+            {
+                Nightshift();
+                NS = true;
+                Night_Shift.Background = new SolidColorBrush(Colors.DarkRed);
+            }
+            else
+            {
+                Working("");
+                NS = false;
+                Night_Shift.Background = null;
+            }
+        }
+
+        private void Nightshift()
+        {
+            using (var context = new Production18())
+            {
+                StackPanel sm;
+                foreach (var mach in context.MachinePosition)
+                {
+                    sm = (StackPanel)FindName("SM" + mach.MachineNo.Substring(0, 2));
+                    if (mach.NightShift == false)
+                    {
+                        sm.Opacity = 0.5;
+                    }
+                    else
+                    {
+                        sm.Opacity = 1;
+                    }
+                }
+            }
+        }
+
+        private void Working(string value)
+        {
+            using (var context = new Production18())
+            {
+                StackPanel sm;
+                foreach (var mach in context.MachinePosition)
+                {
+                    var mac = mach.MachineNo.Substring(0, 2);
+                    sm = (StackPanel)FindName("SM" + mac);
+                    //MessageBox.Show("SM" + mach.MachineNo.Substring(0, 2));
+                    //MessageBox.Show("Triggered");
+                    if (mach.Working)
+                    {
+                        sm.Opacity = 1;
+                    }
+                    else
+                    {
+                        sm.Opacity = 0.5;
+                    }
+
+                }
+                WMach.Text = "Working Machines: " + context.MachinePosition.Count(c => c.Working == true);
+            }
+        }
+
+        private void WorkingMac(string value)
+        {
+
+            if (WorkingFlag)
+            {
+                StackPanel sm;
+                var index = value.IndexOf(".");
+                var test = value.Substring(index - 2, 2);
+
+
+                this.Dispatcher.Invoke(() =>
+                {
+                    index = WMach.Text.IndexOf(":");
+
+                    sm = (StackPanel)FindName("SM" + test);
+
+                    if (sm.Opacity == 0.5)
+                    {
+                        sm.Opacity = 1;
+                       // var test2 = WMach.Text.Substring(index+1);
+                        WMach.Text = "Working Machines: " + (Convert.ToInt32(WMach.Text.Substring(index + 1)) + 1);
+
+                    }
+                    else
+                    {
+                        sm.Opacity = 0.5;
+                        WMach.Text = "Working Machines: " + (Convert.ToInt32(WMach.Text.Substring(index + 1)) - 1);
+
+                    }
+                });
+
+            }
+            WorkingFlag = true;
         }
     }
 }

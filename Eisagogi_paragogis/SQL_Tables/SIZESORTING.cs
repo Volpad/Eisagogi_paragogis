@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Eisagogi_paragogis
 {
-    [Table(Name = "BOMS3")]
+    [Table(Name = "SIZESORTING")]
     public class SIZESORTING
     {
         [Column] public string SIZE { get; set; }
