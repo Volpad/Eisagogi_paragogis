@@ -1,0 +1,25 @@
+﻿<Window x:Class="Eisagogi_paragogis.Windows.Days_Calculation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Eisagogi_paragogis.Windows"
+        mc:Ignorable="d"
+        Title="Days_Calculation" Height="450" Width="800"
+        Tag="Days_calc">
+    <Window.Background>
+        <VisualBrush TileMode="Tile" Viewport="0,0,20,20" ViewportUnits="Absolute">
+            <VisualBrush.Visual>
+                <Image Source="pictures/bg.png"></Image>
+            </VisualBrush.Visual>
+        </VisualBrush>
+    </Window.Background>
+    <Grid>
+        <!--<Button Content="Button" HorizontalAlignment="Left" Margin="24,10,0,0" VerticalAlignment="Top" Width="75"/> --> 
+        <DataGrid x:Name="dg">
+            
+        </DataGrid>
+        
+
+    </Grid>
+</Window>

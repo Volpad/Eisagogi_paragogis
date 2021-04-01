@@ -19,7 +19,12 @@ namespace Eisagogi_paragogis
     /// </summary>
     public partial class Kataxorisi_Paragogis : Window
     {
+
+        private static Production18 prod = new Production18();
+        private static List<int> prodids;// = prod.DELTIO_FINISH_SUPER.OrderByDescending(f => f.TOTAL_ID).Select(c => c.TOTAL_ID).ToList();
+
         int availableboxes = 11;
+        int counter = 0;
 
         public Kataxorisi_Paragogis(string refname)
         {
@@ -27,12 +32,26 @@ namespace Eisagogi_paragogis
 
             Initialization(refname);
 
+            //var prod = new Production18();
+
+            prodids = prod.DELTIO_FINISH_SUPER.OrderByDescending(f => f.TOTAL_ID).Where(c => c.FINISHAP_ID == refname).Select(c => c.TOTAL_ID).ToList();
+
+            Production_Insert(refname);
+
+            prodnumber.Text = (counter+1).ToString() + " / " + prodids.Count.ToString();
+        }
+
+        private void Production_Insert(string refname)
+        {
             using (var context = new Production18())
             {
 
                 mref.Text = refname;
 
-                totalid.Text = context.DELTIO_FINISH_SUPER.OrderByDescending(f => f.TOTAL_ID).Where(c => c.FINISHAP_ID == refname).Select(d => d.TOTAL_ID).FirstOrDefault().ToString();
+
+
+                //totalid.Text = context.DELTIO_FINISH_SUPER.OrderByDescending(f => f.TOTAL_ID).Where(c => c.FINISHAP_ID == refname).Select(d => d.TOTAL_ID).FirstOrDefault().ToString();
+                totalid.Text = prodids[counter].ToString();
                 morderno.Text = context.DELTIO_FINISH_SUPER.Where(c => c.TOTAL_ID.ToString() == totalid.Text).Select(d => d.OrderNo).FirstOrDefault();
                 mdeliverydate.Text = context.DELTIO_FINISH_SUPER.Where(c => c.TOTAL_ID.ToString() == totalid.Text).Select(d => d.DeliveryDate).FirstOrDefault();
                 mdeliverydate.Text = context.DELTIO_FINISH_SUPER.Where(c => c.TOTAL_ID.ToString() == totalid.Text).Select(d => d.DeliveryDate).FirstOrDefault();
@@ -127,6 +146,9 @@ namespace Eisagogi_paragogis
         {
             using (var context = new Production18())
             {
+
+
+
                 var collist = context.Coloursview.ToList();
 
 
@@ -241,6 +263,27 @@ namespace Eisagogi_paragogis
 #pragma warning disable CS0253 // Possible unintended reference comparison; to get a value comparison, cast the right hand side to type 'string'
                 mcolno.Text = context.Coloursview.Where(c => c.COLOR == mcolna.SelectedItem).Select(f => f.ColorId).FirstOrDefault();
 #pragma warning restore CS0253 // Possible unintended reference comparison; to get a value comparison, cast the right hand side to type 'string'
+            }
+        }
+
+        private void previous_Click(object sender, RoutedEventArgs e)
+        {
+            if (counter != 0)
+            {
+                counter--;
+                prodnumber.Text = (counter + 1).ToString() + " / " + prodids.Count.ToString();
+                Production_Insert(mref.Text);
+            }
+        }
+
+        private void next_Click(object sender, RoutedEventArgs e)
+        {
+            if (counter < prodids.Count-1)
+            {
+                counter++;
+                //  MessageBox.Show(prodids.Count.ToString());
+                prodnumber.Text = (counter + 1).ToString() + " / " + prodids.Count.ToString();
+                Production_Insert(mref.Text);
             }
         }
     }

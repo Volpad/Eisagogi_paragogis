@@ -151,18 +151,26 @@
     <Compile Include="Calendar.xaml.cs">
       <DependentUpon>Calendar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ColoursView.cs" />
+    <Compile Include="Colour_Specification.xaml.cs">
+      <DependentUpon>Colour_Specification.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SQL_Tables\ColoursView.cs" />
+    <Compile Include="SQL_Tables\Colour_Specs.cs" />
     <Compile Include="Kataxorisi_Paragogis.xaml.cs">
       <DependentUpon>Kataxorisi_Paragogis.xaml</DependentUpon>
     </Compile>
     <Compile Include="Machines_Picking.xaml.cs">
       <DependentUpon>Machines_Picking.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SQL_Tables\Orders_day_calc.cs" />
     <Compile Include="Windows\Ask_Product.xaml.cs">
       <DependentUpon>Ask_Product.xaml</DependentUpon>
     </Compile>
     <Compile Include="SQL_Tables\BOMS_2.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Windows\Days_Calculation.xaml.cs">
+      <DependentUpon>Days_Calculation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\MO_Paragogis.xaml.cs">
       <DependentUpon>MO_Paragogis.xaml</DependentUpon>
     </Compile>
@@ -256,6 +264,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Colour_Specification.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Kataxorisi_Paragogis.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -265,6 +277,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Ask_Product.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Days_Calculation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

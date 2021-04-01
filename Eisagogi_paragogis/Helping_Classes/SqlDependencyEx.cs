@@ -425,7 +425,8 @@ namespace Eisagogi_paragogis.Domain
         {
             get
             {
-                return string.Format("ListenerQueue_{0}", this.Identity);
+                //return string.Format("ListenerQueue_{0}", this.Identity);
+                return string.Format("ListenerQueue_" + Environment.UserName + "_{0}", this.Identity);
             }
         }
 
@@ -433,7 +434,8 @@ namespace Eisagogi_paragogis.Domain
         {
             get
             {
-                return string.Format("ListenerService_{0}", this.Identity);
+                //return string.Format("ListenerService_{0}", this.Identity);
+                return string.Format("ListenerService_" + Environment.UserName + "_{0}", this.Identity);
             }
         }
 
@@ -441,7 +443,8 @@ namespace Eisagogi_paragogis.Domain
         {
             get
             {
-                return string.Format("tr_Listener_{0}", this.Identity);
+                //return string.Format("tr_Listener_2" + Environment.UserName + "_{0}", this.Identity);
+                return string.Format("tr_Listener_" + Environment.UserName + "_{0}", this.Identity);
             }
         }
 
@@ -449,7 +452,8 @@ namespace Eisagogi_paragogis.Domain
         {
             get
             {
-                return string.Format("sp_InstallListenerNotification_{0}", this.Identity);
+                //return string.Format("sp_InstallListenerNotification_{0}", this.Identity);
+                return string.Format("sp_InstallListenerNotification_" + Environment.UserName + "_{0}", this.Identity);
             }
         }
 
@@ -458,6 +462,7 @@ namespace Eisagogi_paragogis.Domain
             get
             {
                 return string.Format("sp_UninstallListenerNotification_{0}", this.Identity);
+                //return string.Format("sp_UninstallListenerNotification_" + Environment.UserName + "_{0}", this.Identity);
             }
         }
 
@@ -515,7 +520,9 @@ namespace Eisagogi_paragogis.Domain
             // ASP.NET fix 
             // IIS is not usually restarted when a new website version is deployed
             // This situation leads to notification absence in some cases
-            this.Stop();
+
+            this.Stop();  // to afairesa giati otan kanei restart svinei to token sto .stop kai meta rixnei exeption sto .start 
+                          // to xanaevala dokimastika, afairontas to .stop apo ti methodo tou restart wste na trexei to stop apo edv. 
 
             this.InstallNotification();
 
@@ -756,7 +763,7 @@ namespace Eisagogi_paragogis.Domain
         {
             var evnt = NotificationProcessStopped;
             if (evnt == null) return;
-
+            Console.WriteLine(evnt.ToString());
             evnt.BeginInvoke(this, EventArgs.Empty, null, null);
         }
     }

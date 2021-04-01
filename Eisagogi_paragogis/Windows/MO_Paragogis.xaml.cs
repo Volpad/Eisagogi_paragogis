@@ -72,7 +72,7 @@ namespace Eisagogi_paragogis
 
             using(var context = new Production18())
             {
-                var  text = context.eisagogiParagogis.Where(i => i.date < last.SelectedDate.Value.AddDays(1) && i.date > first.SelectedDate.Value.AddDays(-1)).Sum(c => ((c.dozen * 24 + c.socks)) / days) / 24;
+                var  text = context.eisagogiParagogis.Where(i => i.date < last.SelectedDate.Value.AddDays(1) && i.date > first.SelectedDate.Value.AddDays(0)).Sum(c => ((c.dozen * 24 + c.socks)) / days) / 24;
                 bd.Text = days.ToString();
                 mo.Text = "MO: " + Decimal.Round(Convert.ToDecimal(text), 1).ToString();
 

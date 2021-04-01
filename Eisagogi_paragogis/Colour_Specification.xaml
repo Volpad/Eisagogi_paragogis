@@ -1,0 +1,20 @@
+﻿<Window x:Class="Eisagogi_paragogis.Colour_Specification"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Eisagogi_paragogis"
+        mc:Ignorable="d"
+        Title="Colour_Specification" Height="450" Width="800"
+        Tag="colour_specs">
+    <Window.Background>
+        <VisualBrush TileMode="Tile" Viewport="0,0,20,20" ViewportUnits="Absolute">
+            <VisualBrush.Visual>
+                <Image Source="pictures/bg.png"></Image>
+            </VisualBrush.Visual>
+        </VisualBrush>
+    </Window.Background>
+    <Grid>
+        
+    </Grid>
+</Window>

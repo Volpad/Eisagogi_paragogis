@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Eisagogi_paragogis"
         mc:Ignorable="d"
-        Title="productionView" Height="566.883" Width="1727.533"
+        Title="productionView" Height="588.883" Width="1806.533"
         Icon="pictures/add_bag_socks.ico"
         Tag="productionView"
         PreviewKeyDown="Window_PreviewKeyDown">
@@ -18,11 +18,11 @@
     </Window.Background>
 
 
-    <Grid HorizontalAlignment="Left" Width="1718" Margin="0,0,0,1">
+    <Grid HorizontalAlignment="Left" Width="1797" Margin="0,0,0,1">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="576"/>
-            <ColumnDefinition Width="753*"/>
-            <ColumnDefinition Width="389*"/>
+            <ColumnDefinition Width="634"/>
+            <ColumnDefinition Width="757"/>
+            <ColumnDefinition Width="327*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -38,7 +38,8 @@
             <TextBlock Canvas.Left="394" TextWrapping="Wrap" Text="Ημερ. Παράδοσης" Height="20" Width="103"/>
             <TextBlock Canvas.Left="537" TextWrapping="Wrap" Text="Ολοκλήρωση παραγωγής" Height="20" Width="103"/>
             <Button Canvas.Left="781" Content="Έλεγχος αποθήκης" Height="20" Width="108" Click="whcheck_Click"/>
-            <Button Canvas.Left="900" Content="Προδιαγραφές " Height="20" Width="104" Click="Specs_Click"/>
+            <Button Canvas.Left="900" Content="Προδιαγραφές " Height="20" Width="108" Click="Specs_Click"/>
+            <Button x:Name="ekkremotites" Canvas.Left="1019" Content="Εκκρεμότητες " Height="20" Width="104" Click="Ekremotites_Click"/>
         </Canvas>
         <Canvas x:Name="ycanvas" Margin="10,0" Background="LightYellow" Grid.Row="1" Grid.ColumnSpan="3">
             <TextBlock x:Name="date" Canvas.Left="10" TextWrapping="Wrap" Text="Date" Width="71" Height="18"/>
@@ -49,7 +50,7 @@
             <TextBlock x:Name="OrderFinish" Canvas.Left="540" TextWrapping="Wrap" Text="OrderFinishdate" Height="18" Width="96"/>
         </Canvas>
         <TextBlock HorizontalAlignment="Left" Margin="22,10,0,0" TextWrapping="Wrap" Text="Ημερ. Καταχ." VerticalAlignment="Top" Width="74" Height="20"/>
-        <Canvas HorizontalAlignment="Left" Margin="10,10,0,2" Grid.Row="3" Background="LightGray" Width="555">
+        <Canvas HorizontalAlignment="Left" Margin="10,10,0,2" Grid.Row="3" Background="LightGray" Width="614">
             <TextBlock TextWrapping="Wrap" Text="Αρ. Κατ." Height="19" Width="68" TextAlignment="Center"/>
             <TextBlock Canvas.Left="68" TextWrapping="Wrap" Text="Κωδ. Χρ." Height="19" Width="64" TextAlignment="Center"/>
             <TextBlock Canvas.Left="132" TextWrapping="Wrap" Text="Χρώμα" Height="19" Width="151" TextAlignment="Center"/>
@@ -57,9 +58,11 @@
             <TextBlock Canvas.Left="354" TextWrapping="Wrap" Text="Ποσοτ" Height="19" Width="45" TextAlignment="Center"/>
             <TextBlock Canvas.Left="420" TextWrapping="Wrap" Text="Παραγ" Height="19" TextAlignment="Center"/>
             <TextBlock Canvas.Left="481" TextWrapping="Wrap" Text="Υπολ." Height="19" TextAlignment="Center"/>
+            <TextBlock Canvas.Left="537" TextWrapping="Wrap" Text="GR." Height="19" TextAlignment="Center"/>
+            <TextBlock Canvas.Left="565" TextWrapping="Wrap" Text="BG." Height="19" TextAlignment="Center"/>
         </Canvas>
 
-        <DataGrid x:Name="productiondata" MouseDoubleClick="Row_DoubleClick" FontFamily="Calibri (Detail)" Background="White" GridLinesVisibility="None" AlternationCount="2" HorizontalAlignment="Left" Margin="10,10,0,84" Grid.Row="4" Width="555" Loaded="productionDataOnLoad" AutoGenerateColumns="False" ItemsSource="{Binding Path = query1}">
+        <DataGrid x:Name="productiondata" MouseDoubleClick="Row_DoubleClick" FontFamily="Calibri (Detail)" Background="White" GridLinesVisibility="None" AlternationCount="2" HorizontalAlignment="Left" Margin="10,10,0,102" Grid.Row="4" Width="614" Loaded="productionDataOnLoad" AutoGenerateColumns="False" ItemsSource="{Binding Path = query1}">
             <DataGrid.Resources>
                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE9E2FF"/>
             </DataGrid.Resources>
@@ -116,6 +119,21 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path = GR}" FontSize="12">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="FrameworkElement.HorizontalAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path = BG}" FontSize="12">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="FrameworkElement.HorizontalAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
             </DataGrid.Columns>
 
 
@@ -266,7 +284,11 @@
             </DataGrid.RowStyle>
 
         </DataGrid>
-        <Image x:Name="image" Grid.Column="2" HorizontalAlignment="Left" Height="393" Margin="13,10,-90,0" Grid.Row="4" VerticalAlignment="Top" Width="466"/>
-        <TextBox x:Name="memo" HorizontalAlignment="Left" Margin="10,0,0,23" Grid.Row="4" TextWrapping="Wrap" Text="Memo" Width="555" Height="47" VerticalAlignment="Bottom"/>
+        <Image x:Name="image" Grid.Column="2" HorizontalAlignment="Left" Height="393" Margin="10,0,-66,0" Grid.Row="4" VerticalAlignment="Top" Width="383"/>
+        <TextBlock x:Name="Total" HorizontalAlignment="Left"  Margin="450,0,0,80" Grid.Row="4" Foreground="WhiteSmoke"  Text="Total GR/BG: " VerticalAlignment="Bottom" Height="16" Width="70"></TextBlock>
+        <TextBlock x:Name="TotalGr" HorizontalAlignment="Left"  Margin="550,0,0,80" Grid.Row="4" Foreground="WhiteSmoke"  Text="50 " VerticalAlignment="Bottom" Height="16" Width="21"></TextBlock>
+        <TextBlock x:Name="TotalBG" HorizontalAlignment="Left"  Margin="575,0,0,80" Grid.Row="4" Foreground="WhiteSmoke"  Text="50 " VerticalAlignment="Bottom" Height="16" Width="25"></TextBlock>
+
+        <TextBox x:Name="memo" HorizontalAlignment="Left" Margin="10,0,0,23" Grid.Row="4" TextWrapping="Wrap" Text="Memo" Width="614" Height="47" VerticalAlignment="Bottom"/>
     </Grid>
 </Window>

@@ -62,6 +62,9 @@
             <ComboBox x:Name="mcolna" Grid.Column="4" Grid.Row="3" HorizontalContentAlignment="Center" Text="ΜΑΥΡΟ-ΑΝΘΡΑΚΙ-ΑΝΘΡΑΚΙ" FontFamily="calibri" FontSize="15" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" IsReadOnly="False" IsEditable="True"  Margin="10,5,10,5" SelectionChanged="mcolna_SelectionChanged"/>
             <!--<TextBlock Grid.Column="5" Grid.Row="2" Text="Προσθηκη" Foreground="WhiteSmoke" FontFamily="calibri" FontSize="17" VerticalAlignment="Center"  TextAlignment="Center" HorizontalAlignment="Center" />-->
             <Button Grid.Column="5" Grid.Row="3" Content="Προσθηκη" FontFamily="calibri" FontSize="28" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Stretch"  Margin="5,0,5,0"/>
+            <Button x:Name="previous" Grid.Column="6" Grid.Row="1" Content="Προηγούμενη" FontFamily="calibri" FontSize="28" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Stretch"  Margin="5,0,5,0" Click="previous_Click"/>
+            <Button x:Name="next" Grid.Column="6" Grid.Row="2" Content="Επόμενη" FontFamily="calibri" FontSize="28" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Stretch"  Margin="5,0,5,0" Click="next_Click"/>
+            <TextBlock x:Name="prodnumber" Grid.Column="6" Grid.Row="3" Text="1 / 1" FontFamily="calibri" FontSize="25" Foreground="WhiteSmoke" FontWeight="Bold"  VerticalAlignment="Center" HorizontalAlignment="Stretch" TextAlignment="Center" Margin="5,0,5,0"/>
 
         </Grid>
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" >

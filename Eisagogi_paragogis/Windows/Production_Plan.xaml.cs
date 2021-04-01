@@ -80,6 +80,38 @@ namespace Eisagogi_paragogis
         List<Machineqty> machinenamecreate = MachineQty.ToList();
         List<MachinePosition> machpos = machinePosition.ToList();
 
+        public static DateTime AddBusinessDays(DateTime date, int days)
+        {
+            if (days < 0)
+            {
+                throw new ArgumentException("days cannot be negative", "days");
+            }
+
+            if (days == 0) return date;
+
+            if (date.DayOfWeek == DayOfWeek.Saturday)
+            {
+                date = date.AddDays(2);
+                days -= 1;
+            }
+            else if (date.DayOfWeek == DayOfWeek.Sunday)
+            {
+                date = date.AddDays(1);
+                days -= 1;
+            }
+
+            date = date.AddDays(days / 5 * 7);
+            int extraDays = days % 5;
+
+            if ((int)date.DayOfWeek + extraDays > 5)
+            {
+                extraDays += 2;
+            }
+
+            return date.AddDays(extraDays);
+
+        }
+
         string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
         private bool saved = true;
         int txtfontsize = 9;
@@ -103,12 +135,18 @@ namespace Eisagogi_paragogis
         static int random2 = rnd.Next(100000, 1000000000);
         SqlDependencyEx Check_machineQty = new SqlDependencyEx(connectionString, "Production18", "Machineqty", identity: random);
         SqlDependencyEx Check_Working = new SqlDependencyEx(connectionString, "Production18", "MachinePosition", identity: (random2));
+        //SqlDependencyEx Check_machineQty = new SqlDependencyEx(connectionString, "Production18", "Machineqty", identity: 999);
+       // SqlDependencyEx Check_Working = new SqlDependencyEx(connectionString, "Production18", "MachinePosition", identity: 9999);
+
         //double DaysWorkingPermonth = 21.32; //Υπολογισμός 4 βδομάδες μαζί με Σάββατα
         double DaysWorkingPermonth = 20; //Υπολογισμός 4 βδομάδες ΧΩΡΙΣ Σάββατα
         bool reloadFlag = true;
         bool WorkingFlag = true;
         string wmach;
         bool NS = false;
+        bool TNS = false;
+        bool closing = false;
+        
 
        // static ThreadStart ts = new ThreadStart(Restart_Check_machineQty);
        // Thread backgroundThread = new Thread(ts);
@@ -117,6 +155,16 @@ namespace Eisagogi_paragogis
         public Production_Plan()
         {
             InitializeComponent();
+
+            if (!Static_Variables.adminRights)
+            {
+                calendar.Visibility = Visibility.Collapsed;
+                New_Production.Visibility = Visibility.Collapsed;
+                DaysCalc.Visibility = Visibility.Collapsed;
+                MO_calc.Visibility = Visibility.Collapsed;
+                ProdSpec.Visibility = Visibility.Collapsed;
+
+            }
 
             loopingTimer = new DispatcherTimer();
             loopingTimer.Tick += new EventHandler(loopColours);
@@ -469,12 +517,31 @@ namespace Eisagogi_paragogis
 
             Check_machineQty.TableChanged += (o, e) => toReload(e.Data.Value);
             Check_machineQty.Start();
-           // Check_Working.TableChanged += (o, e) => Working();
             Check_Working.TableChanged += (o, e) => WorkingMac(e.Data.Value);
             Check_Working.Start();
 
-         //   backgroundThread.Start();
+            Check_Working.NotificationProcessStopped += (o, e) => WorkingNotificationProcessstopped(this, null);
+            Check_machineQty.NotificationProcessStopped += (o, e) => MachineNotificationProcessstopped(this, null);
+        }
 
+        private void WorkingNotificationProcessstopped(object o, EventArgs e)
+        {
+            if (!closing)
+            {
+               // Check_Working.Stop();
+                Check_Working.Start();
+                MessageBox.Show("working restarted");
+            }
+        }
+
+        private void MachineNotificationProcessstopped(object o, EventArgs e)
+        {
+            if (!closing)
+            {
+               // Check_machineQty.Stop();
+                Check_machineQty.Start();
+                MessageBox.Show("Machine restarted");
+            }
         }
 
         private void toReload(string value)
@@ -483,21 +550,28 @@ namespace Eisagogi_paragogis
             if (reloadFlag)
             {
 
-
-                string macno;
-                string macpos;
-                using (var context = new Production18())
+                try
                 {
-                    macno = value.Substring(0, 5);
-                    macpos = context.MachinePosition.Where(c => c.MachineNo.StartsWith(macno)).Select(f => f.MachinePos).FirstOrDefault();
+                    string macno;
+                    string macpos;
+                    using (var context = new Production18())
+                    {
+                        macno = value.Substring(0, 5);
+                        macpos = context.MachinePosition.Where(c => c.MachineNo.StartsWith(macno)).Select(f => f.MachinePos).FirstOrDefault();
+
+                    }
+
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        reloadMachine(macno, macpos);
+
+                    });
 
                 }
-
-                this.Dispatcher.Invoke(() =>
+                catch
                 {
-                    reloadMachine(macno, macpos);
-
-                });
+                    MessageBox.Show("Machine reload failed");
+                }
             }
             reloadFlag = true;
 
@@ -525,7 +599,10 @@ namespace Eisagogi_paragogis
                 var b = context.MachinePosition.Where(c => c.MachineNo.StartsWith(wmach)).Select(d => d.Working).FirstOrDefault();
                 if (b)
                 {
-                    WSM.Opacity = 0.5;
+                    if (!NS)
+                    {
+                        WSM.Opacity = 0.5;
+                    }
                     foreach (var c in context.MachinePosition.Where(c => c.MachineNo.StartsWith(wmach)))
                     {
                         c.Working = false;
@@ -533,7 +610,10 @@ namespace Eisagogi_paragogis
                 }
                 else
                 {
-                    WSM.Opacity = 1;
+                    if (!NS)
+                    {
+                        WSM.Opacity = 1;
+                    }
                     foreach (var c in context.MachinePosition.Where(c => c.MachineNo.StartsWith(wmach)))
                     {
                         c.Working = true;
@@ -549,7 +629,6 @@ namespace Eisagogi_paragogis
 
         private void Toggle_NightShift(object sender, RoutedEventArgs e)
         {
-
             var WSM = (StackPanel)FindName("SM" + wmach);
 
             using (var context = new Production18())
@@ -557,6 +636,7 @@ namespace Eisagogi_paragogis
                 var b = context.MachinePosition.Where(c => c.MachineNo.StartsWith(wmach)).Select(d => d.NightShift).FirstOrDefault();
                 if (b)
                 {
+
                    // WSM.Opacity = 0.5;
                     foreach (var c in context.MachinePosition.Where(c => c.MachineNo.StartsWith(wmach)))
                     {
@@ -571,11 +651,13 @@ namespace Eisagogi_paragogis
                         c.NightShift = true;
                     }
                 }
+                TNS = true;
                 context.SubmitChanges();
-
+                if (NS)
+                {
+                    Nightshift();
+                }
                 WNS.Text = "Night Shift: " + context.MachinePosition.Count(c => c.NightShift == true);
-                Nightshift();
-
             }
 
         }
@@ -611,6 +693,7 @@ namespace Eisagogi_paragogis
 
             return Machinename;
         }
+
 
         //private TextBox create_Machinename_boxes(int rowcounter, int machinecounter, Machineqty machineqty)
         //{
@@ -1342,6 +1425,7 @@ namespace Eisagogi_paragogis
                         TotalId.Visibility = Visibility.Visible;
                         Rest.Visibility = Visibility.Visible;
                         del.Visibility = Visibility.Visible;
+                        Name.MouseRightButtonUp += new MouseButtonEventHandler(Pname_rightClick);
 
                         using (var context = new Production18())
                         {
@@ -1408,7 +1492,7 @@ namespace Eisagogi_paragogis
 
                             context.Machineqty.InsertOnSubmit(newProduction);
                             context.SubmitChanges();
-
+                            id.Text = maxid.ToString();
                         }
 
                     }
@@ -1909,37 +1993,37 @@ namespace Eisagogi_paragogis
         private void Production_Plan_Closing(object sender, CancelEventArgs e)
         {
             //backgroundThread.Abort();
-            Check_machineQty.Stop();
-            Check_Working.Stop();
-            //Check_eisagogiParagogis.Stop();
-            // notificationTest.Termination();
-            // If not saved, notify user and ask for a response
-            if (!this.saved)
-            {
-                string msg = "Close without saving?";
-                MessageBoxResult result =
-                  MessageBox.Show(
-                    msg,
-                    "Data App",
-                    MessageBoxButton.YesNo,
-                    MessageBoxImage.Warning);
-                if (result == MessageBoxResult.No)
-                {
-                    // If user doesn't want to close, cancel closure
-                    e.Cancel = true;
-                }
-            }
+            closing = true;
+
+
+            //// If not saved, notify user and ask for a response
+            //if (!this.saved)
+            //{
+            //    string msg = "Close without saving?";
+            //    MessageBoxResult result =
+            //      MessageBox.Show(
+            //        msg,
+            //        "Data App",
+            //        MessageBoxButton.YesNo,
+            //        MessageBoxImage.Warning);
+            //    if (result == MessageBoxResult.No)
+            //    {
+            //        // If user doesn't want to close, cancel closure
+            //        e.Cancel = true;
+            //    }
+            //}
             
         }
 
         private void Production_Plan_Closed(object sender, EventArgs e)
         {
-
+            Check_machineQty.Stop();
+            Check_Working.Stop();
             foreach (Window win in Application.Current.Windows)
             {
                 if (win.Tag != null)
                 {
-                    if (win.Tag.ToString() == "productionView" || win.Tag.ToString() == "ProdSpec" || win.Tag.ToString() == "mo" || win.Tag.ToString() == "teleiwmena_tsouvalia" || win.Tag.ToString() == "kataxwrisi_deltiwn_paragogis" || win.Tag.ToString() == "eisagogi_imietoimwn" || win.Tag.ToString() == "tsouvali" || win.Tag.ToString() == "eisagogiapoparagogi" || win.Tag.ToString() == "RemainingProductions" || win.Tag.ToString() == "balance" || win.Tag.ToString() == "deltiomixanis" || win.Tag.ToString() == "ektypwsi")
+                    if (win.Tag.ToString() == "productionView" || win.Tag.ToString() == "Days_calc" || win.Tag.ToString() == "ProdSpec" || win.Tag.ToString() == "mo" || win.Tag.ToString() == "teleiwmena_tsouvalia" || win.Tag.ToString() == "kataxwrisi_deltiwn_paragogis" || win.Tag.ToString() == "eisagogi_imietoimwn" || win.Tag.ToString() == "tsouvali" || win.Tag.ToString() == "eisagogiapoparagogi" || win.Tag.ToString() == "RemainingProductions" || win.Tag.ToString() == "balance" || win.Tag.ToString() == "deltiomixanis" || win.Tag.ToString() == "ektypwsi")
                     {
                         win.Close();
                     }
@@ -1958,11 +2042,14 @@ namespace Eisagogi_paragogis
         {
             //StackPanel stack = new StackPanel();
             BrushConverter bc = new BrushConverter();
-            stack = (StackPanel)FindName("SM55");
+           // stack = (StackPanel)FindName("SM55");
+
             if (toggleflashingmachines)
             {
                 loopingTimer.Start();
                 toggleflashingmachines = false;
+                Chechending.Background = new SolidColorBrush(Colors.DarkRed);
+
             }
             else
             {
@@ -1973,7 +2060,7 @@ namespace Eisagogi_paragogis
                     stack.Background = (Brush)bc.ConvertFrom("#e0e0e0");
                 }
                 listofpanels.Clear();
-
+                Chechending.Background = null;
             }
 
         }
@@ -1990,7 +2077,7 @@ namespace Eisagogi_paragogis
             {
                 var mqty = from Machineqty in production18.Machineqty
                            orderby Machineqty.queueNo descending, Machineqty.AccessNo descending, Machineqty.ID
-                           where Machineqty.MachineNo != null && Machineqty.queueNo != "deleted" && Machineqty.Status == false
+                           where Machineqty.MachineNo != null && Machineqty.queueNo != "deleted" && Machineqty.queueNo != "returned" && Machineqty.Status == false
                            select Machineqty;
 
                 while (machinecounter < 55)
@@ -2344,58 +2431,6 @@ namespace Eisagogi_paragogis
                 //update_boxes();
             }
             
-        }
-
-        private void WindowKeyDown(object sender, KeyEventArgs e)
-
-        {
-
-            if (e.Key == Key.F && Keyboard.Modifiers == ModifierKeys.Control)
-            {
-                TextBox t = (TextBox)FindName("search");
-                t.Focus();
-            }
-
-
-            //if (e.Key == Key.S && Keyboard.Modifiers == ModifierKeys.Control)
-            //{
-            //    //saveprocedure();
-            //}
-
-            //                if (e.Key == Key.Z && Keyboard.Modifiers == ModifierKeys.Control)
-            //                {
-            //                Button del = new Button();
-            //                TextBox Finid = new TextBox();
-            //                TextBox Totalidbox = new TextBox();
-            //                TextBox Rest = new TextBox();
-            //                TextBox Mac = new TextBox();
-            //                TextBox id = new TextBox();
-            //                CheckBox Chb = new CheckBox();
-            //#pragma warning disable CS0219 // The variable 'Totalidint' is assigned but its value is never used
-            //                int? Totalidint = 0;
-            //#pragma warning restore CS0219 // The variable 'Totalidint' is assigned but its value is never used
-            //#pragma warning disable CS0168 // The variable 'control' is declared but never used
-            //                string control;
-            //#pragma warning restore CS0168 // The variable 'control' is declared but never used
-            //#pragma warning disable CS0168 // The variable 'changedtype' is declared but never used
-            //                string changedtype;
-            //#pragma warning restore CS0168 // The variable 'changedtype' is declared but never used
-            //                if (changecounter == 0)
-            //                {
-            //                    SystemSounds.Beep.Play();
-            //                    //MessageBox.Show("Ήθελες και Ctrl+z ε??? /nΔεν το έχω ακόμα έτοιμο...");
-            //                }
-            //                else
-            //                {
-            //                    MessageBox.Show("Δεν δουλεύει σωστά ακόμα.");
-            //                    TextBox lastbox = listofprevioustextboxes[listofprevioustextboxes.Count - changecounter];
-            //                    lastbox.Undo();
-            //                    listofprevioustextboxes.RemoveAt(listofprevioustextboxes.Count - 1);
-            //                    changecounter--;
-            //                }
-            //                //MessageBox.Show("CTRL + C Pressed!");
-            //                }
-
         }
 
         private void update_boxes()
@@ -2967,31 +3002,115 @@ namespace Eisagogi_paragogis
                 StackPanel sm;
                 var index = value.IndexOf(".");
                 var test = value.Substring(index - 2, 2);
+               // MessageBox.Show(value);
+                var nowindex = value.Substring(value.LastIndexOf(".")-5,2);
+                var previndex = value.Substring(value.Length - 2, 2);
+                var worn = nowindex.Substring(0,1);
+                var nsn = nowindex.Substring(1, 1);
+                var worp = previndex.Substring(0,1);
+                var nsp = previndex.Substring(1,1);
 
-
-                this.Dispatcher.Invoke(() =>
+                try
                 {
-                    index = WMach.Text.IndexOf(":");
-
-                    sm = (StackPanel)FindName("SM" + test);
-
-                    if (sm.Opacity == 0.5)
+                    this.Dispatcher.Invoke(() =>
                     {
-                        sm.Opacity = 1;
-                       // var test2 = WMach.Text.Substring(index+1);
-                        WMach.Text = "Working Machines: " + (Convert.ToInt32(WMach.Text.Substring(index + 1)) + 1);
+                        index = WMach.Text.IndexOf(":");
+                       var index2 = WNS.Text.IndexOf(":");
+                        sm = (StackPanel)FindName("SM" + test);
 
-                    }
-                    else
-                    {
-                        sm.Opacity = 0.5;
-                        WMach.Text = "Working Machines: " + (Convert.ToInt32(WMach.Text.Substring(index + 1)) - 1);
+                        if (!worn.Equals(worp) && nsn.Equals(nsp))
+                        {
+                            if (worn.Equals("0"))
+                            {
+                                if (!NS)
+                                {
+                                    sm.Opacity = 0.5;
+                                }
+                                WMach.Text = "Working Machines: " + (Convert.ToInt32(WMach.Text.Substring(index + 1)) - 1);
 
-                    }
-                });
-
+                            }
+                            else
+                            {
+                                if (!NS)
+                                {
+                                    sm.Opacity = 1;
+                                }
+                                WMach.Text = "Working Machines: " + (Convert.ToInt32(WMach.Text.Substring(index + 1)) + 1);
+                            }
+                        }
+                        else if (worn.Equals(worp) && !nsn.Equals(nsp))
+                        {
+                            if (nsn.Equals("0"))
+                            {
+                                if (NS)
+                                {
+                                    sm.Opacity = 0.5;
+                                }
+                                if (!TNS)
+                                {
+                                    WNS.Text = "Night Shift: " + (Convert.ToInt32(WNS.Text.Substring(index2 + 1)) - 1);
+                                }
+                                TNS = false;
+                            }
+                            else
+                            {
+                                if (NS)
+                                {
+                                    sm.Opacity = 1;
+                                }
+                                if (!TNS)
+                                {
+                                    WNS.Text = "Night Shift: " + (Convert.ToInt32(WNS.Text.Substring(index2 + 1)) + 1);
+                                }
+                                TNS = false;
+                            }
+                        }
+                        else
+                        {
+                            throw new Exception("Night Shift and Working changed");
+                        }
+                    });
+                }
+                catch
+                {
+                    MessageBox.Show("Working reload Failed on machine " + test);
+                }
             }
             WorkingFlag = true;
+        }
+
+        private void DaysCalc_Click(object sender, RoutedEventArgs e)
+        {
+            Window w = new Windows.Days_Calculation();
+            w.Show();
+        }
+       
+        private void WindowKeyDown(object sender, KeyEventArgs e)
+
+        {
+
+            if ( Keyboard.IsKeyDown(Key.D) && Keyboard.Modifiers == ModifierKeys.Control && Keyboard.IsKeyDown(Key.A))
+            {
+                Static_Variables.adminRights = true;
+
+                calendar.Visibility = Visibility.Visible;
+                New_Production.Visibility = Visibility.Visible;
+                DaysCalc.Visibility = Visibility.Visible;
+                MO_calc.Visibility = Visibility.Visible;
+                ProdSpec.Visibility = Visibility.Visible;
+
+
+                MessageBox.Show("You now have admin rights");
+
+            }
+
+            if (e.Key == Key.F && Keyboard.Modifiers == ModifierKeys.Control)
+            {
+                TextBox t = (TextBox)FindName("search");
+                t.Focus();
+            }
+
+
         }
     }
 }

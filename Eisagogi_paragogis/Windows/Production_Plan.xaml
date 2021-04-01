@@ -13,7 +13,7 @@
         WindowState="Maximized"
         PreviewKeyDown="WindowKeyDown"
         Icon="pictures/plan.png"
-        Tag="Production_Plan">
+        Tag="Production_Plan" >
     <Window.Background>
         <VisualBrush TileMode="Tile" Viewport="0,0,20,20" ViewportUnits="Absolute">
             <VisualBrush.Visual>
@@ -264,8 +264,8 @@
             <Button x:Name="walkorders" Content="WalkOrders" Height="25" VerticalAlignment="Stretch" Width="96" Click="Orders_Click" Foreground="WhiteSmoke"/>
             <Button x:Name="otherorders" Content="OtherOrders" Height="25" VerticalAlignment="Stretch" Width="104" Click="Orders_Click" Foreground="WhiteSmoke" />
             <Button x:Name="CheckBalance" Content="Check Balance" Height="25" VerticalAlignment="Stretch" Width="115" Click="CheckBalance_Click" Foreground="WhiteSmoke" />
-            <Button x:Name="DeltioM" Content="Δελτίο Μηχανής" Height="25" VerticalAlignment="Stretch" Width="115" Click="DeltioM_Click" Foreground="WhiteSmoke" />
             <Button x:Name="Night_Shift" Content="Μηχανες Νύχτα" Height="25" VerticalAlignment="Stretch" Width="115" Click="Night_Shift_Click" Foreground="WhiteSmoke" />
+            <Button x:Name="DeltioM" Content="Δελτίο Μηχανής" Height="25" VerticalAlignment="Stretch" Width="115" Click="DeltioM_Click" Foreground="WhiteSmoke" />
             <!--<Button x:Name="Hmietoima" Content="Εισαγωγή Ημιετοίμων" Height="25" VerticalAlignment="Stretch" Width="150" Click="Hmietoima_Click" Foreground="WhiteSmoke" />
             <Button x:Name="deltiaMixanis" Content="Δελτία Μηχανής" Height="25" VerticalAlignment="Stretch" Width="150" Click="deltiaMixanis_Click" Foreground="WhiteSmoke" />-->
             <!--<Button x:Name="teleiwmena_tsouvalia" Content="Τελειωμένα Τσουβάλια" Height="25" VerticalAlignment="Stretch" Width="150" Click="teleiwmena_tsouvalia_Click" Foreground="WhiteSmoke" />-->
@@ -284,7 +284,7 @@
                     <Button x:Name="Hmietoima" Content="Εισαγωγή Ημιετοίμων" Height="25" VerticalAlignment="Stretch" Width="150" Click="Hmietoima_Click" Foreground="WhiteSmoke" Background="DimGray"/>
                 </ComboBoxItem>
                 <ComboBoxItem>
-                    <Button x:Name="eisagogi2" Content="Καταχώρηση Παραγωγής" Height="25" VerticalAlignment="Stretch" Width="150" Click="eisagogi2_Click" Foreground="WhiteSmoke"  Background="DimGray"/>
+                    <Button x:Name="eisagogi2" Content="Καταχωρημένη Παραγωγής" Height="25" VerticalAlignment="Stretch" Width="150" Click="eisagogi2_Click" Foreground="WhiteSmoke"  Background="DimGray"/>
                 </ComboBoxItem>
                 <ComboBoxItem>
                     <Button x:Name="MO_calc" Content="Έλεγχος ΜΟ παραγωγής" Height="25" VerticalAlignment="Stretch" Width="150" Click="MO_calc_Click"  Foreground="WhiteSmoke"  Background="DimGray"/>
@@ -298,6 +298,9 @@
                 <ComboBoxItem>
                     <Button x:Name="New_Production" Content="Καταχώρηση παραγωγής" Height="25" VerticalAlignment="Stretch" Width="150" Click="New_Production_Click"  Foreground="WhiteSmoke"  Background="DimGray"/>
                 </ComboBoxItem>
+                <ComboBoxItem>
+                    <Button x:Name="DaysCalc" Content="Days Calculation" Height="25" VerticalAlignment="Stretch" Width="150" Click="DaysCalc_Click"  Foreground="WhiteSmoke"  Background="DimGray"/>
+                </ComboBoxItem>
 
             </ComboBox>
 
@@ -310,6 +313,7 @@
         </ToolBar>
         <TextBox x:Name="search" Height="20" Width="172"  Text="Search" VerticalAlignment="Top" TextChanged="search_TextChanged"  LostKeyboardFocus="search_LostKeyboardFocus" MouseDown="search_MouseDown" GotKeyboardFocus="search_PreviewGotKeyboardFocus" GotMouseCapture="search_GotMouseCapture" HorizontalAlignment="Right" Margin="0,2,17,0"/>
         <TextBox x:Name="prod" Height="20" Width="172"  Text="Product" VerticalAlignment="Top" LostKeyboardFocus="prod_LostKeyboardFocus" KeyUp="prod_KeyUp" GotMouseCapture="prod_GotMouseCapture" GotKeyboardFocus="prod_GotKeyboardFocus"  HorizontalAlignment="Right" Margin="0,2,200,0"/>
+        
 
 
     </Grid>

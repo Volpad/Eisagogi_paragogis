@@ -202,7 +202,7 @@ namespace Eisagogi_paragogis
             var test2 = from ItemBalances in context.ItemBalances
                         //join wpfll in test
                        // on new { ItemBalances.ColorCode, ItemBalances.SizeCode } equals new { wpfll.ColorCode, wpfll.SizeCode } into g
-                        orderby ItemBalances.ColorCode
+                        orderby ItemBalances.ColorCode, ItemBalances.SizeCode
                         where ItemBalances.ItemCode.Equals(product)
                         select new
                         {

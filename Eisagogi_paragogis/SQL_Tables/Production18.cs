@@ -55,6 +55,7 @@ namespace Eisagogi_paragogis
         public Table<MachinePosition> MachinePosition;
         public Table<Product_spec_changes> Product_Spec_Changes;
         public Table<ColoursView> Coloursview;
+        public Table<Colour_Specs> Colour_specs;
 
     }
 }

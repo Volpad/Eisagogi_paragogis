@@ -32,5 +32,6 @@ namespace Eisagogi_paragogis
         public static bool tsouvali_click = false;
         public static bool ProductMachinesChanged = false;
         public static bool print_form = false;
+        public static bool adminRights = false;
     }
 }
