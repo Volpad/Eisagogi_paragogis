@@ -28,7 +28,7 @@
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="55"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StatusBar Grid.Row="0" Background="Transparent">
@@ -39,7 +39,7 @@
         </StatusBar>
         <Grid Grid.Row="2" Margin="0,20,11,20">
             <Grid.RowDefinitions>
-                <RowDefinition Height="25"/>
+                <RowDefinition Height="55"/>
                 <RowDefinition Height="333*"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="55"/>
