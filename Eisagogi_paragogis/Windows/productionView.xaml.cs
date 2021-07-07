@@ -177,24 +177,50 @@ namespace Eisagogi_paragogis
                              };
 
             var query1 = query.GroupBy(s => new { s.COL_ID, s.COLORID, s.COLOR, s.Production, s.SIZE }).Select(g => new
-                     {
-                         Cno = g.Key.COL_ID,
-                         Cid = g.Key.COLORID,
-                         Cnam = g.Key.COLOR,
-                         size = g.Key.SIZE,
-                         productiondosens = g.Key.Production / 24,
-                         productionsocks = (g.Key.Production) - ((g.Key.Production /24)*24),
-                         producedDosen = g.Sum(x => ((x.pdozen * 24) + x.psock)) == 0 ? null : g.Sum(x => ((x.pdozen*24) + x.psock))/24,
-                         producedSocks = g.Sum(x => ((x.pdozen * 24) + x.psock)) == 0 ? null : g.Sum(x => (x.pdozen * 24) + x.psock) - (g.Sum(x => ((x.pdozen * 24) + x.psock)) / 24)*24,
-                         restdosens = g.Sum(x => ((x.pdozen * 24) + x.psock)) == 0  ? null : ((g.Key.Production) - (g.Sum(x => ((x.pdozen * 24) + x.psock))))/24,
-                         restsocks = g.Sum(x => ((x.pdozen * 24) + x.psock)) == 0 ? null : ((g.Key.Production ) - (g.Sum(x => ((x.pdozen * 24) + x.psock)))) - (((g.Key.Production) - (g.Sum(x => ((x.pdozen * 24) + x.psock)))) / 24) *24,
-                         GR = qeisagogi1.Where(c => c.Col_Id.Equals(g.Key.COL_ID) && c.shipmentdate == null && c.findate == null).Sum(d => d.dozen) + (qeisagogi1.Where(c => c.Col_Id.Equals(g.Key.COL_ID) && c.shipmentdate == null && c.findate == null).Sum(d => d.socks)/24),
-                         BG = qeisagogi1.Where(c => c.Col_Id.Equals(g.Key.COL_ID) && c.shipmentdate != null && c.findate == null).Sum(d => d.dozen) + (qeisagogi1.Where(c => c.Col_Id.Equals(g.Key.COL_ID) && c.shipmentdate != null && c.findate == null).Sum(d => d.socks) / 24)
-                    });
+            {
+                Cno = g.Key.COL_ID,
+                Cid = g.Key.COLORID,
+                Cnam = g.Key.COLOR,
+                size = g.Key.SIZE,
+                productiondosens = g.Key.Production / 24,
+                productionsocks = (g.Key.Production) - ((g.Key.Production / 24) * 24),
+                producedDosen = g.Sum(x => ((x.pdozen * 24) + x.psock)) == 0 ? null : g.Sum(x => ((x.pdozen * 24) + x.psock)) / 24,
+                producedSocks = g.Sum(x => ((x.pdozen * 24) + x.psock)) == 0 ? null : g.Sum(x => (x.pdozen * 24) + x.psock) - (g.Sum(x => ((x.pdozen * 24) + x.psock)) / 24) * 24,
+                restdosens = g.Sum(x => ((x.pdozen * 24) + x.psock)) == 0 ? null : ((g.Key.Production) - (g.Sum(x => ((x.pdozen * 24) + x.psock)))) / 24,
+                restsocks = g.Sum(x => ((x.pdozen * 24) + x.psock)) == 0 ? null : ((g.Key.Production) - (g.Sum(x => ((x.pdozen * 24) + x.psock)))) - (((g.Key.Production) - (g.Sum(x => ((x.pdozen * 24) + x.psock)))) / 24) * 24,
+                GR = qeisagogi1.Where(c => c.Col_Id.Equals(g.Key.COL_ID) && c.shipmentdate == null && c.findate == null).Sum(d => d.dozen) + (qeisagogi1.Where(c => c.Col_Id.Equals(g.Key.COL_ID) && c.shipmentdate == null && c.findate == null).Sum(d => d.socks) / 24),
+                BG = qeisagogi1.Where(c => c.Col_Id.Equals(g.Key.COL_ID) && c.shipmentdate != null && c.findate == null).Sum(d => d.dozen) + (qeisagogi1.Where(c => c.Col_Id.Equals(g.Key.COL_ID) && c.shipmentdate != null && c.findate == null).Sum(d => d.socks) / 24),
+
+                //Rest = (g.Sum(x => ((x.pdozen * 24) + x.psock)) == 0 ? null : g.Sum(x => ((x.pdozen * 24) + x.psock)) / 24) == null ? (g.Key.Production / 24 == 0 ? null : g.Key.Production / 24) :
+                //       (((qeisagogi1.Where(c => c.Col_Id.Equals(g.Key.COL_ID) && c.shipmentdate == null && c.findate == null).Sum(d => d.dozen) + (qeisagogi1.Where(c => c.Col_Id.Equals(g.Key.COL_ID) && c.shipmentdate == null && c.findate == null).Sum(d => d.socks) / 24)) == null ? 0 : (qeisagogi1.Where(c => c.Col_Id.Equals(g.Key.COL_ID) && c.shipmentdate == null && c.findate == null).Sum(d => d.dozen) + (qeisagogi1.Where(c => c.Col_Id.Equals(g.Key.COL_ID) && c.shipmentdate == null && c.findate == null).Sum(d => d.socks) / 24))) +
+                //       ((qeisagogi1.Where(c => c.Col_Id.Equals(g.Key.COL_ID) && c.shipmentdate != null && c.findate == null).Sum(d => d.dozen) + (qeisagogi1.Where(c => c.Col_Id.Equals(g.Key.COL_ID) && c.shipmentdate != null && c.findate == null).Sum(d => d.socks) / 24)) == null ? 0 : (qeisagogi1.Where(c => c.Col_Id.Equals(g.Key.COL_ID) && c.shipmentdate != null && c.findate == null).Sum(d => d.dozen) + (qeisagogi1.Where(c => c.Col_Id.Equals(g.Key.COL_ID) && c.shipmentdate != null && c.findate == null).Sum(d => d.socks) / 24))) +
+                //       (g.Sum(x => ((x.pdozen * 24) + x.psock)) == 0 ? 0 : ((((g.Key.Production) - (g.Sum(x => ((x.pdozen * 24) + x.psock)))) / 24)) <= 0 ? 0 : (((g.Key.Production) - (g.Sum(x => ((x.pdozen * 24) + x.psock)))) / 24)))
+
+            });
+
+            var query3 = query1.Select(s => new
+            {
+                s.Cno,
+                s.Cid,
+                s.Cnam,
+                s.size,
+                s.productiondosens,
+                s.productionsocks,
+                s.producedDosen,
+                s.producedSocks,
+                s.restdosens,
+                s.restsocks,
+                s.GR,
+                s.BG,
+                Rest = (s.productiondosens + s.productionsocks == 0) ? null :
+                s.restdosens + s.restsocks == null ? s.productiondosens :
+                (s.BG == null ? 0 : s.BG) + (s.GR == null ? 0 : s.GR) + s.restdosens
+
+            });
 
             productiondata.IsReadOnly = true;
             productiondata.HeadersVisibility = DataGridHeadersVisibility.None;
-            productiondata.ItemsSource = query1;
+            productiondata.ItemsSource = query3; //.OrderBy(c => c.Cno).ThenBy(d => d.Cid).ThenBy(f => f.size) ;
             TotalGr.Text = query1.Sum(c => c.GR).ToString();
             TotalBG.Text = query1.Sum(c => c.BG).ToString();
 
@@ -298,6 +324,7 @@ namespace Eisagogi_paragogis
             productiondata.Columns[9].Width = 25;
             productiondata.Columns[10].Width = 30;
             productiondata.Columns[11].Width = 30;
+            productiondata.Columns[12].Width = 30;
 
         }
 
@@ -383,12 +410,38 @@ namespace Eisagogi_paragogis
                     restdosens = g.Sum(x => ((x.pdozen * 24) + x.psock)) == 0 ? null : ((g.Key.Production) - (g.Sum(x => ((x.pdozen * 24) + x.psock)))) / 24,
                     restsocks = g.Sum(x => ((x.pdozen * 24) + x.psock)) == 0 ? null : ((g.Key.Production) - (g.Sum(x => ((x.pdozen * 24) + x.psock)))) - (((g.Key.Production) - (g.Sum(x => ((x.pdozen * 24) + x.psock)))) / 24) * 24,
                     GR = qeisagogi1.Where(c => c.Col_Id.Equals(g.Key.COL_ID) && c.shipmentdate == null && c.findate == null).Sum(d => d.dozen) + (qeisagogi1.Where(c => c.Col_Id.Equals(g.Key.COL_ID) && c.shipmentdate == null && c.findate == null).Sum(d => d.socks) / 24),
-                    BG = qeisagogi1.Where(c => c.Col_Id.Equals(g.Key.COL_ID) && c.shipmentdate != null && c.findate == null).Sum(d => d.dozen) + (qeisagogi1.Where(c => c.Col_Id.Equals(g.Key.COL_ID) && c.shipmentdate != null && c.findate == null).Sum(d => d.socks) / 24)
+                    BG = qeisagogi1.Where(c => c.Col_Id.Equals(g.Key.COL_ID) && c.shipmentdate != null && c.findate == null).Sum(d => d.dozen) + (qeisagogi1.Where(c => c.Col_Id.Equals(g.Key.COL_ID) && c.shipmentdate != null && c.findate == null).Sum(d => d.socks) / 24),
+                     //Rest = (g.Sum(x => ((x.pdozen * 24) + x.psock)) == 0 ? null : g.Sum(x => ((x.pdozen * 24) + x.psock)) / 24) == null ? (g.Key.Production / 24 == 0 ? null : g.Key.Production / 24) :
+                     //  (((qeisagogi1.Where(c => c.Col_Id.Equals(g.Key.COL_ID) && c.shipmentdate == null && c.findate == null).Sum(d => d.dozen) + (qeisagogi1.Where(c => c.Col_Id.Equals(g.Key.COL_ID) && c.shipmentdate == null && c.findate == null).Sum(d => d.socks) / 24)) == null ? 0 : (qeisagogi1.Where(c => c.Col_Id.Equals(g.Key.COL_ID) && c.shipmentdate == null && c.findate == null).Sum(d => d.dozen) + (qeisagogi1.Where(c => c.Col_Id.Equals(g.Key.COL_ID) && c.shipmentdate == null && c.findate == null).Sum(d => d.socks) / 24))) +
+                     //  ((qeisagogi1.Where(c => c.Col_Id.Equals(g.Key.COL_ID) && c.shipmentdate != null && c.findate == null).Sum(d => d.dozen) + (qeisagogi1.Where(c => c.Col_Id.Equals(g.Key.COL_ID) && c.shipmentdate != null && c.findate == null).Sum(d => d.socks) / 24)) == null ? 0 : (qeisagogi1.Where(c => c.Col_Id.Equals(g.Key.COL_ID) && c.shipmentdate != null && c.findate == null).Sum(d => d.dozen) + (qeisagogi1.Where(c => c.Col_Id.Equals(g.Key.COL_ID) && c.shipmentdate != null && c.findate == null).Sum(d => d.socks) / 24))) +
+                     //  (g.Sum(x => ((x.pdozen * 24) + x.psock)) == 0 ? 0 : ((((g.Key.Production) - (g.Sum(x => ((x.pdozen * 24) + x.psock)))) / 24)) <= 0 ? 0 : (((g.Key.Production) - (g.Sum(x => ((x.pdozen * 24) + x.psock)))) / 24)))
+
+
                 });
 
-                
+                var query3 = query1.Select(s => new
+                {
+                    s.Cno,
+                    s.Cid,
+                    s.Cnam,
+                    s.size,
+                    s.productiondosens,
+                    s.productionsocks,
+                    s.producedDosen,
+                    s.producedSocks,
+                    s.restdosens,
+                    s.restsocks,
+                    s.GR,
+                    s.BG,
+                    Rest = (s.productiondosens + s.productionsocks == 0) ? null :
+                            s.restdosens + s.restsocks == null ? s.productiondosens :
+                            (s.BG == null ? 0 : s.BG) + (s.GR == null ? 0 : s.GR) + s.restdosens
 
-                productiondata.ItemsSource = query1;
+                });
+
+
+
+                productiondata.ItemsSource = query3;
                 TotalGr.Text = query1.Sum(c => c.GR).ToString();
                 TotalBG.Text = query1.Sum(c => c.BG).ToString();
 
@@ -397,6 +450,8 @@ namespace Eisagogi_paragogis
                 date.Text = Deltio_Finish_Super.Where(i => i.TOTAL_ID == Static_Variables.prodviewtotalid).Select(x => x.PROD_DATE).FirstOrDefault().ToString();
                 orderref.Text = Deltio_Finish_Super.Where(i => i.TOTAL_ID == Static_Variables.prodviewtotalid).Select(x => x.OrderNo).FirstOrDefault();
                 deliverydate.Text = Deltio_Finish_Super.Where(i => i.TOTAL_ID == Static_Variables.prodviewtotalid).Select(x => x.DeliveryDate).FirstOrDefault();
+              //  var Memo = context.DELTIO_FINISH_SUPER.Where(c => c.TOTAL_ID == Static_Variables.prodviewtotalid).Select(d => d.ΜΕΜΟ).FirstOrDefault();
+                memo.Text = context.DELTIO_FINISH_SUPER.Where(c => c.TOTAL_ID == Static_Variables.prodviewtotalid).Select(d => d.ΜΕΜΟ).FirstOrDefault();
 
                 var orderfinishdate = context.Orders_Fin.Where(c => c.TOTAL_ID == Static_Variables.prodviewtotalid).Select(d => d.DATE_ENTRY).FirstOrDefault();
                 if (orderfinishdate < DateTime.Now.AddMonths(-1000))

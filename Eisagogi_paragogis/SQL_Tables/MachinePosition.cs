@@ -15,5 +15,6 @@ namespace Eisagogi_paragogis
         [Column] public string MachinePos { get; set; }
         [Column] public bool Working { get; set; }
         [Column] public bool NightShift { get; set; }
+        [Column] public bool Available { get; set; }
     }
 }

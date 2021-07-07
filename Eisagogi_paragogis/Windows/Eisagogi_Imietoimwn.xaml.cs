@@ -234,7 +234,7 @@ namespace Eisagogi_paragogis
         private void excelExport()
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-            FileInfo fi = new FileInfo(@"S:\Production\PackingList\Packing_list.xlsx");
+            FileInfo fi = new FileInfo(@"S:\Production\PackingList\Packing_list2.xlsx");
 
 
             var browse = new System.Windows.Forms.FolderBrowserDialog();
@@ -245,14 +245,14 @@ namespace Eisagogi_paragogis
             if (browse.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
 
-                fi = new FileInfo(browse.SelectedPath + @"\Packing_list.xlsx");
+                fi = new FileInfo(browse.SelectedPath + @"\Packing_list2.xlsx");
                 // do something with the folder path
                 //MessageBox.Show(browse.SelectedPath);
                 path = browse.SelectedPath;
 
 
                    // if (!File.Exists(@"S:\Production\PackingList\Packing_list.xlsx"))
-                    if (!File.Exists(browse.SelectedPath + @"\Packing_list.xlsx"))
+                    if (!File.Exists(browse.SelectedPath + @"\Packing_list2.xlsx"))
                     {
                         createExcel(fi);
                         modifyExcel(fi);

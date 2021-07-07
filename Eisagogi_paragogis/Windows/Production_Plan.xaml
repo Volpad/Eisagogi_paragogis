@@ -195,8 +195,8 @@
                         <StackPanel x:Name="SM32" Grid.Row="3" Grid.Column="11"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
                             <Canvas x:Name="M32"/>
                         </StackPanel>
-                        <StackPanel x:Name="SM59" Grid.Row="3" Grid.Column="12"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
-                            <Canvas x:Name="M59"/>
+                        <StackPanel x:Name="SM72" Grid.Row="3" Grid.Column="12"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                            <Canvas x:Name="M72"/>
                         </StackPanel>
                         <StackPanel x:Name="SM22" Grid.Row="3" Grid.Column="13"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
                             <Canvas x:Name="M22"/>
@@ -207,7 +207,7 @@
                         <StackPanel x:Name="SM28" Grid.Row="4" Grid.Column="13"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
                             <Canvas x:Name="M28"/>
                         </StackPanel>
-                        <StackPanel x:Name="SM42" Grid.Row="5" Grid.Column="0"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">
+                        <StackPanel x:Name="SM42" Grid.Row="5" Grid.Column="0"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0" Visibility="Hidden">
                             <Canvas x:Name="M42"/>
                         </StackPanel>
                         <StackPanel x:Name="SM53" Grid.Row="5" Grid.Column="1"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="132" Height="130" Margin="0,5,0,0"  Background="#e0e0e0">

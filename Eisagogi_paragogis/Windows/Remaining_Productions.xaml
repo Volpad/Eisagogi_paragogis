@@ -26,496 +26,508 @@
             <MenuItem Header="Delete" Click="Click_Delete"/>
         </ContextMenu>
     </Window.Resources>
-    <Grid Margin="0,20,11,20">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="55"/>
-            <RowDefinition Height="333*"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="55"/>
-            <RowDefinition Height="333*"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="270*"/>
-            <ColumnDefinition Width="270*"/>
-            <ColumnDefinition Width="270*"/>
-            <ColumnDefinition Width="270*"/>
-            <ColumnDefinition Width="270*"/>
-            <ColumnDefinition Width="270*"/>
-
-        </Grid.ColumnDefinitions>
-
-        <DataGrid x:Name="L1" Margin="10,5,5,10" AlternationCount="2" CanUserSortColumns="True" Loaded="gridloaded" Grid.Column="0" Grid.Row="1" MouseDoubleClick="RowDoubleClick" AutoGenerateColumns="False" GridLinesVisibility="None"  PreviewMouseRightButtonUp="RowMouseRightButtonDown">
-
-            <DataGrid.Resources>
-                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE9E2FF"/>
-            </DataGrid.Resources>
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd/MM/yy\}}" Header="Date" Width="70*" MinWidth="55"/>
-                <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="67*" MinWidth="50"/>
-                <DataGridTextColumn Binding="{Binding AccessNo}" Header="AccessNo" Width="67*" MinWidth="45"/>
-                <DataGridTextColumn Binding="{Binding Rest}" Header="Rem" Width="40*" MinWidth="25"/>
-            </DataGrid.Columns>
-            <DataGrid.RowStyle>
-                <Style TargetType="{x:Type DataGridRow}">
-                    <Style.Triggers>
-                        <Trigger Property="ItemsControl.AlternationIndex" Value="0">
-                            <Setter Property="Background" Value="white"/>
-                        </Trigger>
-                        <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                            <Setter Property="Background" Value="#f2f2f2"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </DataGrid.RowStyle>
-            <DataGrid.CellStyle>
-
-                <Style TargetType="DataGridCell">
-
-                    <Setter Property="BorderBrush" Value="#d0cece" />
-
-                    <Style.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Foreground" Value="black"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-
-            </DataGrid.CellStyle>
-        </DataGrid>
-        <DataGrid x:Name="L2" Margin="5,5,5,10" Grid.Column="1" Grid.Row="1" AlternationCount="2" CanUserSortColumns="True" Loaded="gridloaded"  MouseDoubleClick="RowDoubleClick" AutoGenerateColumns="False" GridLinesVisibility="None"  PreviewMouseRightButtonUp="RowMouseRightButtonDown">
-
-            <DataGrid.Resources>
-                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE9E2FF"/>
-
-            </DataGrid.Resources>
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd/MM/yy\}}" Header="Date" Width="70*" MinWidth="55"/>
-                <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="67*" MinWidth="50"/>
-                <DataGridTextColumn Binding="{Binding AccessNo}" Header="AccessNo" Width="67*" MinWidth="45"/>
-                <DataGridTextColumn Binding="{Binding Rest}" Header="Rest" Width="40*" MinWidth="25"/>
-            </DataGrid.Columns>
-            <DataGrid.RowStyle>
-                <Style TargetType="{x:Type DataGridRow}">
-                    <Style.Triggers>
-                        <Trigger Property="ItemsControl.AlternationIndex" Value="0">
-                            <Setter Property="Background" Value="white"/>
-                        </Trigger>
-                        <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                            <Setter Property="Background" Value="#f2f2f2"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </DataGrid.RowStyle>
-            <DataGrid.CellStyle>
-
-                <Style TargetType="DataGridCell">
-
-                    <Setter Property="BorderBrush" Value="#d0cece" />
-
-                    <Style.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Foreground" Value="black"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-
-            </DataGrid.CellStyle>
-        </DataGrid>
-        <DataGrid x:Name="B1" Margin="5,5,5,10" Grid.Column="2" Grid.Row="1" AlternationCount="2" CanUserSortColumns="True" Loaded="gridloaded"  MouseDoubleClick="RowDoubleClick" AutoGenerateColumns="False" GridLinesVisibility="None"  PreviewMouseRightButtonUp="RowMouseRightButtonDown">
-
-            <DataGrid.Resources>
-                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE9E2FF"/>
-
-            </DataGrid.Resources>
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd/MM/yy\}}" Header="Date" Width="70*" MinWidth="55"/>
-                <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="67*" MinWidth="50"/>
-                <DataGridTextColumn Binding="{Binding AccessNo}" Header="AccessNo" Width="67*" MinWidth="45"/>
-                <DataGridTextColumn Binding="{Binding Rest}" Header="Rest" Width="40*" MinWidth="25"/>
-            </DataGrid.Columns>
-            <DataGrid.RowStyle>
-                <Style TargetType="{x:Type DataGridRow}">
-                    <Style.Triggers>
-                        <Trigger Property="ItemsControl.AlternationIndex" Value="0">
-                            <Setter Property="Background" Value="white"/>
-                        </Trigger>
-                        <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                            <Setter Property="Background" Value="#f2f2f2"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </DataGrid.RowStyle>
-            <DataGrid.CellStyle>
-
-                <Style TargetType="DataGridCell">
-
-                    <Setter Property="BorderBrush" Value="#d0cece" />
-
-                    <Style.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Foreground" Value="black"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-
-            </DataGrid.CellStyle>
-        </DataGrid>
-        <DataGrid x:Name="B2" Margin="5,5,5,10" Grid.Column="3" Grid.Row="1" AlternationCount="2" CanUserSortColumns="True" Loaded="gridloaded"  MouseDoubleClick="RowDoubleClick" AutoGenerateColumns="False" GridLinesVisibility="None"  PreviewMouseRightButtonUp="RowMouseRightButtonDown">
-
-            <DataGrid.Resources>
-                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE9E2FF"/>
-
-            </DataGrid.Resources>
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd/MM/yy\}}" Header="Date" Width="70*" MinWidth="55"/>
-                <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="67*" MinWidth="50"/>
-                <DataGridTextColumn Binding="{Binding AccessNo}" Header="AccessNo" Width="67*" MinWidth="45"/>
-                <DataGridTextColumn Binding="{Binding Rest}" Header="Rest" Width="40*" MinWidth="25"/>
-            </DataGrid.Columns>
-            <DataGrid.RowStyle>
-                <Style TargetType="{x:Type DataGridRow}">
-                    <Style.Triggers>
-                        <Trigger Property="ItemsControl.AlternationIndex" Value="0">
-                            <Setter Property="Background" Value="white"/>
-                        </Trigger>
-                        <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                            <Setter Property="Background" Value="#f2f2f2"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </DataGrid.RowStyle>
-            <DataGrid.CellStyle>
-
-                <Style TargetType="DataGridCell">
-
-                    <Setter Property="BorderBrush" Value="#d0cece" />
-
-                    <Style.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Foreground" Value="black"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-
-            </DataGrid.CellStyle>
-        </DataGrid>
-        <DataGrid x:Name="B4" Margin="5,5,5,10" Grid.Column="4" Grid.Row="1" AlternationCount="2" CanUserSortColumns="True" Loaded="gridloaded"  MouseDoubleClick="RowDoubleClick" AutoGenerateColumns="False" GridLinesVisibility="None"  PreviewMouseRightButtonUp="RowMouseRightButtonDown">
-
-            <DataGrid.Resources>
-                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE9E2FF"/>
-
-            </DataGrid.Resources>
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd/MM/yy\}}" Header="Date" Width="70*" MinWidth="55"/>
-                <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="67*" MinWidth="50"/>
-                <DataGridTextColumn Binding="{Binding AccessNo}" Header="AccessNo" Width="67*" MinWidth="45"/>
-                <DataGridTextColumn Binding="{Binding Rest}" Header="Rest" Width="40*" MinWidth="25"/>
-            </DataGrid.Columns>
-            <DataGrid.RowStyle>
-                <Style TargetType="{x:Type DataGridRow}">
-                    <Style.Triggers>
-                        <Trigger Property="ItemsControl.AlternationIndex" Value="0">
-                            <Setter Property="Background" Value="white"/>
-                        </Trigger>
-                        <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                            <Setter Property="Background" Value="#f2f2f2"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </DataGrid.RowStyle>
-            <DataGrid.CellStyle>
-
-                <Style TargetType="DataGridCell">
-
-                    <Setter Property="BorderBrush" Value="#d0cece" />
-
-                    <Style.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Foreground" Value="black"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-
-            </DataGrid.CellStyle>
-        </DataGrid>
-        <DataGrid x:Name="M6" Margin="5,5,5,10" Grid.Column="2" Grid.Row="4" AlternationCount="2" CanUserSortColumns="True" Loaded="gridloaded"  MouseDoubleClick="RowDoubleClick" AutoGenerateColumns="False" GridLinesVisibility="None"  PreviewMouseRightButtonUp="RowMouseRightButtonDown">
-
-            <DataGrid.Resources>
-                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE9E2FF"/>
-
-            </DataGrid.Resources>
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd/MM/yy\}}" Header="Date" Width="70*" MinWidth="55"/>
-                <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="67*" MinWidth="50"/>
-                <DataGridTextColumn Binding="{Binding AccessNo}" Header="AccessNo" Width="67*" MinWidth="45"/>
-                <DataGridTextColumn Binding="{Binding Rest}" Header="Rest" Width="40*" MinWidth="25"/>
-            </DataGrid.Columns>
-            <DataGrid.RowStyle>
-                <Style TargetType="{x:Type DataGridRow}">
-                    <Style.Triggers>
-                        <Trigger Property="ItemsControl.AlternationIndex" Value="0">
-                            <Setter Property="Background" Value="white"/>
-                        </Trigger>
-                        <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                            <Setter Property="Background" Value="#f2f2f2"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </DataGrid.RowStyle>
-            <DataGrid.CellStyle>
-
-                <Style TargetType="DataGridCell">
-
-                    <Setter Property="BorderBrush" Value="#d0cece" />
-
-                    <Style.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Foreground" Value="black"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-
-            </DataGrid.CellStyle>
-        </DataGrid>
-
-
-        <TextBlock x:Name="tbl1" Margin="45,0,45,1" Grid.Column="0" Grid.Row="0" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Center" Foreground="WhiteSmoke"/>
-        <TextBlock x:Name="tbl2" Margin="45,0,45,5" Grid.Column="1" Grid.Row="0" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Center" Foreground="WhiteSmoke"/>
-        <TextBlock x:Name="tbb1" Margin="45,0,45,5" Grid.Column="2" Grid.Row="0" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Center" Foreground="WhiteSmoke"/>
-        <TextBlock x:Name="tbb2" Margin="45,0,45,5" Grid.Column="3" Grid.Row="0" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Center" Foreground="WhiteSmoke"/>
-        <TextBlock x:Name="tbb4" Margin="45,0,45,5" Grid.Column="4" Grid.Row="0" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Center" Foreground="WhiteSmoke"/>
-
-        <TextBlock x:Name="restl1" Grid.Column="0" Grid.Row="2" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Top" Foreground="WhiteSmoke" HorizontalAlignment="Right" Width="92" Margin="0,3,25,0"/>
-        <TextBlock x:Name="restl2" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Top" Foreground="WhiteSmoke" HorizontalAlignment="Right" Width="50" Margin="0,0,25,0"/>
-        <TextBlock x:Name="restb1" Grid.Column="2" Grid.Row="2" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Top" Foreground="WhiteSmoke" HorizontalAlignment="Right" Width="50" Margin="0,0,25,0"/>
-        <TextBlock x:Name="restb2" Grid.Column="3" Grid.Row="2" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Top" Foreground="WhiteSmoke" HorizontalAlignment="Right" Width="50" Margin="0,0,25,0"/>
-        <TextBlock x:Name="restb4" Grid.Column="4" Grid.Row="2" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Top" Foreground="WhiteSmoke" HorizontalAlignment="Right" Width="50" RenderTransformOrigin="0.493,0.583" Margin="0,0,25,0"/>
-
-        <TextBlock x:Name="mol1" Grid.Column="0" Grid.Row="2" Foreground="WhiteSmoke" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,0,0,0" TextWrapping="Wrap" Text="TextBlock"/>
-        <TextBlock x:Name="mol2" Grid.Column="1" Grid.Row="2" Foreground="WhiteSmoke" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,0,0,0" TextWrapping="Wrap" Text="TextBlock"/>
-        <TextBlock x:Name="mob1" Grid.Column="2" Grid.Row="2" Foreground="WhiteSmoke" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,0,0,0" TextWrapping="Wrap" Text="TextBlock"/>
-        <TextBlock x:Name="mob2" Grid.Column="3" Grid.Row="2" Foreground="WhiteSmoke" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,0,0,0" TextWrapping="Wrap" Text="TextBlock"/>
-        <TextBlock x:Name="mob4" Grid.Column="4" Grid.Row="2" Foreground="WhiteSmoke" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,0,0,0" TextWrapping="Wrap" Text="TextBlock"/>
-
-
-        <DataGrid x:Name="M4" Margin="10,5,5,10" Grid.Column="0" Grid.Row="4" AlternationCount="2" CanUserSortColumns="True" Loaded="gridloaded"  MouseDoubleClick="RowDoubleClick" AutoGenerateColumns="False" GridLinesVisibility="None"  PreviewMouseRightButtonUp="RowMouseRightButtonDown">
-
-            <DataGrid.Resources>
-                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE9E2FF"/>
-
-            </DataGrid.Resources>
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd/MM/yy\}}" Header="Date" Width="70*" MinWidth="55"/>
-                <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="67*" MinWidth="50"/>
-                <DataGridTextColumn Binding="{Binding AccessNo}" Header="AccessNo" Width="67*" MinWidth="45"/>
-                <DataGridTextColumn Binding="{Binding Rest}" Header="Rest" Width="40*" MinWidth="25"/>
-            </DataGrid.Columns>
-            <DataGrid.RowStyle>
-                <Style TargetType="{x:Type DataGridRow}">
-                    <Style.Triggers>
-                        <Trigger Property="ItemsControl.AlternationIndex" Value="0">
-                            <Setter Property="Background" Value="white"/>
-                        </Trigger>
-                        <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                            <Setter Property="Background" Value="#f2f2f2"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </DataGrid.RowStyle>
-            <DataGrid.CellStyle>
-
-                <Style TargetType="DataGridCell">
-
-                    <Setter Property="BorderBrush" Value="#d0cece" />
-
-                    <Style.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Foreground" Value="black"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-
-            </DataGrid.CellStyle>
-        </DataGrid>
-        <DataGrid x:Name="M5" Margin="5,5,5,10" Grid.Column="1" Grid.Row="4" AlternationCount="2" CanUserSortColumns="True" Loaded="gridloaded"  MouseDoubleClick="RowDoubleClick" AutoGenerateColumns="False" GridLinesVisibility="None"  PreviewMouseRightButtonUp="RowMouseRightButtonDown">
-
-            <DataGrid.Resources>
-                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE9E2FF"/>
-
-            </DataGrid.Resources>
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd/MM/yy\}}" Header="Date" Width="70*" MinWidth="55"/>
-                <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="67*" MinWidth="50"/>
-                <DataGridTextColumn Binding="{Binding AccessNo}" Header="AccessNo" Width="67*" MinWidth="45"/>
-                <DataGridTextColumn Binding="{Binding Rest}" Header="Rest" Width="40*" MinWidth="25"/>
-            </DataGrid.Columns>
-            <DataGrid.RowStyle>
-                <Style TargetType="{x:Type DataGridRow}">
-                    <Style.Triggers>
-                        <Trigger Property="ItemsControl.AlternationIndex" Value="0">
-                            <Setter Property="Background" Value="white"/>
-                        </Trigger>
-                        <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                            <Setter Property="Background" Value="#f2f2f2"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </DataGrid.RowStyle>
-            <DataGrid.CellStyle>
-
-                <Style TargetType="DataGridCell">
-
-                    <Setter Property="BorderBrush" Value="#d0cece" />
-
-                    <Style.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Foreground" Value="black"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-
-            </DataGrid.CellStyle>
-        </DataGrid>
-        <DataGrid x:Name="L8" Margin="5,5,5,10" Grid.Column="4" Grid.Row="4" AlternationCount="2" CanUserSortColumns="True" Loaded="gridloaded"  MouseDoubleClick="RowDoubleClick" AutoGenerateColumns="False" GridLinesVisibility="None"  PreviewMouseRightButtonUp="RowMouseRightButtonDown">
-
-            <DataGrid.Resources>
-                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE9E2FF"/>
-
-            </DataGrid.Resources>
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd/MM/yy\}}" Header="Date" Width="70*" MinWidth="55"/>
-                <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="67*" MinWidth="50"/>
-                <DataGridTextColumn Binding="{Binding AccessNo}" Header="AccessNo" Width="67*" MinWidth="45"/>
-                <DataGridTextColumn Binding="{Binding Rest}" Header="Rest" Width="40*" MinWidth="25"/>
-            </DataGrid.Columns>
-            <DataGrid.RowStyle>
-                <Style TargetType="{x:Type DataGridRow}">
-                    <Style.Triggers>
-                        <Trigger Property="ItemsControl.AlternationIndex" Value="0">
-                            <Setter Property="Background" Value="white"/>
-                        </Trigger>
-                        <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                            <Setter Property="Background" Value="#f2f2f2"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </DataGrid.RowStyle>
-            <DataGrid.CellStyle>
-
-                <Style TargetType="DataGridCell">
-
-                    <Setter Property="BorderBrush" Value="#d0cece" />
-
-                    <Style.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Foreground" Value="black"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-
-            </DataGrid.CellStyle>
-        </DataGrid>
-        <DataGrid x:Name="L9" Margin="5,5,5,10" Grid.Column="3" Grid.Row="4" AlternationCount="2" CanUserSortColumns="True" Loaded="gridloaded"  MouseDoubleClick="RowDoubleClick" AutoGenerateColumns="False" GridLinesVisibility="None"  PreviewMouseRightButtonUp="RowMouseRightButtonDown">
-
-            <DataGrid.Resources>
-                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE9E2FF"/>
-
-            </DataGrid.Resources>
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd/MM/yy\}}" Header="Date" Width="70*" MinWidth="55"/>
-                <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="67*" MinWidth="50"/>
-                <DataGridTextColumn Binding="{Binding AccessNo}" Header="AccessNo" Width="67*" MinWidth="45"/>
-                <DataGridTextColumn Binding="{Binding Rest}" Header="Rest" Width="40*" MinWidth="25"/>
-            </DataGrid.Columns>
-            <DataGrid.RowStyle>
-                <Style TargetType="{x:Type DataGridRow}">
-                    <Style.Triggers>
-                        <Trigger Property="ItemsControl.AlternationIndex" Value="0">
-                            <Setter Property="Background" Value="white"/>
-                        </Trigger>
-                        <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                            <Setter Property="Background" Value="#f2f2f2"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </DataGrid.RowStyle>
-            <DataGrid.CellStyle>
-
-                <Style TargetType="DataGridCell">
-
-                    <Setter Property="BorderBrush" Value="#d0cece" />
-
-                    <Style.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Foreground" Value="black"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-
-            </DataGrid.CellStyle>
-        </DataGrid>
-        <DataGrid x:Name="L6" Margin="5,5,5,10" Grid.Column="5" Grid.Row="1" AlternationCount="2" CanUserSortColumns="True" Loaded="gridloaded"  MouseDoubleClick="RowDoubleClick" AutoGenerateColumns="False" GridLinesVisibility="None"  PreviewMouseRightButtonUp="RowMouseRightButtonDown">
-
-            <DataGrid.Resources>
-                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE9E2FF"/>
-
-            </DataGrid.Resources>
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd/MM/yy\}}" Header="Date" Width="70*" MinWidth="55"/>
-                <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="67*" MinWidth="50"/>
-                <DataGridTextColumn Binding="{Binding AccessNo}" Header="AccessNo" Width="67*" MinWidth="45"/>
-                <DataGridTextColumn Binding="{Binding Rest}" Header="Rest" Width="40*" MinWidth="25"/>
-            </DataGrid.Columns>
-            <DataGrid.RowStyle>
-                <Style TargetType="{x:Type DataGridRow}">
-                    <Style.Triggers>
-                        <Trigger Property="ItemsControl.AlternationIndex" Value="0">
-                            <Setter Property="Background" Value="white"/>
-                        </Trigger>
-                        <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                            <Setter Property="Background" Value="#f2f2f2"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </DataGrid.RowStyle>
-            <DataGrid.CellStyle>
-
-                <Style TargetType="DataGridCell">
-
-                    <Setter Property="BorderBrush" Value="#d0cece" />
-
-                    <Style.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Foreground" Value="black"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-
-            </DataGrid.CellStyle>
-        </DataGrid>
-
-
-        <TextBlock x:Name="tbm4" Margin="45,0,45,5" Grid.Column="0" Grid.Row="3" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Center" Foreground="WhiteSmoke"/>
-        <TextBlock x:Name="tbm5" Margin="45,0,46,5" Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Center" Foreground="WhiteSmoke"/>
-        <TextBlock x:Name="tbl8" Margin="45,0,45,5" Grid.Column="4" Grid.Row="3" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Center" Foreground="WhiteSmoke"/>
-        <TextBlock x:Name="tbl9" Margin="45,0,45,5" Grid.Column="3" Grid.Row="3" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Center" Foreground="WhiteSmoke"/>
-        <TextBlock x:Name="tbl6" Margin="45,0,45,5" Grid.Column="5" Grid.Row="0" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Center" Foreground="WhiteSmoke"/>
-        <TextBlock x:Name="tbm6" Margin="45,0,45,5" Grid.Column="2" Grid.Row="3" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Center" Foreground="WhiteSmoke"/>
-
-        <TextBlock x:Name="restm4" Grid.Column="0" Grid.Row="5" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Top" Foreground="WhiteSmoke" HorizontalAlignment="Right" Width="50" Margin="0,0,25,0"/>
-        <TextBlock x:Name="restm5" Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Top" Foreground="WhiteSmoke" HorizontalAlignment="Right" Width="50" Margin="0,0,25,0"/>
-        <TextBlock x:Name="restl8" Grid.Column="4" Grid.Row="5" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Top" Foreground="WhiteSmoke" HorizontalAlignment="Right" Width="50" Margin="0,0,25,0"/>
-        <TextBlock x:Name="restl9" Grid.Column="3" Grid.Row="5" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Top" Foreground="WhiteSmoke" HorizontalAlignment="Right" Width="50" Margin="0,0,25,0"/>
-        <TextBlock x:Name="restl6" Grid.Column="5" Grid.Row="2" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Top" Foreground="WhiteSmoke" HorizontalAlignment="Right" Width="50" Margin="0,0,25,0"/>
-        <TextBlock x:Name="restm6" Grid.Column="2" Grid.Row="5" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Top" Foreground="WhiteSmoke" HorizontalAlignment="Right" Width="50" Margin="0,0,25,0"/>
-
-        <TextBlock x:Name="mom4" Grid.Column="0" Grid.Row="5" Foreground="WhiteSmoke" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,0,0,0" TextWrapping="Wrap" Text="TextBlock"/>
-        <TextBlock x:Name="mom5" Grid.Column="1" Grid.Row="5" Foreground="WhiteSmoke" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,0,0,0" TextWrapping="Wrap" Text="TextBlock"/>
-        <TextBlock x:Name="mol8" Grid.Column="4" Grid.Row="5" Foreground="WhiteSmoke" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,0,0,0" TextWrapping="Wrap" Text="TextBlock"/>
-        <TextBlock x:Name="mol9" Grid.Column="3" Grid.Row="5" Foreground="WhiteSmoke" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,0,0,0" TextWrapping="Wrap" Text="TextBlock"/>
-        <TextBlock x:Name="mol6" Grid.Column="5" Grid.Row="2" Foreground="WhiteSmoke" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,0,0,0" TextWrapping="Wrap" Text="TextBlock"/>
-        <TextBlock x:Name="mom6" Grid.Column="2" Grid.Row="5" Foreground="WhiteSmoke" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,0,0,0" TextWrapping="Wrap" Text="TextBlock"/>
-
+        <StatusBar Grid.Row="0" Background="Transparent">
+            <TextBlock Text="  Delivery Dates: " Foreground="WhiteSmoke"/>
+            <DatePicker x:Name="date1"></DatePicker>
+            <DatePicker x:Name="date2"></DatePicker>
+            <Button x:Name="confirm" Content="  Filter  " Click="confirm_Click"/>
+        </StatusBar>
+        <Grid Grid.Row="2" Margin="0,20,11,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="333*"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="55"/>
+                <RowDefinition Height="333*"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="270*"/>
+                <ColumnDefinition Width="270*"/>
+                <ColumnDefinition Width="270*"/>
+                <ColumnDefinition Width="270*"/>
+                <ColumnDefinition Width="270*"/>
+                <ColumnDefinition Width="270*"/>
+
+            </Grid.ColumnDefinitions>
+
+            <DataGrid x:Name="L1" Margin="10,5,5,10" AlternationCount="2" CanUserSortColumns="True" Loaded="gridloaded" Grid.Column="0" Grid.Row="1" MouseDoubleClick="RowDoubleClick" AutoGenerateColumns="False" GridLinesVisibility="None"  PreviewMouseRightButtonUp="RowMouseRightButtonDown">
+
+                <DataGrid.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE9E2FF"/>
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd/MM/yy\}}" Header="Date" Width="70*" MinWidth="55"/>
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="67*" MinWidth="50"/>
+                    <DataGridTextColumn Binding="{Binding AccessNo}" Header="AccessNo" Width="67*" MinWidth="45"/>
+                    <DataGridTextColumn Binding="{Binding Rest}" Header="Rem" Width="40*" MinWidth="25"/>
+                </DataGrid.Columns>
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <Style.Triggers>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                <Setter Property="Background" Value="white"/>
+                            </Trigger>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                <Setter Property="Background" Value="#f2f2f2"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.CellStyle>
+
+                    <Style TargetType="DataGridCell">
+
+                        <Setter Property="BorderBrush" Value="#d0cece" />
+
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Foreground" Value="black"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+
+                </DataGrid.CellStyle>
+            </DataGrid>
+            <DataGrid x:Name="L2" Margin="5,5,5,10" Grid.Column="1" Grid.Row="1" AlternationCount="2" CanUserSortColumns="True" Loaded="gridloaded"  MouseDoubleClick="RowDoubleClick" AutoGenerateColumns="False" GridLinesVisibility="None"  PreviewMouseRightButtonUp="RowMouseRightButtonDown">
+
+                <DataGrid.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE9E2FF"/>
+
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd/MM/yy\}}" Header="Date" Width="70*" MinWidth="55"/>
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="67*" MinWidth="50"/>
+                    <DataGridTextColumn Binding="{Binding AccessNo}" Header="AccessNo" Width="67*" MinWidth="45"/>
+                    <DataGridTextColumn Binding="{Binding Rest}" Header="Rest" Width="40*" MinWidth="25"/>
+                </DataGrid.Columns>
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <Style.Triggers>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                <Setter Property="Background" Value="white"/>
+                            </Trigger>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                <Setter Property="Background" Value="#f2f2f2"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.CellStyle>
+
+                    <Style TargetType="DataGridCell">
+
+                        <Setter Property="BorderBrush" Value="#d0cece" />
+
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Foreground" Value="black"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+
+                </DataGrid.CellStyle>
+            </DataGrid>
+            <DataGrid x:Name="B1" Margin="5,5,5,10" Grid.Column="2" Grid.Row="1" AlternationCount="2" CanUserSortColumns="True" Loaded="gridloaded"  MouseDoubleClick="RowDoubleClick" AutoGenerateColumns="False" GridLinesVisibility="None"  PreviewMouseRightButtonUp="RowMouseRightButtonDown">
+
+                <DataGrid.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE9E2FF"/>
+
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd/MM/yy\}}" Header="Date" Width="70*" MinWidth="55"/>
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="67*" MinWidth="50"/>
+                    <DataGridTextColumn Binding="{Binding AccessNo}" Header="AccessNo" Width="67*" MinWidth="45"/>
+                    <DataGridTextColumn Binding="{Binding Rest}" Header="Rest" Width="40*" MinWidth="25"/>
+                </DataGrid.Columns>
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <Style.Triggers>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                <Setter Property="Background" Value="white"/>
+                            </Trigger>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                <Setter Property="Background" Value="#f2f2f2"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.CellStyle>
+
+                    <Style TargetType="DataGridCell">
+
+                        <Setter Property="BorderBrush" Value="#d0cece" />
+
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Foreground" Value="black"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+
+                </DataGrid.CellStyle>
+            </DataGrid>
+            <DataGrid x:Name="B2" Margin="5,5,5,10" Grid.Column="3" Grid.Row="1" AlternationCount="2" CanUserSortColumns="True" Loaded="gridloaded"  MouseDoubleClick="RowDoubleClick" AutoGenerateColumns="False" GridLinesVisibility="None"  PreviewMouseRightButtonUp="RowMouseRightButtonDown">
+
+                <DataGrid.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE9E2FF"/>
+
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd/MM/yy\}}" Header="Date" Width="70*" MinWidth="55"/>
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="67*" MinWidth="50"/>
+                    <DataGridTextColumn Binding="{Binding AccessNo}" Header="AccessNo" Width="67*" MinWidth="45"/>
+                    <DataGridTextColumn Binding="{Binding Rest}" Header="Rest" Width="40*" MinWidth="25"/>
+                </DataGrid.Columns>
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <Style.Triggers>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                <Setter Property="Background" Value="white"/>
+                            </Trigger>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                <Setter Property="Background" Value="#f2f2f2"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.CellStyle>
+
+                    <Style TargetType="DataGridCell">
+
+                        <Setter Property="BorderBrush" Value="#d0cece" />
+
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Foreground" Value="black"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+
+                </DataGrid.CellStyle>
+            </DataGrid>
+            <DataGrid x:Name="B4" Margin="5,5,5,10" Grid.Column="4" Grid.Row="1" AlternationCount="2" CanUserSortColumns="True" Loaded="gridloaded"  MouseDoubleClick="RowDoubleClick" AutoGenerateColumns="False" GridLinesVisibility="None"  PreviewMouseRightButtonUp="RowMouseRightButtonDown">
+
+                <DataGrid.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE9E2FF"/>
+
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd/MM/yy\}}" Header="Date" Width="70*" MinWidth="55"/>
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="67*" MinWidth="50"/>
+                    <DataGridTextColumn Binding="{Binding AccessNo}" Header="AccessNo" Width="67*" MinWidth="45"/>
+                    <DataGridTextColumn Binding="{Binding Rest}" Header="Rest" Width="40*" MinWidth="25"/>
+                </DataGrid.Columns>
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <Style.Triggers>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                <Setter Property="Background" Value="white"/>
+                            </Trigger>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                <Setter Property="Background" Value="#f2f2f2"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.CellStyle>
+
+                    <Style TargetType="DataGridCell">
+
+                        <Setter Property="BorderBrush" Value="#d0cece" />
+
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Foreground" Value="black"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+
+                </DataGrid.CellStyle>
+            </DataGrid>
+            <DataGrid x:Name="M6" Margin="5,5,5,10" Grid.Column="2" Grid.Row="4" AlternationCount="2" CanUserSortColumns="True" Loaded="gridloaded"  MouseDoubleClick="RowDoubleClick" AutoGenerateColumns="False" GridLinesVisibility="None"  PreviewMouseRightButtonUp="RowMouseRightButtonDown">
+
+                <DataGrid.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE9E2FF"/>
+
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd/MM/yy\}}" Header="Date" Width="70*" MinWidth="55"/>
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="67*" MinWidth="50"/>
+                    <DataGridTextColumn Binding="{Binding AccessNo}" Header="AccessNo" Width="67*" MinWidth="45"/>
+                    <DataGridTextColumn Binding="{Binding Rest}" Header="Rest" Width="40*" MinWidth="25"/>
+                </DataGrid.Columns>
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <Style.Triggers>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                <Setter Property="Background" Value="white"/>
+                            </Trigger>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                <Setter Property="Background" Value="#f2f2f2"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.CellStyle>
+
+                    <Style TargetType="DataGridCell">
+
+                        <Setter Property="BorderBrush" Value="#d0cece" />
+
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Foreground" Value="black"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+
+                </DataGrid.CellStyle>
+            </DataGrid>
+
+
+            <TextBlock x:Name="tbl1" Margin="45,0,45,1" Grid.Column="0" Grid.Row="0" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Center" Foreground="WhiteSmoke"/>
+            <TextBlock x:Name="tbl2" Margin="45,0,45,5" Grid.Column="1" Grid.Row="0" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Center" Foreground="WhiteSmoke"/>
+            <TextBlock x:Name="tbb1" Margin="45,0,45,5" Grid.Column="2" Grid.Row="0" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Center" Foreground="WhiteSmoke"/>
+            <TextBlock x:Name="tbb2" Margin="45,0,45,5" Grid.Column="3" Grid.Row="0" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Center" Foreground="WhiteSmoke"/>
+            <TextBlock x:Name="tbb4" Margin="45,0,45,5" Grid.Column="4" Grid.Row="0" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Center" Foreground="WhiteSmoke"/>
+
+            <TextBlock x:Name="restl1" Grid.Column="0" Grid.Row="2" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Top" Foreground="WhiteSmoke" HorizontalAlignment="Right" Width="92" Margin="0,3,25,0"/>
+            <TextBlock x:Name="restl2" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Top" Foreground="WhiteSmoke" HorizontalAlignment="Right" Width="50" Margin="0,0,25,0"/>
+            <TextBlock x:Name="restb1" Grid.Column="2" Grid.Row="2" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Top" Foreground="WhiteSmoke" HorizontalAlignment="Right" Width="50" Margin="0,0,25,0"/>
+            <TextBlock x:Name="restb2" Grid.Column="3" Grid.Row="2" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Top" Foreground="WhiteSmoke" HorizontalAlignment="Right" Width="50" Margin="0,0,25,0"/>
+            <TextBlock x:Name="restb4" Grid.Column="4" Grid.Row="2" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Top" Foreground="WhiteSmoke" HorizontalAlignment="Right" Width="50" RenderTransformOrigin="0.493,0.583" Margin="0,0,25,0"/>
+
+            <TextBlock x:Name="mol1" Grid.Column="0" Grid.Row="2" Foreground="WhiteSmoke" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,0,0,0" TextWrapping="Wrap" Text="TextBlock"/>
+            <TextBlock x:Name="mol2" Grid.Column="1" Grid.Row="2" Foreground="WhiteSmoke" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,0,0,0" TextWrapping="Wrap" Text="TextBlock"/>
+            <TextBlock x:Name="mob1" Grid.Column="2" Grid.Row="2" Foreground="WhiteSmoke" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,0,0,0" TextWrapping="Wrap" Text="TextBlock"/>
+            <TextBlock x:Name="mob2" Grid.Column="3" Grid.Row="2" Foreground="WhiteSmoke" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,0,0,0" TextWrapping="Wrap" Text="TextBlock"/>
+            <TextBlock x:Name="mob4" Grid.Column="4" Grid.Row="2" Foreground="WhiteSmoke" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,0,0,0" TextWrapping="Wrap" Text="TextBlock"/>
+
+
+            <DataGrid x:Name="M4" Margin="10,5,5,10" Grid.Column="0" Grid.Row="4" AlternationCount="2" CanUserSortColumns="True" Loaded="gridloaded"  MouseDoubleClick="RowDoubleClick" AutoGenerateColumns="False" GridLinesVisibility="None"  PreviewMouseRightButtonUp="RowMouseRightButtonDown">
+
+                <DataGrid.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE9E2FF"/>
+
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd/MM/yy\}}" Header="Date" Width="70*" MinWidth="55"/>
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="67*" MinWidth="50"/>
+                    <DataGridTextColumn Binding="{Binding AccessNo}" Header="AccessNo" Width="67*" MinWidth="45"/>
+                    <DataGridTextColumn Binding="{Binding Rest}" Header="Rest" Width="40*" MinWidth="25"/>
+                </DataGrid.Columns>
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <Style.Triggers>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                <Setter Property="Background" Value="white"/>
+                            </Trigger>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                <Setter Property="Background" Value="#f2f2f2"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.CellStyle>
+
+                    <Style TargetType="DataGridCell">
+
+                        <Setter Property="BorderBrush" Value="#d0cece" />
+
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Foreground" Value="black"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+
+                </DataGrid.CellStyle>
+            </DataGrid>
+            <DataGrid x:Name="M5" Margin="5,5,5,10" Grid.Column="1" Grid.Row="4" AlternationCount="2" CanUserSortColumns="True" Loaded="gridloaded"  MouseDoubleClick="RowDoubleClick" AutoGenerateColumns="False" GridLinesVisibility="None"  PreviewMouseRightButtonUp="RowMouseRightButtonDown">
+
+                <DataGrid.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE9E2FF"/>
+
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd/MM/yy\}}" Header="Date" Width="70*" MinWidth="55"/>
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="67*" MinWidth="50"/>
+                    <DataGridTextColumn Binding="{Binding AccessNo}" Header="AccessNo" Width="67*" MinWidth="45"/>
+                    <DataGridTextColumn Binding="{Binding Rest}" Header="Rest" Width="40*" MinWidth="25"/>
+                </DataGrid.Columns>
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <Style.Triggers>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                <Setter Property="Background" Value="white"/>
+                            </Trigger>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                <Setter Property="Background" Value="#f2f2f2"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.CellStyle>
+
+                    <Style TargetType="DataGridCell">
+
+                        <Setter Property="BorderBrush" Value="#d0cece" />
+
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Foreground" Value="black"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+
+                </DataGrid.CellStyle>
+            </DataGrid>
+            <DataGrid x:Name="L8" Margin="5,5,5,10" Grid.Column="4" Grid.Row="4" AlternationCount="2" CanUserSortColumns="True" Loaded="gridloaded"  MouseDoubleClick="RowDoubleClick" AutoGenerateColumns="False" GridLinesVisibility="None"  PreviewMouseRightButtonUp="RowMouseRightButtonDown">
+
+                <DataGrid.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE9E2FF"/>
+
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd/MM/yy\}}" Header="Date" Width="70*" MinWidth="55"/>
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="67*" MinWidth="50"/>
+                    <DataGridTextColumn Binding="{Binding AccessNo}" Header="AccessNo" Width="67*" MinWidth="45"/>
+                    <DataGridTextColumn Binding="{Binding Rest}" Header="Rest" Width="40*" MinWidth="25"/>
+                </DataGrid.Columns>
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <Style.Triggers>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                <Setter Property="Background" Value="white"/>
+                            </Trigger>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                <Setter Property="Background" Value="#f2f2f2"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.CellStyle>
+
+                    <Style TargetType="DataGridCell">
+
+                        <Setter Property="BorderBrush" Value="#d0cece" />
+
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Foreground" Value="black"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+
+                </DataGrid.CellStyle>
+            </DataGrid>
+            <DataGrid x:Name="L9" Margin="5,5,5,10" Grid.Column="3" Grid.Row="4" AlternationCount="2" CanUserSortColumns="True" Loaded="gridloaded"  MouseDoubleClick="RowDoubleClick" AutoGenerateColumns="False" GridLinesVisibility="None"  PreviewMouseRightButtonUp="RowMouseRightButtonDown">
+
+                <DataGrid.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE9E2FF"/>
+
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd/MM/yy\}}" Header="Date" Width="70*" MinWidth="55"/>
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="67*" MinWidth="50"/>
+                    <DataGridTextColumn Binding="{Binding AccessNo}" Header="AccessNo" Width="67*" MinWidth="45"/>
+                    <DataGridTextColumn Binding="{Binding Rest}" Header="Rest" Width="40*" MinWidth="25"/>
+                </DataGrid.Columns>
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <Style.Triggers>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                <Setter Property="Background" Value="white"/>
+                            </Trigger>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                <Setter Property="Background" Value="#f2f2f2"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.CellStyle>
+
+                    <Style TargetType="DataGridCell">
+
+                        <Setter Property="BorderBrush" Value="#d0cece" />
+
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Foreground" Value="black"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+
+                </DataGrid.CellStyle>
+            </DataGrid>
+            <DataGrid x:Name="L6" Margin="5,5,5,10" Grid.Column="5" Grid.Row="1" AlternationCount="2" CanUserSortColumns="True" Loaded="gridloaded"  MouseDoubleClick="RowDoubleClick" AutoGenerateColumns="False" GridLinesVisibility="None"  PreviewMouseRightButtonUp="RowMouseRightButtonDown">
+
+                <DataGrid.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE9E2FF"/>
+
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd/MM/yy\}}" Header="Date" Width="70*" MinWidth="55"/>
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="67*" MinWidth="50"/>
+                    <DataGridTextColumn Binding="{Binding AccessNo}" Header="AccessNo" Width="67*" MinWidth="45"/>
+                    <DataGridTextColumn Binding="{Binding Rest}" Header="Rest" Width="40*" MinWidth="25"/>
+                </DataGrid.Columns>
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <Style.Triggers>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                <Setter Property="Background" Value="white"/>
+                            </Trigger>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                <Setter Property="Background" Value="#f2f2f2"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.CellStyle>
+
+                    <Style TargetType="DataGridCell">
+
+                        <Setter Property="BorderBrush" Value="#d0cece" />
+
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Foreground" Value="black"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+
+                </DataGrid.CellStyle>
+            </DataGrid>
+
+
+            <TextBlock x:Name="tbm4" Margin="45,0,45,5" Grid.Column="0" Grid.Row="3" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Center" Foreground="WhiteSmoke"/>
+            <TextBlock x:Name="tbm5" Margin="45,0,46,5" Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Center" Foreground="WhiteSmoke"/>
+            <TextBlock x:Name="tbl8" Margin="45,0,45,5" Grid.Column="4" Grid.Row="3" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Center" Foreground="WhiteSmoke"/>
+            <TextBlock x:Name="tbl9" Margin="45,0,45,5" Grid.Column="3" Grid.Row="3" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Center" Foreground="WhiteSmoke"/>
+            <TextBlock x:Name="tbl6" Margin="45,0,45,5" Grid.Column="5" Grid.Row="0" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Center" Foreground="WhiteSmoke"/>
+            <TextBlock x:Name="tbm6" Margin="45,0,45,5" Grid.Column="2" Grid.Row="3" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Center" Foreground="WhiteSmoke"/>
+
+            <TextBlock x:Name="restm4" Grid.Column="0" Grid.Row="5" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Top" Foreground="WhiteSmoke" HorizontalAlignment="Right" Width="50" Margin="0,0,25,0"/>
+            <TextBlock x:Name="restm5" Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Top" Foreground="WhiteSmoke" HorizontalAlignment="Right" Width="50" Margin="0,0,25,0"/>
+            <TextBlock x:Name="restl8" Grid.Column="4" Grid.Row="5" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Top" Foreground="WhiteSmoke" HorizontalAlignment="Right" Width="50" Margin="0,0,25,0"/>
+            <TextBlock x:Name="restl9" Grid.Column="3" Grid.Row="5" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Top" Foreground="WhiteSmoke" HorizontalAlignment="Right" Width="50" Margin="0,0,25,0"/>
+            <TextBlock x:Name="restl6" Grid.Column="5" Grid.Row="2" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Top" Foreground="WhiteSmoke" HorizontalAlignment="Right" Width="50" Margin="0,0,25,0"/>
+            <TextBlock x:Name="restm6" Grid.Column="2" Grid.Row="5" TextWrapping="Wrap" Text="TextBlock" TextAlignment="Center" VerticalAlignment="Top" Foreground="WhiteSmoke" HorizontalAlignment="Right" Width="50" Margin="0,0,25,0"/>
+
+            <TextBlock x:Name="mom4" Grid.Column="0" Grid.Row="5" Foreground="WhiteSmoke" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,0,0,0" TextWrapping="Wrap" Text="TextBlock"/>
+            <TextBlock x:Name="mom5" Grid.Column="1" Grid.Row="5" Foreground="WhiteSmoke" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,0,0,0" TextWrapping="Wrap" Text="TextBlock"/>
+            <TextBlock x:Name="mol8" Grid.Column="4" Grid.Row="5" Foreground="WhiteSmoke" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,0,0,0" TextWrapping="Wrap" Text="TextBlock"/>
+            <TextBlock x:Name="mol9" Grid.Column="3" Grid.Row="5" Foreground="WhiteSmoke" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,0,0,0" TextWrapping="Wrap" Text="TextBlock"/>
+            <TextBlock x:Name="mol6" Grid.Column="5" Grid.Row="2" Foreground="WhiteSmoke" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,0,0,0" TextWrapping="Wrap" Text="TextBlock"/>
+            <TextBlock x:Name="mom6" Grid.Column="2" Grid.Row="5" Foreground="WhiteSmoke" TextAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,0,0,0" TextWrapping="Wrap" Text="TextBlock"/>
+
+        </Grid>
     </Grid>
 </Window>

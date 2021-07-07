@@ -69,6 +69,8 @@ namespace Eisagogi_paragogis
         private static IEnumerable<MachinePosition> machinePosition = from MachinePosition in production18.MachinePosition
                                                                       select MachinePosition;
 
+        private static IEnumerable<EXOPLISMOS1> Exoplismos1 = from EXOPLISMOS1 in production18.EXOPLISMOS1
+                                                                      select EXOPLISMOS1;
 
         List<Production_Plan_Changes> production_plan_changes = production_Plan_Changes.ToList();
         List<Machineqty> machineqty = MachineQty.ToList();
@@ -79,6 +81,7 @@ namespace Eisagogi_paragogis
         List<DailyProduction> dailiproduction = dailyProduction.ToList();
         List<Machineqty> machinenamecreate = MachineQty.ToList();
         List<MachinePosition> machpos = machinePosition.ToList();
+        List<EXOPLISMOS1> exoplismos1 = Exoplismos1.ToList();
 
         public static DateTime AddBusinessDays(DateTime date, int days)
         {
@@ -381,8 +384,8 @@ namespace Eisagogi_paragogis
                         margincalc = Create_Boxes(margincalc, machinecounter, Ref, txt4, machine);
                         break;
                     case 37:
-                        machine = "59";
-                        canvas = M59;
+                        machine = "72";
+                        canvas = M72;
                         margincalc = Create_Boxes(margincalc, machinecounter, Ref, txt4, machine);
                         break;
                     case 38:
@@ -686,10 +689,22 @@ namespace Eisagogi_paragogis
         private TextBox create_Machinename_boxes(int rowcounter, int machinecounter, MachinePosition machineqty)
         {
             TextBox Machinename = (TextBox)FindName("Title" + "M" + machinecounter + "R" + rowcounter);
-            Machinename.Text = machineqty.MachineNo.TrimEnd().ToUpper() + "          " + machinename(machineqty.MachineNo);
+
+            var name = machineqty.MachineNo.TrimEnd();
+
+            Machinename.Text = name + "          " + machinename(machineqty.MachineNo);
             Machinename.Background = machinecolour(machineqty.MachineNo, Machinename);
 
             Machinename.MouseRightButtonUp += new MouseButtonEventHandler(Machname_RightClick);
+
+            var type = exoplismos1.Where(i => i.DESCR.Equals(name)).Select(z => z.TYPE.TrimEnd()).FirstOrDefault();
+            var serial = exoplismos1.Where(i => i.DESCR.Equals(name)).Select(z => z.SERNO.TrimEnd()).FirstOrDefault();
+            var Date = exoplismos1.Where(i => i.DESCR.Equals(name)).Select(z => z.DATE2.TrimEnd()).FirstOrDefault();
+
+            Machinename.ToolTip = "Type: " + type + " \n " + "Serial: " + serial + " \n " + "Date: " + Date;
+
+           // TotalId.ToolTip = "Order: " + order + " \n " + "Delivery Date: " + deliveryDate + " \n " + "Comments: " + Comments;
+
 
             return Machinename;
         }
@@ -785,12 +800,6 @@ namespace Eisagogi_paragogis
                 TotalId.Text = machineqty.AccessNo.ToString();
             TotalId.Visibility = Visibility.Visible;
 
-      //      using (var context = new Production18())
-         //   {
-              //  var order = context.DELTIO_FINISH_SUPER.Any(c => c.TOTAL_ID == Convert.ToInt32(TotalId.Text)) ? context.DELTIO_FINISH_SUPER.Where(c => c.TOTAL_ID == Convert.ToInt32(TotalId.Text)).Select(f => f.OrderNo).FirstOrDefault() : null;
-               // var deliveryDate = context.DELTIO_FINISH_SUPER.Any(c => c.TOTAL_ID == Convert.ToInt32(TotalId.Text)) ? context.DELTIO_FINISH_SUPER.Where(c => c.TOTAL_ID == Convert.ToInt32(TotalId.Text)).Select(f => f.DeliveryDate).FirstOrDefault() : null;
-               // var Comments = context.DELTIO_FINISH_SUPER.Any(c => c.TOTAL_ID == Convert.ToInt32(TotalId.Text)) ? context.DELTIO_FINISH_SUPER.Where(c => c.TOTAL_ID == Convert.ToInt32(TotalId.Text)).Select(f => f.comments).FirstOrDefault() : null;
-
                 var order = deltio_finish_super.Any(c => c.TOTAL_ID == Convert.ToInt32(TotalId.Text)) ? deltio_finish_super.Where(c => c.TOTAL_ID == Convert.ToInt32(TotalId.Text)).Select(f => f.OrderNo).FirstOrDefault() : null;
                 var deliveryDate = deltio_finish_super.Any(c => c.TOTAL_ID == Convert.ToInt32(TotalId.Text)) ? deltio_finish_super.Where(c => c.TOTAL_ID == Convert.ToInt32(TotalId.Text)).Select(f => f.DeliveryDate).FirstOrDefault() : null;
                 var Comments = deltio_finish_super.Any(c => c.TOTAL_ID == Convert.ToInt32(TotalId.Text)) ? deltio_finish_super.Where(c => c.TOTAL_ID == Convert.ToInt32(TotalId.Text)).Select(f => f.comments).FirstOrDefault() : null;
@@ -823,7 +832,7 @@ namespace Eisagogi_paragogis
                 {
                     TotalId.ToolTip = "Order: " + order;
                 }
-           // }
+      
 
             return TotalId;
         }
@@ -2233,8 +2242,8 @@ namespace Eisagogi_paragogis
                             stack = SM32;
                             break;
                         case 37:
-                            machine = "59";
-                            stack = SM59;
+                            machine = "72";
+                            stack = SM72;
                             break;
                         case 38:
                             machine = "22";
@@ -2954,7 +2963,7 @@ namespace Eisagogi_paragogis
             using (var context = new Production18())
             {
                 StackPanel sm;
-                foreach (var mach in context.MachinePosition)
+                foreach (var mach in context.MachinePosition.Where(c => c.Available == true))
                 {
                     sm = (StackPanel)FindName("SM" + mach.MachineNo.Substring(0, 2));
                     if (mach.NightShift == false)
@@ -2974,7 +2983,7 @@ namespace Eisagogi_paragogis
             using (var context = new Production18())
             {
                 StackPanel sm;
-                foreach (var mach in context.MachinePosition)
+                foreach (var mach in context.MachinePosition.Where(c => c.Available == true))
                 {
                     var mac = mach.MachineNo.Substring(0, 2);
                     sm = (StackPanel)FindName("SM" + mac);
